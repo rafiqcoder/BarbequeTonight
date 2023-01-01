@@ -1,12 +1,19 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import Layout from '../components/Header/Layout';
+import Home from '../components/home/home';
+import Layout from '../Layout/Layout';
 
 
-export default function Home() {
+export default function Main() {
   return (
-    <div>
-     <Layout></Layout>
-   </div>
+
+
+      <Layout>
+      <Head>
+        <title>Home</title>
+      </Head>
+        <Home></Home>
+      </Layout>
+
+
   )
 }
