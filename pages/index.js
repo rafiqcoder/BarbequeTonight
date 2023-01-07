@@ -1,9 +1,15 @@
+import { DataContext } from '@/src/utils/Context/Context';
 import Head from 'next/head';
+import { useContext, useEffect } from 'react';
 import Home from '../components/home/home';
 import Layout from '../Layout/Layout';
 
 
-export default function Main() {
+export default function Main({ products }) {
+  const { bbqProducts,setBbqProducts } = useContext(DataContext);
+  
+    setBbqProducts(products);
+
   return (
 
 
@@ -16,4 +22,14 @@ export default function Main() {
 
 
   )
+}
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:5000/AllBBQProducts`);
+  const data = await res.json();
+
+  return {
+    props: {
+      products: data,
+    },
+  };
 }

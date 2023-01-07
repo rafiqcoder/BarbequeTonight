@@ -1,33 +1,33 @@
 
 import Image from 'next/image';
-import productImg from '../../public/assets/productImg.jpg';
 
-const ProductCard = ({ children }) => {
+const ProductCard = ({ children,product }) => {
   
     return (
-      <div class="max-w-2xl bg-white rounded-lg shadow-md dark:bg-gray-800 relative">
-       
-        <Image class="object-cover w-full h-64 " src={productImg} alt="Article" ></Image>
+      <div className="max-w-2xl bg-white rounded-lg shadow-md dark:bg-gray-800 relative">
+        <img
+          className="object-cover w-full h-64 "
+          src={product.img}
+          alt="Article"
+        ></img>
 
-        <div class="p-6">
+        <div className="p-6">
           <div>
             <div
-              class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"
+              className="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"
               tabindex="0"
               role="link"
             >
-              Product Name
-              
+              {product.name}
             </div>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, ullam dolores architecto obcaecati voluptatem ut dolorem quam saepe beatae ad reprehenderit. Molestias, 
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              {product.desc}
             </p>
             <div className="flex justify-between ">
               <div className="mt-6">
-                
                 <h2 className="font-semibold">
                   Price:
-                  <span className="text-orange-500"> 500 </span>
+                  <span className="text-orange-500"> {product.price} </span>
                   Tk
                 </h2>
               </div>

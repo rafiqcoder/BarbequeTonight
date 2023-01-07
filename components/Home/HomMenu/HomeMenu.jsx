@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import productImg from "../../../public/assets/productImg.jpg";
+import styles from "../../../styles/HomeMenu.module.css";
 const HomeMenu = () => {
     return (
       <section className="bg-white dark:bg-gray-900 my-20">

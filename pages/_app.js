@@ -1,7 +1,7 @@
 
-import Context from '../src/utils/Context/Context'
-
-import '../styles/globals.css'
+import { Toaster } from 'react-hot-toast';
+import Context from '../src/utils/Context/Context';
+import '../styles/globals.css';
 
 
 
@@ -12,6 +12,7 @@ function MyApp({ Component,pageProps }) {
 
 
     <Context>
+      <Toaster position="top-center" />
       <Component {...pageProps} />
     </Context>
 

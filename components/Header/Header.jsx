@@ -1,7 +1,11 @@
 import Link from 'next/link';
-import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../src/utils/Context/Context';
+
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
     return (
       <div className="navbar bg-base-100 shadow-sm">
         <div className="flex-1">
@@ -28,40 +32,52 @@ const Header = () => {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
-                  <a>Portfolio</a>
+                  <Link href="/">Portfolio</Link>
                 </li>
                 <li>
-                  <a>About</a>
+                  <Link href="/">About</Link>
                 </li>
+                {user && user.uid ? (
+                  <li>
+                    <Link href="/">Logout</Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link href="/">Login</Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
-          <Link href='/' className="btn btn-ghost normal-case text-xl">Sundial Chomok</Link>
+          <Link href="/" className="btn btn-ghost normal-case text-xl">
+            Sundial Chomok
+          </Link>
         </div>
         <div className="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
-          <a
-            href="#"
-            className="text-gray-800 transition-colors duration-300 transform dark:text-gray-200 border-b-2 border-blue-500 mx-1.5 sm:mx-6">
+          <Link
+            href="/"
+            className="text-gray-800 transition-colors duration-300 transform dark:text-gray-200 border-b-2 border-blue-500 mx-1.5 sm:mx-6"
+          >
             home
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            href="/"
             className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
           >
             Barbeque
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            href="/"
             className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
             className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
           >
-           All Menus
-          </a>
+            All Menus
+          </Link>
 
           <Link
             href="/dashboard"
@@ -69,10 +85,25 @@ const Header = () => {
           >
             Dashboard
           </Link>
-
-          
-
-         
+          {user && user.uid ? (
+            <li>
+              <Link 
+                href="/login"
+                className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6" onClick={() => {logOut(); }}
+              >
+                Logout
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link
+                href="/login"
+                className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
+              >
+                Login
+              </Link>
+            </li>
+          )}
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
@@ -121,16 +152,16 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between">
+                <Link href="/" className="justify-between">
                   Profile
                   <span className="badge">New</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link href="/">Settings</Link>
               </li>
               <li>
-                <a>Logout</a>
+                <Link href="/">Logout</Link>
               </li>
             </ul>
           </div>
