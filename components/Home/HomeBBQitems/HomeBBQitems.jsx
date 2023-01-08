@@ -1,10 +1,13 @@
+import { addToCart } from "@/src/store.js/cartSlice";
 import { DataContext } from "@/src/utils/Context/Context";
 import { useContext } from "react";
+import { useDispatch,useSelector } from "react-redux";
 import ProductCard from "../../ProductCard/ProductCard";
-
 
 const HomeBBQitems = () => {
   const {bbqProducts} = useContext(DataContext);
+  const dispatch = useDispatch();
+  
 
   return (
     <section className="bg-white dark:bg-gray-900 my-20">
@@ -15,10 +18,10 @@ const HomeBBQitems = () => {
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
           {bbqProducts.map((product) => (
             <ProductCard children product={product}>
-              
               <label
                 htmlFor="my-modal"
-                className="btn btn-success mt-5 hover:bg-secondary text-white border-0" 
+                className="btn btn-success mt-5 hover:bg-secondary text-white border-0"
+                onClick={() => dispatch(addToCart(product))}
               >
                 Add to cart
               </label>

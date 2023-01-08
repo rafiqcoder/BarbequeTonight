@@ -1,5 +1,4 @@
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useContext,useState } from 'react';
 import useSWR from 'swr';
@@ -19,7 +18,6 @@ const MyProducts = () => {
   const [loading,setLoading] = useState(false);
   const [refresh,setRefresh] = useState(false);
 
-
   const { data,error,isLoading } = useSWR('AllBBQProducts',fetcher)
 
   
@@ -34,8 +32,6 @@ const MyProducts = () => {
       } 
         
       
-      
-      console.log(data);
   
   // const handleDelete = (id) => {
         
