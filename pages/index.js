@@ -1,4 +1,4 @@
-import { DataContext } from '@/src/Context/Context';
+import { DataContext } from '../src/Context/Context';
 import Head from 'next/head';
 import { useContext } from 'react';
 import Home from '../components/home/home';
