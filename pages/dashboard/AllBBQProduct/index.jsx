@@ -1,9 +1,9 @@
 
 import Link from 'next/link';
-import { useContext,useState } from 'react';
+import { useContext, useState } from 'react';
 import useSWR from 'swr';
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
-import { AuthContext } from '../../../src/utils/Context/Context';
+import { AuthContext } from '../../../src/Context/Context';
 
 const fetcher = async () => {
   const res = await fetch('http://localhost:5000/AllBBQProducts');
@@ -18,10 +18,7 @@ const MyProducts = () => {
   const [loading,setLoading] = useState(false);
   const [refresh,setRefresh] = useState(false);
 
-  const { data,error,isLoading } = useSWR('AllBBQProducts',fetcher)
-
-  
-
+  const { data,error,isLoading } = useSWR('AllBBQProducts',fetcher);
     
       if (error) {
         return <div>Error ...</div>;
@@ -30,11 +27,8 @@ const MyProducts = () => {
       if (isLoading) {
         return <div>Loading ...</div>;
       } 
-        
-      
-  
+
   // const handleDelete = (id) => {
-        
   //       fetch(`https://usedcycle-server.vercel.app/my-products/${id}`, {
   //         method: "DELETE",
   //       })

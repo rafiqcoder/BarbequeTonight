@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React,{ useContext,useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import Layout from '../../Layout/Layout';
-import { AuthContext } from '../../src/utils/Context/Context';
+import { AuthContext } from '../../src/Context/Context';
 
 
 const Register = () => {

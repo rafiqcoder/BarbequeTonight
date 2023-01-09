@@ -5,7 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'lobsterTwo': ['"Lobster Two"'],
+        'poppins': ['"Poppins"'],
+        'rubik': ['"Rubik"'],
+        'roboto': ['"Roboto"'],
+      }
+    },
   },
   plugins: [require("daisyui")],
 }

@@ -1,7 +1,7 @@
-import { useContext } from "react";
 import DashWellcome from "@/components/DashComponents/DashWellcome";
 import DashBoardLayout from "@/Layout/DashBoardLayout";
-import { AuthContext } from "@/src/utils/Context/Context";
+import { AuthContext } from "@/src/Context/Context";
+import { useContext } from "react";
 
 const Dashboard = () => {
   const {value } = useContext(AuthContext);

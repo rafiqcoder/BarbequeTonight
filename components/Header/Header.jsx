@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useContext } from 'react';
-import { AuthContext } from '../../src/utils/Context/Context';
+import { AuthContext } from '../../src/Context/Context';
 
 
 const Header = () => {

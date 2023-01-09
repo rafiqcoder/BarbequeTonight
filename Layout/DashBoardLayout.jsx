@@ -1,7 +1,7 @@
 
-import DashSidebar from "../components/DashComponents/DashSidebar/DashSidebar";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
+import DashSidebar from "@/components/DashComponents/DashSidebar/DashSidebar";
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
 
 const Layout = ({ children }) => {
   return (

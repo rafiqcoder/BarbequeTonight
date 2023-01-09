@@ -1,0 +1,47 @@
+[
+    {
+        "_id":"63b46b760ccbfdadbe9241f1",
+        "name":"Burger",
+        "desc":"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying",
+        "img":"/menu_1_1.png",
+        "price":"2000"
+    },
+    {
+        "_id":"63b46bf20ccbfdadbe9241f2",
+        "name":"BBQ",
+        "desc":"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying",
+        "img":"/menu_1_2.png",
+        "sellPrice":"2000",
+        "Price":"2000",
+        "rice":"2000",
+        "price":"2000"
+    },
+    {
+        "_id":"63b6d0989e0a9dd5cb08f6d7",
+        "name":"BBQ3",
+        "desc":"Lorem fasfc sdssdf fddf  fdafdf dfdsfa f asfasdf afsdfasdfasd fsdafasdf sdfasdf asdf asfasdf asdfdasfasdfsdf sdaf sd",
+        "img":"/menu_1_3.png",
+        "price":"300"
+    },
+    {
+        "_id":"63b6d0989e0a9dd5cb08f6d3",
+        "name":"BBQ3",
+        "desc":"Lorem fasfc sdssdf fddf  fdafdf dfdsfa f asfasdf afsdfasdfasd fsdafasdf sdfasdf asdf asfasdf asdfdasfasdfsdf sdaf sd",
+        "img":"/menu_1_3.png",
+        "price":"300"
+    },
+    {
+        "_id":"63b6d0989e0a9dd5cb08f6d4",
+        "name":"BBQ3",
+        "desc":"Lorem fasfc sdssdf fddf  fdafdf dfdsfa f asfasdf afsdfasdfasd fsdafasdf sdfasdf asdf asfasdf asdfdasfasdfsdf sdaf sd",
+        "img":"/menu_1_3.png",
+        "price":"300"
+    },
+    {
+        "_id":"63b6d0989e0a9dd5cb08f6d5",
+        "name":"BBQ3",
+        "desc":"Lorem fasfc sdssdf fddf  fdafdf dfdsfa f asfasdf afsdfasdfasd fsdafasdf sdfasdf asdf asfasdf asdfdasfasdfsdf sdaf sd",
+        "img":"/menu_1_3.png",
+        "price":"300"
+    }
+]

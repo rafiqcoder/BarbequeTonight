@@ -71,12 +71,12 @@ async function run() {
             const product = req.body;
             const result = await BBQProducts.insertOne(product);
             return res.send(result);
-                // console.log(result);
-            
+            // console.log(result);
+
         });
 
         app.get('/AllBBQProducts',async (req,res) => {
-            
+
             const BBQproducts = await BBQProducts.find({}).toArray()
             res.send(BBQproducts)
         })

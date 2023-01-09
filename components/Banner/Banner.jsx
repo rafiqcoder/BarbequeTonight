@@ -1,5 +1,5 @@
 import Image from "next/image";
-import heroImg from "../../public/assets/hero_bg.jpg";
+import heroImg from "@/public/assets/hero_bg.jpg";
 
 const Banner = () => {
   return (

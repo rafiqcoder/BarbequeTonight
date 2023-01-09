@@ -1,24 +1,25 @@
-import { DataContext } from '@/src/utils/Context/Context';
+import { DataContext } from '@/src/Context/Context';
 import Head from 'next/head';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import Home from '../components/home/home';
 import Layout from '../Layout/Layout';
 
 
 export default function Main({ products }) {
   const { bbqProducts,setBbqProducts } = useContext(DataContext);
-  
-    setBbqProducts(products);
+
+  setBbqProducts(products);
 
   return (
 
 
-      <Layout>
+    <Layout>
       <Head>
         <title>Home</title>
+        
       </Head>
-        <Home></Home>
-      </Layout>
+      <Home></Home>
+    </Layout>
 
 
   )
