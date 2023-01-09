@@ -1,6 +1,18 @@
 import productImg from "@/public/assets/productImg.jpg";
 import Image from 'next/image';
+import { useEffect } from "react";
 const HomeMenu = () => {
+  useEffect(() => {
+    let btnContainer = document.getElementById("btnContainer");
+    var btns = btnContainer.getElementsByClassName("tab_selector");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active_tab");
+        current[0].className = current[0].className.replace(" active_tab", "");
+        this.className += " active_tab";
+      });
+    }
+  }, []);
     return (
       <section className="bg-[#faf7f2] bg-[url('/product_bg_1.png')] py-32">
             <div className="container mx-auto">
