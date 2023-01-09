@@ -1,4 +1,4 @@
-import productImg from "@/public/assets/productImg.jpg";
+import productImg from "../../../public/assets/productimg.png";
 import Image from 'next/image';
 import { useEffect } from "react";
 const HomeMenu = () => {
@@ -33,32 +33,32 @@ const HomeMenu = () => {
                 <div className="w-100 flex flex-col items-center mt-6">
                     <ul className="bg-white shadow-md rounded-2xl grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 overflow-hidden cursor-pointer" id="btnContainer">
                         <li className="flex flex-col items-center justify-center py-6 px-12 tab_selector active_tab">
-                            <img src="/svg/menu_1_1.svg" alt="" />
-                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c] mt-4">All MENUS</span>
+                            
+                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">All MENUS</span>
                         </li>
                         <li className="flex flex-col items-center justify-center py-6 px-12 tab_selector">
-                            <img src="/svg/menu_1_2.svg" alt="" />
-                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c] mt-4">BURGER</span>
+                            
+                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">BURGER</span>
                         </li>
                         <li className="flex flex-col items-center justify-center py-6 px-12 tab_selector">
-                            <img src="/svg/menu_1_3.svg" alt="" />
-                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c] mt-4">PIZZA</span>
+                            
+                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">PIZZA</span>
                         </li>
                         <li className="flex flex-col items-center justify-center py-6 px-12 tab_selector">
-                            <img src="/svg/menu_1_4.svg" alt="" />
-                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c] mt-4">CHICKEN</span>
+                            
+                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">CHICKEN</span>
                         </li>
                         <li className="flex flex-col items-center justify-center py-6 px-12 tab_selector">
-                            <img src="/svg/menu_1_5.svg" alt="" />
-                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c] mt-4">COMBO</span>
+                            
+                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">COMBO</span>
                         </li>
                         <li className="flex flex-col items-center justify-center py-6 px-12 tab_selector">
-                            <img src="/svg/menu_1_6.svg" alt="" />
-                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c] mt-4">SANDWICH</span>
+                            
+                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">SANDWICH</span>
                         </li>
                         <li className="flex flex-col items-center justify-center py-6 px-12 tab_selector">
-                            <img src="/svg/menu_1_7.svg" alt="" />
-                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c] mt-4">DRINKS</span>
+                            
+                            <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">DRINKS</span>
                         </li>
                     </ul>
                 </div>
