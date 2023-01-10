@@ -10,7 +10,9 @@ import {
 } from "firebase/auth";
 import { createContext,useEffect,useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { app } from "../firbase/firebase.config";
+import { fetchCartDbThunk } from "../store/actions/getData";
 
 
 export const DataContext = createContext();
@@ -26,7 +28,6 @@ const Context = ({ children }) => {
   const auth = getAuth(app);
 const [bbqProducts, setBbqProducts] = useState([]);
   const Provider = new GoogleAuthProvider();
-
 
   useEffect(() => {
     setCurrentUser(

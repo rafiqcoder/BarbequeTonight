@@ -1,20 +1,29 @@
+import { AuthContext } from "@/src/Context/Context";
+import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useGetBBQProductsQuery } from "../../../src/store/api/productsApi";
 import { addToCart } from "../../../src/store/cartSlice";
 import ProductCard from "../../ProductCard/ProductCard";
 
 const HomeBBQitems = () => {
+  const { user } = useContext(AuthContext);
   const { data, error, isLoading, isSuccess, isFetching } =
     useGetBBQProductsQuery();
   const bbqProducts = data;
   // const { bbqProducts } = useContext(DataContext);
+
   const dispatch = useDispatch();
   interface Props {
     value: string;
   }
   const handleAddtoCart = (product: any) => {
-    dispatch(addToCart(product));
+    const updatedProduct = {
+      product: product,
+      userEmail: user.email,
+    };
+    dispatch(addToCart(updatedProduct));
   };
+  // console.log(user.email);
 
   return (
     <section className="bg-white my-20">

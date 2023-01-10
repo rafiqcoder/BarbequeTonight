@@ -1,5 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
+import { fetchCartDbThunk } from "./actions/getData";
+
+// const data = async () => {
+//  const value = await fetch("http://localhost:5000/addToCartDb")
+//   const res = await value.json()
+//  
+//   return res.cartData;
+
+// }
+
+// const Cartdata = data()
+// console.log(Cartdata[0]);
 
 const initialState = {
   cart: [],
@@ -11,7 +23,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const product = state.cart.find((p) => p._id === action.payload._id);
+      const product = state.cart.find(
+        (p) => p._id === action.payload.product._id
+      );
       if (product) {
         product.quantity++;
         product.totalPrice = product.quantity * product.price;
@@ -22,7 +36,7 @@ const cartSlice = createSlice({
         );
       } else {
         state.cart.push({
-          ...action.payload,
+          ...action.payload.product,
           quantity: 5,
           totalPrice: action.payload.price * 5,
         });
@@ -31,19 +45,24 @@ const cartSlice = createSlice({
             total + product.totalPrice,
           0
         );
-        fetch("http://localhost:5000/addToCartDb", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(state.cart),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.acknowledged) {
-              toast.success("added to Cart Db ");
-            }
-          })
-          .catch((error) => console.log(error));
       }
+      const Cartdata = state.cart;
+      const email = action.payload.userEmail;
+      console.log(email);
+
+      fetch(`http://localhost:5000/addToCartDb?email=${email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Cartdata),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("added to Cart Db ");
+          }
+        })
+        .catch((error) => console.log(error));
+      console.log(state.cart);
     },
     reduceQuantity: (state, action) => {
       const product = state.cart.find((p) => p._id === action.payload._id);
@@ -64,6 +83,12 @@ const cartSlice = createSlice({
         );
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCartDbThunk.fulfilled, (state, action) => {
+      state.cart = action.payload;
+      
+    });
   },
 });
 export const { addToCart, reduceQuantity } = cartSlice.actions;
