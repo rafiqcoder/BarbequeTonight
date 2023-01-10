@@ -29,8 +29,10 @@ const cartSlice = createSlice({
       if (product) {
         product.quantity++;
         product.totalPrice = product.quantity * product.price;
+        console.log(product.totalPrice);
+        
         state.grandTotal = state.cart.reduce(
-          (total: any, product: { totalPrice: any }) =>
+          (total, product) =>
             total + product.totalPrice,
           0
         );
@@ -38,10 +40,10 @@ const cartSlice = createSlice({
         state.cart.push({
           ...action.payload.product,
           quantity: 5,
-          totalPrice: action.payload.price * 5,
+          totalPrice: action.payload.product.price * 5,
         });
         state.grandTotal = state.cart.reduce(
-          (total: number, product: { totalPrice: number }) =>
+          (total, product) =>
             total + product.totalPrice,
           0
         );
@@ -71,7 +73,7 @@ const cartSlice = createSlice({
         product.quantity--;
         product.totalPrice = product.quantity * product.price;
         state.grandTotal = state.cart.reduce(
-          (total: number, product: { totalPrice: number }) =>
+          (total, product) =>
             total + product.totalPrice,
           0
         );
@@ -87,6 +89,11 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchCartDbThunk.fulfilled, (state, action) => {
       state.cart = action.payload;
+      state.grandTotal = state.cart.reduce(
+        (total, product) => total + product.totalPrice,
+        0
+      );
+      console.log(state.grandTotal);
       
     });
   },

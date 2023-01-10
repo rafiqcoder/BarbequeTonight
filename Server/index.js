@@ -85,14 +85,14 @@ async function run() {
                 cartData,
             }
             const userProducts = await CartDb.findOne(query);
-            console.log(userProducts);
+           
             if (userProducts) {
                 const updateData = await CartDb.updateOne(query,{ $set: data })
                 console.log(updateData);
                 return res.send(updateData)
             }
             const result = await CartDb.insertOne(data);
-            console.log("Insert");
+           
             return res.send(result);
 
         });
@@ -100,12 +100,17 @@ async function run() {
         app.get('/addToCartDb',async (req,res) => {
             const email = req.query.email;
             const query = { email: email }
-            const userEmail = email==='undefined'?false:email
+            const userEmail = email === 'undefined' ? false : email
             if (userEmail) {
                 const dbCartData = await CartDb.findOne(query)
-        
-                return res.send(dbCartData.cartData)
-            } 
+                if (dbCartData) {
+
+                    return res.send(dbCartData.cartData)
+                }
+                else {
+                    return
+                }
+            }
         })
         app.get('/AllBBQProducts',async (req,res) => {
 
