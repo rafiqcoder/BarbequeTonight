@@ -1,5 +1,5 @@
 export interface BBQProduct { 
-    _id: any;
+    id?: any
     name: string;
     desc: string;
     price: number;

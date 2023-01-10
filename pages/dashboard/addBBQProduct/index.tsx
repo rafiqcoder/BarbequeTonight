@@ -34,6 +34,7 @@ const AddProducts = () => {
   // const time = moment().format("MMM Do YYYY, h:mm:ss a");
   // const year = format(date,"yyyy");
   const [addProduct, { isLoading }] = useAddProductMutation();
+
   // console.log(time);
   const {
     register,

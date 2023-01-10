@@ -19,12 +19,7 @@ const ProductCard = (props: { product: any; children: JSX.Element }) => {
       <p className="text-[#eb0029] font-medium font-rubik text-[16px]">
         {price}৳
       </p>
-      <Link
-        href={`/bbq/${_id}`}
-        className="text-[14px] font-roboto font-normal py-2 px-6 bg-[#010f1c] hover:bg-[#eb0029] transition ease-in-out rounded-lg shadow-md text-white mt-4"
-      >
-        Buy Now
-      </Link>
+      {children}
     </div>
   );
 };

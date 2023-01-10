@@ -1,4 +1,4 @@
-import productImg from "../../../public/assets/productimg.png";
+import productImg from "@/public/assets/productimg.png";
 import Image from 'next/image';
 import { useEffect } from "react";
 const HomeMenu = () => {

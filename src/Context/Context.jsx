@@ -27,6 +27,7 @@ const Context = ({ children }) => {
 const [bbqProducts, setBbqProducts] = useState([]);
   const Provider = new GoogleAuthProvider();
 
+
   useEffect(() => {
     setCurrentUser(
       userData?.find((eachUser) => eachUser?.email === user?.email)

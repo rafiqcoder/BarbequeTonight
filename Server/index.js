@@ -36,6 +36,7 @@ async function run() {
     const UserList = client.db('SundialDb').collection('UserList');
     // const Categories = client.db('ResaleCycle').collection('categories');
     const BBQProducts = client.db('SundialDb').collection('BBQProducts');
+    const CartDb = client.db('SundialDb').collection('CartProducts');
     // const AdvertisedProducts = client.db('ResaleCycle').collection('advertised');
     // const Bookings = client.db('ResaleCycle').collection('bookings');
     // const ReportedItems = client.db('ResaleCycle').collection('reportedItems');
@@ -72,6 +73,13 @@ async function run() {
             const result = await BBQProducts.insertOne(product);
             return res.send(result);
             // console.log(result);
+
+        });
+        app.post('/addToCartDb',async (req,res) => {
+            const product = req.body;
+            const result = await CartDb.insertOne(product);
+            console.log(result);
+            return res.send(result);
 
         });
 

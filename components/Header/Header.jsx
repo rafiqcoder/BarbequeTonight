@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { AuthContext } from '../../src/Context/Context';
 
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-
+  const { grandTotal,cart } = useSelector(state => state.cart) 
+  console.log(cart);
     return (
       <div className="navbar bg-base-100 shadow-sm">
         <div className="flex-1">
