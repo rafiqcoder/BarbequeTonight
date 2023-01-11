@@ -85,14 +85,14 @@ async function run() {
                 cartData,
             }
             const userProducts = await CartDb.findOne(query);
-           
+
             if (userProducts) {
                 const updateData = await CartDb.updateOne(query,{ $set: data })
                 console.log(updateData);
                 return res.send(updateData)
             }
             const result = await CartDb.insertOne(data);
-           
+
             return res.send(result);
 
         });
@@ -115,6 +115,13 @@ async function run() {
         app.get('/AllBBQProducts',async (req,res) => {
 
             const BBQproducts = await BBQProducts.find({}).toArray()
+            res.send(BBQproducts)
+        })
+        app.get('/AllBBQProducts/:id',async (req,res) => {
+            const id = req.params.id;
+           
+            const BBQproducts = await BBQProducts.findOne({_id: ObjectId(id) })
+          
             res.send(BBQproducts)
         })
 

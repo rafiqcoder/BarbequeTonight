@@ -7,9 +7,7 @@ import { fetchCartDbThunk } from "./actions/getData";
 //   const res = await value.json()
 //  
 //   return res.cartData;
-
 // }
-
 // const Cartdata = data()
 // console.log(Cartdata[0]);
 
@@ -50,8 +48,6 @@ const cartSlice = createSlice({
       }
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
-      console.log(email);
-
       fetch(`http://localhost:5000/addToCartDb?email=${email}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -64,7 +60,6 @@ const cartSlice = createSlice({
           }
         })
         .catch((error) => console.log(error));
-      console.log(state.cart);
     },
     reduceQuantity: (state, action) => {
       const product = state.cart.find((p) => p._id === action.payload._id);
@@ -93,7 +88,6 @@ const cartSlice = createSlice({
         (total, product) => total + product.totalPrice,
         0
       );
-      console.log(state.grandTotal);
       
     });
   },

@@ -1,13 +1,21 @@
+import { addToCart,reduceQuantity } from '@/src/store/cartSlice';
 import Link from 'next/link';
 import { useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { AuthContext } from '../../src/Context/Context';
 
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const { grandTotal,cart } = useSelector(state => state.cart) 
-  console.log(cart);
+  const dispatch = useDispatch()
+  const handleAddTocart = (product) => {
+    dispatch(addToCart(product))
+  }
+  const handleRemove = () => {
+    dispatch(reduceQuantity(product));
+  }
+    console.log(cart);
     return (
       <div className="navbar bg-base-100 shadow-sm">
         <div className="flex-1">
@@ -89,9 +97,12 @@ const Header = () => {
           </Link>
           {user && user.uid ? (
             <li>
-              <Link 
+              <Link
                 href="/login"
-                className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6" onClick={() => {logOut(); }}
+                className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
+                onClick={() => {
+                  logOut();
+                }}
               >
                 Logout
               </Link>
@@ -130,15 +141,25 @@ const Header = () => {
             </label>
             <div
               tabIndex={0}
-              className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
+              className="mt-3 card card-compact dropdown-content w-96 bg-base-100 shadow"
             >
-              <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
-                <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
-                    View cart
-                  </button>
+              <div
+                id="cart_bar"
+                className="w-[100%] h-[100%] bg-[rgba(0,0,0,0.6)] fixed z-50 top-0 right-0 flex flex-row justify-end cart_bar"
+              >
+                <div className="w-[350px] h-[100%] bg-white">
+                  <div className="w-100 flex flex-col items-end">
+                    <i
+                      className="fa-regular fa-circle-xmark mr-4 mt-4 text-[30px] cursor-pointer"
+                      // onClick={handleCloseCart}
+                    ></i>
+                  </div>
+                  <div className="w-100">
+                    <h1 className="text-[24px] font-rubik font-semibold text-[#2B281A] px-4 py-2">
+                      Shopping Cart
+                    </h1>
+                  </div>
+                  <hr className="w-[90%] mx-auto" />
                 </div>
               </div>
             </div>

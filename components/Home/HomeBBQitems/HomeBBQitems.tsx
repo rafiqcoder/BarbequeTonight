@@ -1,4 +1,5 @@
 import { AuthContext } from "@/src/Context/Context";
+import Link from "next/link";
 import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useGetBBQProductsQuery } from "../../../src/store/api/productsApi";
@@ -44,6 +45,11 @@ const HomeBBQitems = () => {
                 </label>
               </ProductCard>
             ))}
+        </div>
+        <div className="w-100 flex flex-col justify-center items-center mt-0">
+          <button className="font-rubik font-medium text-[14px] text-[#ffffff] bg-[#eb0029] transition ease-in-out duration-500 hover:bg-[#010f1c] py-4 px-12 rounded-full">
+            <Link href="/bbq">VIEW ALL MENUS</Link>
+          </button>
         </div>
       </div>
     </section>

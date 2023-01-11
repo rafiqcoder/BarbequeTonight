@@ -24,6 +24,6 @@
       "@/public/*": ["public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/store/store.js", "src/store/actions/getData.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/store/store.js", "src/store/actions/getData.js", "pages/bbq/index.js", "pages/bbq/[id].js"],
   "exclude": ["node_modules"]
 }

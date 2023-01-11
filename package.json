@@ -24,6 +24,8 @@
     "swr": "^2.0.0"
   },
   "devDependencies": {
+    "@types/node": "^17.0.42",
+    "@types/react": "^18.0.12",
     "autoprefixer": "^10.4.13",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
