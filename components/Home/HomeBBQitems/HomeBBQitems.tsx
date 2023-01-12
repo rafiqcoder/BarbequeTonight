@@ -12,7 +12,7 @@ const HomeBBQitems = () => {
     useGetBBQProductsQuery();
   const bbqProducts = data;
   // const { bbqProducts } = useContext(DataContext);
-
+  
   const dispatch = useDispatch();
   interface Props {
     value: string;

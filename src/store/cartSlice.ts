@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
-import { fetchCartDbThunk } from "./actions/getData";
 
 // const data = async () => {
 //  const value = await fetch("http://localhost:5000/addToCartDb")
@@ -22,7 +21,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     setCartData: (state, action) => {
-      state.cartData = action.payload.data;
+      state.cartData = action.payload;
+      console.log(state.cartData);
+      
     },
     addToCart: (state, action) => {
       const product = state.cart.find(
@@ -47,7 +48,6 @@ const cartSlice = createSlice({
           (total, product) => total + product.totalPrice,
           0
         );
-        
       }
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
@@ -101,15 +101,6 @@ const cartSlice = createSlice({
         .catch((error) => console.log(error));
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchCartDbThunk.fulfilled, (state, action) => {
-      state.cart = action.payload;
-      state.grandTotal = state.cart.reduce(
-        (total, product) => total + product.totalPrice,
-        0
-      );
-    });
-  },
 });
-export const { addToCart, reduceQuantity } = cartSlice.actions;
+export const { addToCart, reduceQuantity, setCartData } = cartSlice.actions;
 export default cartSlice.reducer;
