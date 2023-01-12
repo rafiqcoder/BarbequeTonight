@@ -1,6 +1,6 @@
 import { AuthContext } from "@/src/Context/Context";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useGetBBQProductsQuery } from "../../../src/store/api/productsApi";
 import { addToCart } from "../../../src/store/cartSlice";
@@ -19,7 +19,7 @@ const HomeBBQitems = () => {
   }
   const handleAddtoCart = (product: any) => {
     const updatedProduct = {
-      product: product,
+      product,
       userEmail: user.email,
     };
     dispatch(addToCart(updatedProduct));

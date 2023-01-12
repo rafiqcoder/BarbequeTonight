@@ -8,14 +8,27 @@ import { AuthContext } from '../../src/Context/Context';
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const { grandTotal,cart } = useSelector(state => state.cart) 
+  console.log(grandTotal);
   const dispatch = useDispatch()
   const handleAddTocart = (product) => {
-    dispatch(addToCart(product))
+    const updatedProduct = {
+      product,
+      userEmail: user.email,
+    };
+    dispatch(addToCart(updatedProduct))
   }
-  const handleRemove = () => {
-    dispatch(reduceQuantity(product));
+  const handleReduce = (product) => {
+     const updatedProduct = {
+       product,
+       userEmail: user.email,
+     };
+    dispatch(reduceQuantity(updatedProduct));
   }
-    console.log(cart);
+  console.log(cart);
+  
+
+
+
     return (
       <div className="navbar bg-base-100 shadow-sm">
         <div className="flex-1">
@@ -118,8 +131,8 @@ const Header = () => {
             </li>
           )}
         </div>
-        <div className="flex-none">
-          <div className="dropdown dropdown-end">
+        <div className="flex-none relative">
+          <div className="dropdown dropdown-end custom_position">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
@@ -141,26 +154,68 @@ const Header = () => {
             </label>
             <div
               tabIndex={0}
-              className="mt-3 card card-compact dropdown-content w-96 bg-base-100 shadow"
+              className="mt-3 card dropdown-content bg-base-100 shadow right-0"
             >
-              <div
-                id="cart_bar"
-                className="w-[100%] h-[100%] bg-[rgba(0,0,0,0.6)] fixed z-50 top-0 right-0 flex flex-row justify-end cart_bar"
-              >
-                <div className="w-[350px] h-[100%] bg-white">
-                  <div className="w-100 flex flex-col items-end">
-                    <i
-                      className="fa-regular fa-circle-xmark mr-4 mt-4 text-[30px] cursor-pointer"
-                      // onClick={handleCloseCart}
-                    ></i>
-                  </div>
-                  <div className="w-100">
-                    <h1 className="text-[24px] font-rubik font-semibold text-[#2B281A] px-4 py-2">
-                      Shopping Cart
-                    </h1>
-                  </div>
-                  <hr className="w-[90%] mx-auto" />
+              <div className="cart-container bg-gradient-to-br from-green-400 to-blue-500 rounded-lg sm:h-screen sm:sticky pb-5 top-0 min-w-[400px]  sm:w-1/4 p-3 ">
+                <h2 className="text-center text-2xl font-semibold text-white my-5 ">
+                  Your Shopping Cart
+                </h2>
+
+                {cart.length > 0 ? <div>
+                  
+                  
+                      {cart.map((item) => (
+                        <>
+                          <div
+                            key={item.id}
+                            className="flex items-center justify-between p-1 border m-1"
+                          >
+                            <img
+                              className="w-[100px] p-1 mr-2"
+                              src={item.img}
+                              alt="/"
+                            />
+                            <div className="flex flex-col">
+                              <h2 className="text-white text-lg">{item.title}</h2>
+                              <p className="text-xl text-white">
+                                {item.price}$
+                              </p>{" "}
+                            </div>
+                            <div className="flex">
+                              <p
+                                className="cursor-pointer text-lg text-black bg-white px-1 rounded-md text-center ml-4"
+                                onClick={() => handleReduce(item)}
+                              >
+                                -
+                              </p>
+                              <p className="text-lg text-black bg-white px-3 rounded-md text-center ml-1">
+                                {item.quantity}
+                              </p>
+                              <p
+                                className="cursor-pointer text-lg text-black bg-white px-1 rounded-md text-center ml-1"
+                                onClick={() => handleAddTocart(item)}
+                              >
+                                +
+                              </p>
+                            </div>
+                            <div className="flex">
+                              <button className="btn text-lg text-white bg-red-400  rounded-md text-center ml-1 rounded-full border-none" onClick={()=>handleRemove(item._id)}>
+                                X
+                              </button>
+                            </div>
+                          </div>
+                  
+                        </>
+                      ))}
+                  
+                    <h2 className="text-white text-xl ml-3 mt-6 font-bold">
+                            Subtotal: {grandTotal} Tk
+                          </h2>
                 </div>
+                 : (
+                  <h2 className="text-white text-xl ml-3">cart is empty</h2>
+                )}
+
               </div>
             </div>
           </div>

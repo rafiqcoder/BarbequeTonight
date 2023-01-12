@@ -87,7 +87,7 @@ async function run() {
             const userProducts = await CartDb.findOne(query);
 
             if (userProducts) {
-                const updateData = await CartDb.updateOne(query,{ $set: data })
+                const updateData = await CartDb.updateOne(query,{ $set: data },{upsert:true})
                 console.log(updateData);
                 return res.send(updateData)
             }
@@ -108,7 +108,7 @@ async function run() {
                     return res.send(dbCartData.cartData)
                 }
                 else {
-                    return
+                    return res.status(404).json("not Found")
                 }
             }
         })
@@ -119,9 +119,9 @@ async function run() {
         })
         app.get('/AllBBQProducts/:id',async (req,res) => {
             const id = req.params.id;
-           
-            const BBQproducts = await BBQProducts.findOne({_id: ObjectId(id) })
-          
+
+            const BBQproducts = await BBQProducts.findOne({ _id: ObjectId(id) })
+
             res.send(BBQproducts)
         })
 

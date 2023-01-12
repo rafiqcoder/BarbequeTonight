@@ -62,3 +62,7 @@
 .custom_box_shadow_1{
   box-shadow: 0px 6px 15px rgba(1,15,28,0.06) !important;
 }
+
+.dropdown.dropdown-end.custom_position {
+    position: unset;
+}

@@ -28,6 +28,8 @@ const Context = ({ children }) => {
   const auth = getAuth(app);
 const [bbqProducts, setBbqProducts] = useState([]);
   const Provider = new GoogleAuthProvider();
+ 
+
 
   useEffect(() => {
     setCurrentUser(
@@ -92,7 +94,7 @@ const [bbqProducts, setBbqProducts] = useState([]);
             setLoading(false);
       });
   };
-
+ 
   // sharing user infor from db
   
   const dataInfo = { currentUser, setCurrentUser, bbqProducts, setBbqProducts };
