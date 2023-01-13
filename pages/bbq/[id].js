@@ -110,10 +110,11 @@ return (
                             <p className="ml-4 font-roboto font-regular text-[#979797] text-[14px]">(3 customer reviews)</p>
                         </div>
                         <h1 className='text-[30px] font-bold font-rubik'>{product.name}</h1>
-                        <p className='text-[20px] font-rubik font-medium mt-2'><span className="text-[#eb0029]">{product.price}৳</span> X <span>personCountNumbe</span> = <span>{product.price}</span>৳</p>
+                        <p className='text-[20px] font-rubik font-medium mt-2'><span className="text-[#eb0029]">{product.price}৳</span> / <span>Head</span></p>
                         <p className='font-roboto font-regular text-[#979797] text-[14px] mt-4'>{product.desc}</p>
-
+                        <p className='text-[20px] font-rubik font-medium mt-2'>Total:<span className="text-[#eb0029]"> {product.price*quantity}৳</span></p>
                         <div className='flex flex-row justify-start gap-6 my-6'>
+                            
                             <span className="flex flex-row justify-start">
                                 <button className='text-[20px] font-rubik font-medium px-[10px] py-[5px] border border-[#d5d5d5] rounded-l-lg' onClick={() => decreaseCartItemNumber(quantity)}>-</button>
                                 <span className='text-[20px] font-rubik font-medium px-[10px] py-[5px] border-y-[1px] border-[#d5d5d5]'>{quantity}</span>

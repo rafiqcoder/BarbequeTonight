@@ -8,30 +8,23 @@ const Banner = () => {
         <div className="relative ">
           <Image
             src={heroImg}
-           
             alt="A work table with house plants"
             className="w-full h-full hidden lg:block"
-          >
-           
-          </Image>
+          ></Image>
           <Image
             src={heroImg}
-           
             alt="A work table with house plants"
             className="hidden sm:block lg:hidden w-full h-full"
-          >
-           
-          </Image>
+          ></Image>
           <Image
             src={heroImg}
-         
             alt="A work table with house plants"
             className="sm:hidden w-full h-full"
           ></Image>
 
           <div className="absolute z-10 top-40 left-20 mx-4 sm:mx-0 mt-36 sm:mt-0 sm:py-20 md:py-28 lg:py-20 xl:py-28 sm:pl-14 flex flex-col sm:justify-start items-start">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white sm:w-8/12">
-              Minimalist Furniture Design
+              YOU ALWAYS LIKE TASTE, OF OUR FOODS
             </h1>
             <p className="text-base leading-normal text-white mt-4 sm:mt-5 sm:w-5/12">
               Lorem Ipsum is simply dummy text of the printing and typesetting

@@ -12,20 +12,14 @@ export default function Main({ products }) {
   }
 
   setBbqProducts(products);
-
-
-
   return (
-
 
     <Layout>
       <Head>
         <title>Home</title>
-
       </Head>
       <Home></Home>
     </Layout>
-
 
   )
 }
