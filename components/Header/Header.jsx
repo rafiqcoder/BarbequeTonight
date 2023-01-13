@@ -1,4 +1,4 @@
-import { addToCart,reduceQuantity } from '@/src/store/cartSlice';
+import { addToCart,reduceQuantity,removeFromCart } from '@/src/store/cartSlice.js';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
@@ -13,18 +13,24 @@ const Header = () => {
   const handleAddTocart = (product) => {
     const updatedProduct = {
       product,
-      userEmail: user.email,
+      userEmail: user?.email,
     };
     dispatch(addToCart(updatedProduct))
   }
   const handleReduce = (product) => {
      const updatedProduct = {
        product,
-       userEmail: user.email,
+       userEmail: user?.email,
      };
     dispatch(reduceQuantity(updatedProduct));
   }
-  console.log(cart);
+  const handleRemove = (product) => {
+    const updatedProduct = {
+      product,
+      userEmail: user?.email,
+    };
+    dispatch(removeFromCart(updatedProduct));
+  };
   
 
 
@@ -161,7 +167,7 @@ const Header = () => {
                   Your Shopping Cart
                 </h2>
 
-                {cart.length > 0 ? <div>
+                {cart?.length > 0 ? <div>
                   
                   
                       {cart.map((item) => (
@@ -199,7 +205,7 @@ const Header = () => {
                               </p>
                             </div>
                             <div className="flex">
-                              <button className="btn text-lg text-white bg-red-400  rounded-md text-center ml-1 rounded-full border-none" onClick={()=>handleRemove(item._id)}>
+                              <button className="btn text-lg text-white bg-red-400  rounded-md text-center ml-1 rounded-full border-none" onClick={()=>handleRemove(item)}>
                                 X
                               </button>
                             </div>

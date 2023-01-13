@@ -1,10 +1,23 @@
 
+import { AuthContext } from '@/src/Context/Context';
+import { fetchCartDbThunk } from '@/src/store/actions/getData';
+import { setActiveUser } from '@/src/store/cartSlice';
+import { useContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import styles from '../styles/Layout.module.css'
 
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
+  const {user} =useContext(AuthContext);
+   const dispatch = useDispatch();
+   const cartDispatch = useDispatch();
+   useEffect(() => {
+     dispatch(fetchCartDbThunk(user?.email));
+
+     cartDispatch(setActiveUser(user?.email));
+   }, [user?.email]);
     return (
       <>
         <title>Sundial Chamak | Welcome</title>

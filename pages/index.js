@@ -1,11 +1,8 @@
 import Head from 'next/head';
-import { useContext,useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useContext } from 'react';
 import Home from '../components/home/home';
 import Layout from '../Layout/Layout';
 import { AuthContext,DataContext } from '../src/Context/Context';
-import { fetchCartDbThunk } from '../src/store/actions/getData';
-import { setCartData } from '../src/store/cartSlice';
 
 export default function Main({ products }) {
   const { bbqProducts,setBbqProducts } = useContext(DataContext);
@@ -13,17 +10,10 @@ export default function Main({ products }) {
   if (isLoading) {
     return <div>loading...</div>
   }
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchCartDbThunk(user.email));
-  },[user.email])
-  setBbqProducts(products);
-  const cartDispatch = useDispatch()
 
-  useEffect(() => {
-    cartDispatch(setCartData(products));
-   
-  },[])
+  setBbqProducts(products);
+
+
 
   return (
 

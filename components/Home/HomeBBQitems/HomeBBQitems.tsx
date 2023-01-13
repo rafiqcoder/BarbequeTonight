@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useContext, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useGetBBQProductsQuery } from "../../../src/store/api/productsApi";
-import { addToCart } from "../../../src/store/cartSlice";
+import { addToCart } from "../../../src/store/cartSlice.js";
 import ProductCard from "../../ProductCard/ProductCard";
 
 const HomeBBQitems = () => {
@@ -20,7 +20,7 @@ const HomeBBQitems = () => {
   const handleAddtoCart = (product: any) => {
     const updatedProduct = {
       product,
-      userEmail: user.email,
+      userEmail: user?.email,
     };
     dispatch(addToCart(updatedProduct));
   };
