@@ -1,22 +1,27 @@
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useContext,useState } from 'react';
 import { useForm } from "react-hook-form";
-import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 import Layout from '../../Layout/Layout';
 import { AuthContext } from '../../src/Context/Context';
 // import UseToken from '../../hooks/UseToken';
-
+import {
+  signInWithEmail,
+  signInWithGoogle
+} from "@/src/store/authSlice.js";
 const Login = () => {
   const [loadLoging,setLoadLoging] = useState(false);
   const { loginWithGoogle, loginWithEmail } = useContext(AuthContext);
   const { register,formState: { errors },handleSubmit } = useForm();
   const { error,setError } = useState('');
-  // const location = useLocation();
-  // const navigate = useNavigate();
+
+//  const [showPasswordReset, setShowPasswordReset] = useState(false);
+  
   const [userEmail,setUserEmail] = useState('')
   // const [token]=UseToken(userEmail)
-
+  const dispatch = useDispatch();
   const router = useRouter();
 
     // const from = location.state?.from?.pathname || "/home";
@@ -36,40 +41,47 @@ const Login = () => {
     );
   }
   // login with email and pasqword and setting laoding to true
-  const handleLogin = (data) => {
+  const handleLogin = async (data) => {
   
-    loginWithEmail(data.email,data.password)
-    .then((result) => {
+      const { email, password } = data;
+        dispatch(signInWithEmail(email, password));
+    };
+    // .then((result) => {
      
-      toast.success('Login Successfully');
-      router.push("/");
-      setUserEmail(result.user.email);
-      // console.log(result.user.email, result.user.name);
+    //   toast.success('Login Successfully');
+    //   router.push("/");
+    //   setUserEmail(result.user.email);
+    //   // console.log(result.user.email, result.user.name);
      
       
-    })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
+    // })
+      // .catch((error) => {
+      //   console.log(error.message);
+      // });
+  // }
    
     // login with google
   const handleGoogleLogin = () => {
       const userType = "buyer";
-    loginWithGoogle()
-      .then((result) => {
-        toast.success('Login Successfully');
+   dispatch(signInWithGoogle());
+      // .then((result) => {
+      //   toast.success('Login Successfully');
         
-        setLoadLoging(false);
-        setUserEmail(result.user.email);
-        // saveUserToDb(result.user.displayName,result.user.email,result.user.photoURL,userType);
-      })
+      //   setLoadLoging(false);
+      //   setUserEmail(result.user.email);
+      //   // saveUserToDb(result.user.displayName,result.user.email,result.user.photoURL,userType);
+      // })
 
-      .catch((error) => {
-        setLoadLoging(false);
-        console.log(error.message);
-      });
+      // .catch((error) => {
+      //   setLoadLoging(false);
+      //   console.log(error.message);
+      // });
   }
+  // const onResetPassword = async (data) => {
+  //   const { email } = data;
+  //   dispatch(resetPassword(email));
+  //   setShowPasswordReset(false);
+  // };
 
     return (
       <Layout>

@@ -1,12 +1,14 @@
 
 import { AuthContext } from '@/src/Context/Context';
+import { app } from '@/src/firbase/firebase.config';
 import { fetchCartDbThunk } from '@/src/store/actions/getData';
+import { setUser } from '@/src/store/authSlice';
 import { setActiveUser } from '@/src/store/cartSlice';
-import { useContext, useEffect } from 'react';
+import { getAuth } from 'firebase/auth';
+import { useContext,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
-import styles from '../styles/Layout.module.css'
 
 
 const Layout = ({ children }) => {
@@ -17,7 +19,25 @@ const Layout = ({ children }) => {
      dispatch(fetchCartDbThunk(user?.email));
 
      cartDispatch(setActiveUser(user?.email));
-   }, [user?.email]);
+   },[user?.email]);
+  
+  const auth = getAuth(app);
+  const userDispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // user is logged in
+        userDispatch(setUser(user));
+      } else {
+        // user is logged out
+        userDispatch(setUser(null));
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
     return (
       <>
         <title>Sundial Chamak | Welcome</title>
