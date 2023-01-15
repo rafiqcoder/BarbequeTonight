@@ -1,22 +1,20 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext,useState } from 'react';
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import Layout from '../../Layout/Layout';
-import { AuthContext } from '../../src/Context/Context';
+import { loginWithEmail,signInWithGoogle } from '../../src/store/actions/authActions';
 // import UseToken from '../../hooks/UseToken';
-import {
-  signInWithEmail,
-  signInWithGoogle
-} from "@/src/store/authSlice.js";
+import { toast } from 'react-hot-toast';
+
 const Login = () => {
   const [loadLoging,setLoadLoging] = useState(false);
-  const { loginWithGoogle, loginWithEmail } = useContext(AuthContext);
+  // const { loginWithGoogle, loginWithEmail } = useContext(AuthContext);
   const { register,formState: { errors },handleSubmit } = useForm();
   const { error,setError } = useState('');
-
+// const user = useSelector(state => state.userAuth.user)
 //  const [showPasswordReset, setShowPasswordReset] = useState(false);
   
   const [userEmail,setUserEmail] = useState('')
@@ -24,58 +22,51 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-    // const from = location.state?.from?.pathname || "/home";
-  //redirection after login
-  // useEffect(() => {
-  //   if (token) {
-  //     return navigate(from, { replace: true });
-  //   }
-
-  // }, [from, navigate, token]);
-
-
-  // conditonal rendering loading for login
   if (loadLoging) {
     return (
-      <div>Loading ...</div>
+      <div className="radial-progress text-danger" style={{ "--value": 70 }}>
+        70%
+      </div>
     );
   }
   // login with email and pasqword and setting laoding to true
   const handleLogin = async (data) => {
   
       const { email, password } = data;
-        dispatch(signInWithEmail(email, password));
+        loginWithEmail(email, password)
+        .then((result) => {
+         
+          toast.success('Login Successfully');
+         router.back();
+          
+          // console.log(result.user.email, result.user.name);
+         
+          
+        })
+          .catch((error) => {
+            console.log(error.message);
+          });
     };
-    // .then((result) => {
-     
-    //   toast.success('Login Successfully');
-    //   router.push("/");
-    //   setUserEmail(result.user.email);
-    //   // console.log(result.user.email, result.user.name);
-     
-      
-    // })
-      // .catch((error) => {
-      //   console.log(error.message);
-      // });
   // }
-   
+  
     // login with google
-  const handleGoogleLogin = () => {
-      const userType = "buyer";
-   dispatch(signInWithGoogle());
-      // .then((result) => {
-      //   toast.success('Login Successfully');
+  const handleGoogleLogin = async () => {
+      // const userType = "buyer";
+    signInWithGoogle()
+      .then((result) => {
+        toast.success('Login Successfully');
         
-      //   setLoadLoging(false);
-      //   setUserEmail(result.user.email);
-      //   // saveUserToDb(result.user.displayName,result.user.email,result.user.photoURL,userType);
-      // })
+        setLoadLoging(false);
+        // console.log(result.user);
+        // dispatch(setUser(result.user.email))
+         router.back();
+        // saveUserToDb(result.user.displayName,result.user.email,result.user.photoURL,userType);
+      })
 
-      // .catch((error) => {
-      //   setLoadLoging(false);
-      //   console.log(error.message);
-      // });
+      .catch((error) => {
+        setLoadLoging(false);
+        console.log(error.message);
+      });
   }
   // const onResetPassword = async (data) => {
   //   const { email } = data;

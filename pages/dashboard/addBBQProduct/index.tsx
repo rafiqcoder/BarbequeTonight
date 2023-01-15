@@ -1,8 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Resolver, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
-import { AuthContext, DataContext } from "../../../src/Context/Context";
 import { useAddProductMutation } from "../../../src/store/api/productsApi";
 
 type FormValues = {
@@ -27,9 +26,6 @@ const resolver: Resolver<FormValues> = async (values) => {
   };
 };
 const AddProducts = () => {
-  const { user } = useContext(AuthContext);
-  const [date, setDate] = useState(new Date());
-  const { currentUser } = useContext(DataContext);
   // const time = moment().format("MMM Do YYYY, h:mm:ss a");
   // const year = format(date,"yyyy");
   const [addProduct, { isLoading }] = useAddProductMutation();
@@ -44,7 +40,7 @@ const AddProducts = () => {
   //seting title
 
   if (refresh || isLoading) {
-    return <div>Loading ...</div>;
+    return <div className="loader">Loading...</div>;
   }
 
   const handleAddProduct = (data: any) => {

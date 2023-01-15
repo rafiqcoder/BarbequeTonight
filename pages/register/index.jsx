@@ -1,15 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Layout from '../../Layout/Layout';
-import { AuthContext } from '../../src/Context/Context';
+import { registerWithPassword, updateNameAndPhoto } from '../../src/store/actions/authActions';
 
 
 const Register = () => {
   // geting firebase register function from context
-  const { registerWithPassword,updateNameAndPhoto,userEmail, saveUserToDb } =
-    useContext(AuthContext);
+
     const {
       register,
       formState: { errors },
@@ -37,7 +36,7 @@ const Register = () => {
   // showing loader  when user click on register button
   if (loading) {
     return (
-      <div>Loading</div>
+      <div className="loader">Loading...</div>
     );
   }
 
@@ -50,17 +49,12 @@ const Register = () => {
     setLoading(true);
     
     // calling firebase register function
-    registerWithPassword(data.email,data.password)
-      
+    registerWithPassword(data.email, data.password)
       .then((res) => {
-              
-        updateNameAndPhoto(data.name,data.img)
-          .then((result) => {
-          
-   
-            saveUserToDb(data.name,data.email,data.img);
-            setLoading(false);
-          })
+        updateNameAndPhoto(data.name, data.img).then((result) => {
+          // saveUserToDb(data.name, data.email, data.img);
+          setLoading(false);
+        });
         const email = data.email;
         //getting jwt token from backend and setting it in localstorage
         // fetch("http://localhost:5000/jwt", {
@@ -82,9 +76,7 @@ const Register = () => {
         //     console.log(err);
         //     setLoading(false);
         //   });
-       
-          
-     
+
         router.push("/");
       })
       .catch((err) => {

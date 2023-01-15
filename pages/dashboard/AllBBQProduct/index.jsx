@@ -1,9 +1,9 @@
 
 import Link from 'next/link';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import useSWR from 'swr';
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
-import { AuthContext } from '../../../src/Context/Context';
 
 const fetcher = async () => {
   const res = await fetch('http://localhost:5000/AllBBQProducts');
@@ -14,7 +14,7 @@ const fetcher = async () => {
 
 const MyProducts = () => {
   // const { currentUser } = useContext(DataContext);
-  const { user } = useContext(AuthContext)
+  const { activeUser } = useSelector(state=>state.userAuth);
   const [loading,setLoading] = useState(false);
   const [refresh,setRefresh] = useState(false);
 

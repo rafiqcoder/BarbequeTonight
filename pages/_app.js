@@ -1,7 +1,7 @@
 
 import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
-import Context from '../src/Context/Context';
+// import Context from '../src/Context/Context';
 import store from '../src/store/store.js';
 import '../styles/globals.css';
 function MyApp({ Component,pageProps }) {
@@ -14,10 +14,10 @@ function MyApp({ Component,pageProps }) {
 
     <Provider store={store}>
 
-      <Context>
+      {/* <Context> */}
         <Toaster position="top-center" />
         <Component {...pageProps} />
-      </Context>
+      {/* </Context> */}
     </Provider>
 
 

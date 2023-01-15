@@ -1,7 +1,8 @@
 import Link from "next/link";
-import React from "react";
+import { useSelector } from "react-redux";
 
 const ProductCard = (props: { product: any; children: JSX.Element }) => {
+  const { activeUser } = useSelector((state) => state.userAuth);
   const { product, children } = props;
   const { _id, name, desc, img, price } = product;
   return (
@@ -19,7 +20,19 @@ const ProductCard = (props: { product: any; children: JSX.Element }) => {
       <p className="text-[#eb0029] font-medium font-rubik text-[16px]">
         {price}৳
       </p>
-      {children}
+
+      {activeUser && activeUser?.uid ? (
+        children
+      ) : (
+        <div>
+          <Link
+            href="/login"
+            className="text-[14px] font-roboto font-normal py-2 px-6 bg-[#010f1c] hover:bg-[#eb0029] transition ease-in-out rounded-lg shadow-md text-white mt-4"
+          >
+            Add to Cart
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

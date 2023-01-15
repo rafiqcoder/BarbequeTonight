@@ -1,18 +1,23 @@
-import { AuthContext } from "@/src/Context/Context";
 import Link from "next/link";
-import { useContext, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetBBQProductsQuery } from "../../../src/store/api/productsApi";
 import { addToCart } from "../../../src/store/cartSlice.js";
 import ProductCard from "../../ProductCard/ProductCard";
 
-const HomeBBQitems = () => {
-  const { user } = useContext(AuthContext);
+const HomeBBQitems: FC = () => {
+  // const { user } = useContext(AuthContext);
+  // const { user, loading }:User = useSelector((state) => state.userAuth);
+  const { activeUser, loading } = useSelector((state) => state.userAuth);
+  // if (loading) {
+  //   return <h1>Loading...</h1>;
+  // }
+
   const { data, error, isLoading, isSuccess, isFetching } =
     useGetBBQProductsQuery();
   const bbqProducts = data;
   // const { bbqProducts } = useContext(DataContext);
-  
+
   const dispatch = useDispatch();
   interface Props {
     value: string;
@@ -20,7 +25,7 @@ const HomeBBQitems = () => {
   const handleAddtoCart = (product: any) => {
     const updatedProduct = {
       product,
-      userEmail: user?.email,
+      userEmail: activeUser?.email,
     };
     dispatch(addToCart(updatedProduct));
   };
@@ -41,7 +46,7 @@ const HomeBBQitems = () => {
                   className="text-[14px] font-roboto font-normal py-2 px-6 bg-[#010f1c] hover:bg-[#eb0029] transition ease-in-out rounded-lg shadow-md text-white mt-4"
                   onClick={() => handleAddtoCart(product)}
                 >
-                  Add to cart
+                  Add to Cart
                 </label>
               </ProductCard>
             ))}

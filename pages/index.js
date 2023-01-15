@@ -2,16 +2,16 @@ import Head from 'next/head';
 import { useContext } from 'react';
 import Home from '../components/home/home';
 import Layout from '../Layout/Layout';
-import { AuthContext,DataContext } from '../src/Context/Context';
+import { AuthContext } from '../src/Context/Context';
 
 export default function Main({ products }) {
-  const { bbqProducts,setBbqProducts } = useContext(DataContext);
-  const { user,isLoading } = useContext(AuthContext);
-  if (isLoading) {
-    return <div>loading...</div>
-  }
+  // const { bbqProducts,setBbqProducts } = useContext(DataContext);
+  // const { user,isLoading } = useContext(AuthContext);
+  // if (isLoading) {
+  //   return <div>loading...</div>
+  // }
 
-  setBbqProducts(products);
+  // setBbqProducts(products);
   return (
 
     <Layout>
@@ -23,13 +23,13 @@ export default function Main({ products }) {
 
   )
 }
-export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:5000/AllBBQProducts`);
-  const data = await res.json();
+// export async function getServerSideProps() {
+//   const res = await fetch(`http://localhost:5000/AllBBQProducts`);
+//   const data = await res.json();
 
-  return {
-    props: {
-      products: data,
-    },
-  };
-}
+//   return {
+//     props: {
+//       products: data,
+//     },
+//   };
+// }

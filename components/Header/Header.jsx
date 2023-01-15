@@ -1,33 +1,33 @@
+import { logOut } from '@/src/store/actions/authActions';
 import { addToCart,reduceQuantity,removeFromCart } from '@/src/store/cartSlice.js';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch,useSelector } from 'react-redux';
-import { AuthContext } from '../../src/Context/Context';
-
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  // const { user, logOut } = useContext(AuthContext);
   const { grandTotal,cart } = useSelector(state => state.cart) 
-  console.log(grandTotal);
+  const {activeUser} = useSelector(state => state.userAuth)
+  const router = useRouter();
   const dispatch = useDispatch()
   const handleAddTocart = (product) => {
     const updatedProduct = {
       product,
-      userEmail: user?.email,
+      userEmail: activeUser?.email
     };
     dispatch(addToCart(updatedProduct))
   }
   const handleReduce = (product) => {
      const updatedProduct = {
        product,
-       userEmail: user?.email,
+       userEmail: activeUser?.email,
      };
     dispatch(reduceQuantity(updatedProduct));
   }
   const handleRemove = (product) => {
     const updatedProduct = {
       product,
-      userEmail: user?.email,
+      userEmail: activeUser?.email,
     };
     dispatch(removeFromCart(updatedProduct));
   };
@@ -69,7 +69,7 @@ const Header = () => {
                 <li>
                   <Link href="/">About</Link>
                 </li>
-                {user && user.uid ? (
+                {activeUser && activeUser.uid ? (
                   <li>
                     <Link href="/">Logout</Link>
                   </li>
@@ -114,13 +114,13 @@ const Header = () => {
           >
             Dashboard
           </Link>
-          {user && user.uid ? (
+          {activeUser && activeUser.uid ? (
             <li>
               <Link
                 href="/login"
                 className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 onClick={() => {
-                  logOut();
+                  logOut(router.push('/login'));
                 }}
               >
                 Logout
@@ -225,9 +225,9 @@ const Header = () => {
                 ) : (
                   <h2 className="text-white text-xl ml-3">cart is empty</h2>
                 )}
-                <button className="font-rubik font-semibold text-[#ffffff] bg-[red] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-10">
+                <Link href='/checkout' className="font-rubik font-semibold text-[#ffffff] bg-[red] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-10">
                   Checkout
-                </button>
+                </Link>
               </div>
               <div>
               </div>
@@ -245,7 +245,7 @@ const Header = () => {
             >
               <li>
                 <Link href="/" className="justify-between">
-                  Profile
+                  {activeUser?.displayName}
                   <span className="badge">New</span>
                 </Link>
               </li>
