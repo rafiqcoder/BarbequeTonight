@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { useContext } from 'react';
 import Home from '../components/home/home';
 import Layout from '../Layout/Layout';
-import { AuthContext } from '../src/Context/Context';
 
 export default function Main({ products }) {
   // const { bbqProducts,setBbqProducts } = useContext(DataContext);

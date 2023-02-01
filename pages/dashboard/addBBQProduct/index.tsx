@@ -9,7 +9,7 @@ type FormValues = {
   desc: string;
   img: string;
   price: number;
-  stock: number;
+  category: string;
 };
 
 const resolver: Resolver<FormValues> = async (values) => {
@@ -154,20 +154,20 @@ const AddProducts = () => {
             )}
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Stock</span>
+                <span className="label-text ">Category</span>
               </label>
-              <input
-                type="number"
-                {...register("stock", {
-                  required: "stock is required",
-                })}
-                placeholder="in stock"
-                className="input input-bordered"
-              />
+              <select
+                {...register("category", { required: "Category is required" })}
+                className="border p-3 rounded-lg"
+              >
+                <option value="">Select...</option>
+                <option value="bbq">BBQ</option>
+                <option value="menu">Menu</option>
+              </select>
             </div>
-            {errors.stock && (
+            {errors.category && (
               <p role="alert" className="text-red-500 text-xs font-medium mt-2">
-                {errors.stock?.message}
+                {errors.category?.message}
               </p>
             )}
           </div>
