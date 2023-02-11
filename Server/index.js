@@ -45,23 +45,25 @@ const is_live = false //true for live, false for sandbox
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@sundialcluster.nmgilo7.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri,{ useNewUrlParser: true,useUnifiedTopology: true,serverApi: ServerApiVersion.v1 });
-
+// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@sundialcluster.nmgilo7.mongodb.net/?retryWrites=true&w=majority`;
+// const client = new MongoClient(uri,{ useNewUrlParser: true,useUnifiedTopology: true,serverApi: ServerApiVersion.v1 });
+// EKwhhKufsF25zKVV
 
 // verify token
-const verifyJWT = (req,res,next) => {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) {
-        return res.status(401).send({ message: 'Unauthorize Access' })
-    }
-    const token = authHeader.split(' ')[1];
-    jwt.verify(token,process.env.ACCESS_SECRET_TOKEN,function (err,decoded) {
-        if (err) {
-            res.status(403).send({ message: "Forbidden Access" })
-        }
-        req.decoded = decoded;
-        next();
-    })
-}
+// const verifyJWT = (req,res,next) => {
+//     const authHeader = req.headers.authorization;
+//     if (!authHeader) {
+//         return res.status(401).send({ message: 'Unauthorize Access' })
+//     }
+//     const token = authHeader.split(' ')[1];
+//     jwt.verify(token,process.env.ACCESS_SECRET_TOKEN,function (err,decoded) {
+//         if (err) {
+//             res.status(403).send({ message: "Forbidden Access" })
+//         }
+//         req.decoded = decoded;
+//         next();
+//     })
+// }
 
 const storage = multer.diskStorage({
     destination: function (req,file,cb) {

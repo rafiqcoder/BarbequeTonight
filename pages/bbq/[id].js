@@ -13,7 +13,7 @@ import { useDispatch,useSelector } from "react-redux";
 const singleBbq = ({ product }) => {
     const [quantity,setQauntity] = useState(5);
     const { cart } = useSelector(state => state.cart);
-    const {activeUser} = useSelector((state) => state.userAuth);
+    const { activeUser } = useSelector((state) => state.userAuth);
     // const activeUser = user.user;
     console.log(activeUser);
     const dispatch = useDispatch();
@@ -60,16 +60,19 @@ const singleBbq = ({ product }) => {
                 <div className='flex flex-row justify-between items-center container mx-auto py-10'>
                     <div className='grid grid-cols-5 gap-10 w-[60%]'>
                         <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom grid grid-cols-1 gap-10'>
-                            <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'><Link href={`/bbq/${product._id}`}><img className='pt-[10%]' src={product.img} alt="" /></Link></span>
+                            {product.img.map((img,index) => (
+                                <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
+                                    <Link href={`/bbq/${product._id}`}><img className='pt-[10%]' src={img.img} alt="" /></Link>
+                                </span>
+                            ))}
                         </div>
                         <div className='bg-[#FAF7F2] max-h-[500px] col-span-4 text-center rounded-lg'>
 
-                            <img className='h-[100%] pt-[5%] inline-block' src={product.img} alt="" />
+                            <img className='h-[100%] pt-[5%] inline-block' src={product.thumb} alt="" />
 
                         </div>
                     </div>
                     <div className='w-[40%]'>
-
                         <div className='pl-10'>
                             <div className="flex flex-row justify-start items-center">
                                 <span className="text-[#FFB539] text-[14px]">

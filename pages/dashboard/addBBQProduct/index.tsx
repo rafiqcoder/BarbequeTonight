@@ -39,6 +39,7 @@ const AddProducts = () => {
   const [imgLinks, setImgLinks] = useState([]);
   const [imgDeleteLinks, setImgDeleteLinks] = useState([]);
   const [imgData, setImgData] = useState([]);
+  const [thumbnail, setThumbnail] = useState("");
 
   const {
     register,
@@ -61,8 +62,11 @@ const AddProducts = () => {
     setRefresh(true);
     const newData = {
       ...data,
+      thumb: thumbnail,
       img: imgData,
     };
+    console.log(newData);
+    
     addProduct(newData)
       .unwrap()
       .then((res) => {
@@ -111,12 +115,10 @@ const AddProducts = () => {
     //     console.log(err);
     //   });
     // toast.success("Product Added Successfully");
-    setRefresh(false);
+   
   };
 
-  const handleFileChange = (value) => {
-    setImgLinks([...imgLinks, value]);
-  };
+ 
   const deleteImg = (value) => {
     const url = value;
     //navigate to the url
@@ -124,6 +126,8 @@ const AddProducts = () => {
   };
   const handleUpload = (e) => {
     // console.log(files);
+    e.preventDefault();
+    e.stopPropagation();
     const files = e.target.files;
     console.log(files);
 
@@ -145,12 +149,43 @@ const AddProducts = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           // console.log('data');
           imagelinks.push(data.data.url);
           deletelinks.push(data.data.delete_url);
           setImgLinks([...imgLinks, ...imagelinks]);
           setImgDeleteLinks([...imgDeleteLinks, ...deletelinks]);
+          setThumbnail(data.data.thumb.url);
+          // console.log("imagelinks" + imagelinks);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    
+    }
+  }
+  const addThumb = (e) => {
+    // console.log(files);
+    e.preventDefault();
+    e.stopPropagation();
+    const files = e.target.files[0];
+    console.log(files);
+
+    const formData = new FormData();
+   
+    formData.append("image", files);
+    
+      const url = `https://api.imgbb.com/1/upload?key=6f6532924365b7836240f21e17a0852a`;
+      fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          console.log(data);
+       
+          setThumbnail(data.data.thumb.url);
           // console.log("imagelinks" + imagelinks);
         })
         .catch((err) => {
@@ -164,7 +199,7 @@ const AddProducts = () => {
     // const hostKey = process.env.REACT_APP_imgbb_key;
     // console.log(hostKey);
     // console.log(imagelinks);
-  };
+
   // console.log(imgLinks.length);
 
   //foreach loop
@@ -224,20 +259,14 @@ const AddProducts = () => {
           )}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Product image Link</span>
+              <span className="label-text">Add Thumbnail</span>
             </label>
             <input
               type="file"
-              multiple
-              onChange={(e) => handleUpload(e)}
+              onChange={(e) => addThumb(e)}
               className="input input-bordered"
             />
-            <button
-              onClick={(e) => handleUpload(e)}
-              className="bg-blue-400 text-white py-2 mt-2"
-            >
-              upload
-            </button>
+
             {/* <input
               type="text"
               {...register("img", {
@@ -247,11 +276,26 @@ const AddProducts = () => {
               className="input input-bordered"
             /> */}
           </div>
-          {errors.img && (
-            <p role="alert" className="text-red-500 text-xs font-medium mt-2">
-              {errors.img?.message}
-            </p>
-          )}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Product image Link</span>
+            </label>
+            <input
+              type="file"
+              multiple
+              onChange={(e) => handleUpload(e)}
+              className="input input-bordered"
+            />
+
+            {/* <input
+              type="text"
+              {...register("img", {
+                required: "img is required",
+              })}
+              placeholder="Product image Link"
+              className="input input-bordered"
+            /> */}
+          </div>
 
           <div className="flex gap-3 justify-between">
             <div className="form-control w-full">
@@ -301,6 +345,10 @@ const AddProducts = () => {
         </form>
       </div>
       <div className="ml-10 flex flex-col gap-4">
+        <div className="">
+          <label htmlFor="">Thumbnail</label>
+          <img src={thumbnail} alt="" />
+        </div>
         {imgData.map((img) => (
           <div className="flex gap-3">
             <img src={img.img} alt="" />

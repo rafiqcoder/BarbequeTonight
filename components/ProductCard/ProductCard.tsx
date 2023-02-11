@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 const ProductCard = (props: { product: any; children: JSX.Element }) => {
   const { activeUser } = useSelector((state) => state.userAuth);
   const { product, children } = props;
-  const { _id, name, desc, img, price } = product;
+  const { _id, name, desc, thumb,img, price } = product;
   return (
     <div className="rounded-2xl bg-white custom_box_shadow_1 flex flex-col items-center py-4 border-b-4 border-[#ffffff] hover:border-[#eb0029] transition ease-in-out duration-500">
       <Link href={`/bbq/${_id}`}>
-        <img src={img} alt="" />
+        <img src={thumb} alt="" />
       </Link>
       <p className="text-[16px] font-roboto font-normal text-[#4d5765]">BBQ</p>
       <Link
