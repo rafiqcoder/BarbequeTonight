@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Banner from "../Banner/Banner";
-import HomeBBQitems from "../Home/HomeBBQitems/HomeBBQitems";
-import HomeMenu from "../Home/HomMenu/HomeMenu";
+import HomeBBQitems from "./HomeBBQitems/HomeBBQitems";
+import HomeMenu from "./HomMenu/HomeMenu";
 
 const Home = () => {
   const { activeUser, loading } = useSelector((state) => state.userAuth);

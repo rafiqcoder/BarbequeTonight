@@ -24,6 +24,18 @@
       "@/public/*": ["public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/store/store.js", "src/store/actions/getData.js", "pages/bbq/index.js", "pages/bbq/[id].js", "src/store/cartSlice.js", "src/store/authSlice.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/store/store.js",
+    "src/store/actions/getData.js",
+    "pages/bbq/index.js",
+    "pages/bbq/[id].js",
+    "src/store/cartSlice.js",
+    "src/store/authSlice.js",
+    "pages/dashboard/addBBQProduct/index.jsx",
+    "components/Home/Home.jsx"
+, "components/Home/HomeBBQitems/HomeBBQitems.jsx", "components/ProductCard/ProductCard.jsx", "src/store/cartSlice2.js", "src/store/getitem.js"  ],
   "exclude": ["node_modules"]
 }

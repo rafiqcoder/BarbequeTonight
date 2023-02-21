@@ -1,33 +1,12 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { Resolver, useForm } from "react-hook-form";
+import { useEffect,useState } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
 import { useAddProductMutation } from "../../../src/store/api/productsApi";
 
-type FormValues = {
-  name: string;
-  desc: string;
-  img: string;
-  price: number;
-  category: string;
-  files: [];
-};
-type files = [];
 
-const resolver: Resolver<FormValues> = async (values) => {
-  return {
-    values: values.name ? values : {},
-    errors: !values.name
-      ? {
-          name: {
-            type: "required",
-            message: "This is required.",
-          },
-        }
-      : {},
-  };
-};
+
 const AddProducts = () => {
   // const time = moment().format("MMM Do YYYY, h:mm:ss a");
   // const year = format(date,"yyyy");
@@ -45,7 +24,7 @@ const AddProducts = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>({ resolver });
+  } = useForm();
   const [refresh, setRefresh] = useState(false);
   let imgLinksAndDelete = [];
   const route = useRouter();
@@ -58,7 +37,7 @@ const AddProducts = () => {
     return <div className="loader">Loading...</div>;
   }
 
-  const handleAddProduct = (data: any) => {
+  const handleAddProduct = (data) => {
     setRefresh(true);
     const newData = {
       ...data,

@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useGetBBQProductsQuery } from "../../../src/store/api/productsApi";
 import { addToCart } from "../../../src/store/cartSlice.js";
 import ProductCard from "../../ProductCard/ProductCard";
 
-const HomeBBQitems: FC = () => {
+const HomeBBQitems = () => {
   // const { user } = useContext(AuthContext);
   // const { user, loading }:User = useSelector((state) => state.userAuth);
   const { activeUser, loading } = useSelector((state) => state.userAuth);
@@ -19,10 +18,8 @@ const HomeBBQitems: FC = () => {
   // const { bbqProducts } = useContext(DataContext);
 
   const dispatch = useDispatch();
-  interface Props {
-    value: string;
-  }
-  const handleAddtoCart = (product: any) => {
+
+  const handleAddtoCart = (product) => {
     const updatedProduct = {
       product,
       userEmail: activeUser?.email,

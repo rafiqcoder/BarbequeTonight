@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
-const ProductCard = (props: { product: any; children: JSX.Element }) => {
+const ProductCard = (props) => {
+
   const { activeUser } = useSelector((state) => state.userAuth);
   const { product, children } = props;
   const { _id, name, desc, thumb,img, price } = product;
