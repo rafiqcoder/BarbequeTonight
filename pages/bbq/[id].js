@@ -7,22 +7,16 @@ import { bbqAddToCart } from "@/src/store/cartSlice";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
-
-
-
 const singleBbq = ({ product }) => {
     const [quantity,setQauntity] = useState(5);
     const { cart } = useSelector(state => state.cart);
     const { activeUser } = useSelector((state) => state.userAuth);
-    // const activeUser = user.user;
     console.log(activeUser);
     const dispatch = useDispatch();
 
 
     const addedProduct = cart.find(pd => pd._id === product._id);
 
-    // console.log(cart);
-    // console.log(addedProduct);
     const increaseCartItemNumber = (i) => {
         i = i + 1;
         setQauntity(i);
