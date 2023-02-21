@@ -30,7 +30,8 @@ const HomeBBQitems: FC = () => {
     dispatch(addToCart(updatedProduct));
   };
   // console.log(user.email);
-
+  console.log(bbqProducts);
+  
   return (
     <section className="bg-white my-20">
       <div className="container px-6 py-10 mx-auto">

@@ -1,259 +1,259 @@
 [
   {
-    "id": 1,
+    "_id": 1,
     "name": "Menu 1",
-    "total": 1200,
+    "price": 1200,
     "menu": [
       {
-        "name": "Burger",
+        "name": "Chicken Biriyuani -1pc",
         "price": 100,
         "description": "Burger with cheese",
-        "image": "burger.jpg"
+        "image": "https://i.ibb.co/zNN1y0F/Chicken-Biryani-Recipe.jpg"
       },
       {
-        "name": "Pizza",
+        "name": "Beef Rezala",
         "price": 150,
         "description": "Pizza with cheese",
-        "image": "pizza.jpg"
+        "image": "https://i2.wp.com/petukcouple.com/wp-content/uploads/2022/01/Beef-Rezala-Recipe.jpeg?resize=960%2C540&ssl=1"
       },
       {
-        "name": "Pasta",
+        "name": "Beef jali Kebab",
         "price": 120,
         "description": "Pasta with cheese",
-        "image": "pasta.jpg"
+        "image": "https://i.ibb.co/r0Zmv1Z/jali-Kabab.jpg"
+      },
+      {
+        "name": "Zarda",
+        "price": 80,
+        "description": "Salad with cheese",
+        "image": "https://i.ibb.co/2M63KnY/zarda.jpg"
+      },
+      {
+        "name": "Drinks",
+        "price": 90,
+        "description": "Sandwich with cheese",
+        "image": "https://i.ibb.co/dG5v6Vy/drinks.png"
       },
       {
         "name": "Salad",
-        "price": 80,
-        "description": "Salad with cheese",
-        "image": "salad.jpg"
-      },
-      {
-        "name": "Sandwich",
-        "price": 90,
-        "description": "Sandwich with cheese",
-        "image": "sandwich.jpg"
-      },
-      {
-        "name": "Soup",
         "price": 70,
         "description": "Soup with cheese",
-        "image": "soup.jpg"
+        "image": "https://i.ibb.co/m6YZqmC/salad.jpg"
       }
     ]
   },
   {
-    "id": 2,
+    "_id": 2,
     "name": "Menu 2",
-    "total": 1300,
+    "price": 1300,
     "menu": [
       {
         "name": "Beef",
         "price": 100,
         "description": "Burger with cheese",
-        "image": "burger.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Chicken",
         "price": 150,
         "description": "Pizza with cheese",
-        "image": "pizza.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Mutton",
         "price": 120,
         "description": "Pasta with cheese",
-        "image": "pasta.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Salad",
         "price": 80,
         "description": "Salad with cheese",
-        "image": "salad.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Sandwich",
         "price": 90,
         "description": "Sandwich with cheese",
-        "image": "sandwich.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Soup",
         "price": 85,
         "description": "Soup with cheese",
-        "image": "soup.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       }
     ]
   },
   {
-    "id": 3,
+    "_id": 3,
     "name": "Menu 3",
-    "total": 1400,
+    "price": 1400,
     "menu": [
       {
         "name": "Burger",
         "price": 100,
         "description": "Burger with cheese",
-        "image": "burger.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pizza",
         "price": 150,
         "description": "Pizza with cheese",
-        "image": "pizza.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pasta",
         "price": 120,
         "description": "Pasta with cheese",
-        "image": "pasta.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Salad",
         "price": 80,
         "description": "Salad with cheese",
-        "image": "salad.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Sandwich",
         "price": 90,
         "description": "Sandwich with cheese",
-        "image": "sandwich.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Soup",
         "price": 85,
         "description": "Soup with cheese",
-        "image": "soup.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       }
     ]
   },
   {
-    "id": 4,
+    "_id": 4,
     "name": "Menu 4",
-    "total": 1500,
+    "price": 1500,
     "menu": [
       {
         "name": "Burger",
         "price": 100,
         "description": "Burger with cheese",
-        "image": "burger.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pizza",
         "price": 150,
         "description": "Pizza with cheese",
-        "image": "pizza.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pasta",
         "price": 120,
         "description": "Pasta with cheese",
-        "image": "pasta.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Salad",
         "price": 80,
         "description": "Salad with cheese",
-        "image": "salad.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Sandwich",
         "price": 90,
         "description": "Sandwich with cheese",
-        "image": "sandwich.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Soup",
         "price": 85,
         "description": "Soup with cheese",
-        "image": "soup.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       }
     ]
   },
   {
-    "id": 5,
+    "_id": 5,
     "name": "Menu 5",
-    "total": 1600,
+    "price": 1600,
     "menu": [
       {
         "name": "Burger",
         "price": 100,
         "description": "Burger with cheese",
-        "image": "burger.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pizza",
         "price": 150,
         "description": "Pizza with cheese",
-        "image": "pizza.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pasta",
         "price": 120,
         "description": "Pasta with cheese",
-        "image": "pasta.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Salad",
         "price": 80,
         "description": "Salad with cheese",
-        "image": "salad.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Sandwich",
         "price": 90,
         "description": "Sandwich with cheese",
-        "image": "sandwich.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Soup",
         "price": 85,
         "description": "Soup with cheese",
-        "image": "soup.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       }
     ]
   },
   {
-    "id": 6,
+    "_id": 6,
     "name": "Menu 6",
-    "total": 1700,
+    "price": 1700,
     "menu": [
       {
         "name": "Burger",
         "price": 100,
         "description": "Burger with cheese",
-        "image": "burger.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pizza",
         "price": 150,
         "description": "Pizza with cheese",
-        "image": "pizza.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Pasta",
         "price": 120,
         "description": "Pasta with cheese",
-        "image": "pasta.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Salad",
         "price": 80,
         "description": "Salad with cheese",
-        "image": "salad.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Sandwich",
         "price": 90,
         "description": "Sandwich with cheese",
-        "image": "sandwich.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       },
       {
         "name": "Soup",
         "price": 85,
         "description": "Soup with cheese",
-        "image": "soup.jpg"
+        "image": "https://i.ibb.co/D81fMYz/product-details-1-3.png"
       }
     ]
   }

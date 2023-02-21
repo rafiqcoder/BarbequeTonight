@@ -1,35 +1,49 @@
-import productImg from "@/public/assets/productimg.png";
-import Image from 'next/image';
+import { addToCart } from "@/src/store/cartSlice";
+import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+
+
 const HomeMenu = () => {
+  const { activeUser } = useSelector(state => state.userAuth);
   const [bundleProducts,setBundleProducts] = useState([]);
   const [activeMenu,setActiveMenu] = useState([]);
-
-  // useEffect(() => {
-  //   let btnContainer = document.getElementById("btnContainer");
-  //   var btns = btnContainer.getElementsByClassName("tab_selector");
-  //   for (var i = 0; i < btns.length; i++) {
-  //     btns[i].addEventListener("click", function () {
-  //       var current = document.getElementsByClassName("active_tab");
-  //       current[0].className = current[0].className.replace(" active_tab", "");
-  //       this.className += " active_tab";
-  //     });
-  //   }
-  // },[]);
+  const dispatch = useDispatch();
+  const [menuItems,setMenuItems] = useState([]);
+  const [total,setTotal] = useState(0);
+  const {asPath,pathname} = useRouter();
   useEffect(() => {
     fetch("bundledb.json")
       .then((response) => response.json())
       .then((data) => setBundleProducts(data));
   },[])
+  useEffect(() => {
+    let menu = bundleProducts.filter((e) => e._id === 1);
+    setMenuItems(menu[0]?.menu);
+    setActiveMenu(menu[0]);
+    // console.log(menu[0]?.menu);
+  }, [bundleProducts]);
 
   const setMenu = (id) => {
-    let menu = bundleProducts.filter((e) => e.id === id);
-    setActiveMenu(menu);
+    let menu = bundleProducts.filter((e) => e._id === id);
+    // console.log(menu2);
+    // let [menu] = activeMenu[0];
+    setActiveMenu(menu[0]);
+    // console.log(menu);
+    setMenuItems(menu[0]?.menu);
   }
-  const [menu] = activeMenu;
-  const total = menu?.total;
-  const menuItems = menu?.menu;
-  console.log(menuItems);
+
+  const addBundleToCart = () => {
+    const updatedProduct = {
+      product:activeMenu,
+      userEmail: activeUser?.email,
+    };
+    dispatch(addToCart(updatedProduct))
+  }
+  // console.log(menuItems);
+
+
+
     return (
       <section className="bg-[#faf7f2] bg-[url('/product_bg_1.png')] py-32">
         <div className="container mx-auto">
@@ -59,10 +73,18 @@ const HomeMenu = () => {
             >
               {bundleProducts.map((e, i) => (
                 <li
-                  className={`flex flex-col items-center justify-center py-6 px-12 ${(i+1) === parseInt(e.id)?'active_tab':''}`}
-                  onClick={() => setMenu(e.id)}
+                  className={`flex flex-col items-center justify-center py-6 px-12 ${
+                    activeMenu?._id === e._id ? "bg-[#eb0029]  text-white" : ""
+                  }`}
+                  onClick={() => setMenu(e._id)}
                 >
-                  <span className="font-semibold text-[14px] font-roboto text-[#010f1c]">
+                  <span
+                    className={`font-semibold text-[14px] font-roboto  ${
+                      activeMenu?._id === e._id
+                        ? " text-white"
+                        : "text-[#010f1c]"
+                    }`}
+                  >
                     {e.name}
                   </span>
                 </li>
@@ -106,13 +128,11 @@ const HomeMenu = () => {
                 {menuItems?.map((e, i) => (
                   <div className="border-[#bdbdbd] border-solid border-x-[1px] border-y-[1px] rounded-xl bg-[#faf7f2] flex flex-row justify-items-stretch items-center overflow-hidden gap-6 group">
                     <div className="bg-[rgba(255,157,45,0.2)] group-hover:bg-[#ff9d2d] transition ease-in-out flex flex-col justify-center align-center px-6 self-stretch rounded-xl">
-                      <Image
-                        width={100}
-                        hight={100}
-                        src={productImg}
+                      <img
+                        src={e.image}
                         alt="Product Image"
-                        className="group-hover:scale-125 transition ease-in-out duration-500"
-                      ></Image>
+                        className="group-hover:scale-125 transition ease-in-out duration-500 w-[120px] h-[120px] object-cover rounded-xl"
+                      />
                     </div>
                     <div className="block py-6">
                       <div>
@@ -135,11 +155,15 @@ const HomeMenu = () => {
               </div>
               <div className="text-center mt-5 flex-col flex ">
                 <span className="price text-orange-500 text-xl font-bold">
-                  Tk {total} <del className=" text-black">Tk 1350.99</del>
+                  Tk {total ? total : ""}{" "}
+                  <del className=" text-black">Tk 1350.99</del>
                 </span>
                 <div className="flex justify-center items-center gap-3">
                   <div>
-                    <button className="font-rubik font-semibold text-[#ffffff] bg-[red] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2">
+                    <button
+                      className="font-rubik font-semibold text-[#ffffff] bg-[red] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2"
+                      onClick={addBundleToCart}
+                    >
                       BUY NOW
                     </button>
                   </div>

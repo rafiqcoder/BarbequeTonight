@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import Layout from "../../Layout/Layout";
 
+
 export default function Checkout() {
   const { cart, grandTotal } = useSelector((state) => state.cart);
   const [dropdown1, setDropdown1] = useState(false);
@@ -46,6 +47,7 @@ const {
         console.log(err);
       });
   };
+  
   return (
     <Layout>
       <div className="overflow-y-hidden">
