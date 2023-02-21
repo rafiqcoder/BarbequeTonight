@@ -1,11 +1,11 @@
+import { useDispatch,useSelector } from "react-redux";
+import Link from "next/link";
 import SingleBanner from "@/components/SingleBanner/SingleBanner";
 import Layout from "@/Layout/Layout";
 import hero_bg from "@/public/assets/hero_bg.jpg";
 import { bbqAddToCart } from "@/src/store/cartSlice";
-import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useDispatch,useSelector } from "react-redux";
 
 
 
