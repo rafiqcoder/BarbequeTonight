@@ -1,0 +1,20 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/api/hello": "pages/api/hello.js",
+  "/bbq": "pages/bbq.html",
+  "/birthday": "pages/birthday.html",
+  "/checkout": "pages/checkout.html",
+  "/conference": "pages/conference.html",
+  "/dashboard/AllBBQProduct": "pages/dashboard/AllBBQProduct.html",
+  "/dashboard/addBBQProduct": "pages/dashboard/addBBQProduct.html",
+  "/dashboard/addBundle": "pages/dashboard/addBundle.html",
+  "/dashboard/allorders": "pages/dashboard/allorders.html",
+  "/dashboard": "pages/dashboard.html",
+  "/login": "pages/login.html",
+  "/register": "pages/register.html",
+  "/wedding": "pages/wedding.html",
+  "/_document": "pages/_document.js",
+  "/": "pages/index.html",
+  "/404": "pages/404.html"
+}
