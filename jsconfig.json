@@ -2,7 +2,7 @@
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": ".",
-    "include": ["src"],
+    // "include": ["src"],
     "paths": {
       "@/components/*": ["components/*"],
       "@/Layout/*": ["Layout/*"],

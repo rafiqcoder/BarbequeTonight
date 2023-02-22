@@ -6,11 +6,11 @@ export const productsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
   tagTypes: ["BBQProduct"],
   endpoints: (builder) => ({
-    getBBQProducts: builder.query<BBQProduct[], void>({
+    getBBQProducts: builder.query({
       query: () => "/AllBBQProducts",
       providesTags: ["BBQProduct"],
     }),
-    addProduct: builder.mutation<{}, BBQProduct>({
+    addProduct: builder.mutation({
       query: (product) => ({
         url: "/addBBQ",
         method: "POST",
