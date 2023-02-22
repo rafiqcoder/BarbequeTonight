@@ -1,11 +1,11 @@
-import { useDispatch,useSelector } from "react-redux";
-import Link from "next/link";
 import SingleBanner from "@/components/SingleBanner/SingleBanner";
 import Layout from "@/Layout/Layout";
 import hero_bg from "@/public/assets/hero_bg.jpg";
 import { bbqAddToCart } from "@/src/store/cartSlice";
+import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useDispatch,useSelector } from "react-redux";
 
 const singleBbq = ({ product }) => {
     const [quantity,setQauntity] = useState(5);
@@ -135,6 +135,10 @@ const singleBbq = ({ product }) => {
     );
 };
 
+
+export default singleBbq;
+
+
 export const getStaticPaths = async () => {
     const res = await fetch(`http://localhost:5000/AllBBQProducts`)
     const data = await res.json();
@@ -149,6 +153,7 @@ export const getStaticPaths = async () => {
     }
 }
 
+
 export const getStaticProps = async (context) => {
     const id = context.params.id;
     const res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`)
@@ -159,10 +164,6 @@ export const getStaticProps = async (context) => {
         },
     };
 }
-
-export default singleBbq;
-
-
 
 // export async function getServerSideProps() {
 //     const res = await fetch(`http://localhost:5000/AllBBQProducts`);
