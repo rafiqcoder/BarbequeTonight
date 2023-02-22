@@ -72,7 +72,7 @@ const HomeMenu = () => {
               id="btnContainer"
             >
               {bundleProducts.map((e, i) => (
-                <li
+                <li key={i._id}
                   className={`flex flex-col items-center justify-center py-6 px-12 ${
                     activeMenu?._id === e._id ? "bg-[#eb0029]  text-white" : ""
                   }`}

@@ -55,7 +55,7 @@ const singleBbq = ({ product }) => {
                     <div className='grid grid-cols-5 gap-10 w-[60%]'>
                         <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom grid grid-cols-1 gap-10'>
                             {product.img.map((img,index) => (
-                                <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
+                                <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
                                     <Link href={`/bbq/${product._id}`}><img className='pt-[10%]' src={img.img} alt="" /></Link>
                                 </span>
                             ))}
