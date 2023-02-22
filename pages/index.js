@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { useContext } from 'react';
 import Home from '../components/home/home';
 import Layout from '../Layout/Layout';
 
-export default function Main({ products }) {
+export default function Main() {
   // const { bbqProducts,setBbqProducts } = useContext(DataContext);
   // const { user,isLoading } = useContext(AuthContext);
   // if (isLoading) {

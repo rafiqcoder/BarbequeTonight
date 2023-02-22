@@ -1,5 +1,4 @@
-import { BBQProduct, OrderBbq } from "@/src/models/bbq.models copy";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi,fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -16,7 +15,7 @@ export const productsApi = createApi({
         method: "POST",
         body: product,
       }),
-      
+
       invalidatesTags: ["BBQProduct"],
     }),
     // orderBbq: builder.mutation<{}, OrderBbq>({
