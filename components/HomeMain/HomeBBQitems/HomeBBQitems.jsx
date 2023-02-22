@@ -1,8 +1,8 @@
+import ProductCard from "@/components/ProductCard/ProductCard";
+import { useGetBBQProductsQuery } from "@/src/store/api/productsApi";
+import { addToCart } from "@/src/store/cartSlice";
 import Link from "next/link";
 import { useDispatch,useSelector } from "react-redux";
-import { useGetBBQProductsQuery } from "../../../src/store/api/productsApi";
-import { addToCart } from "../../../src/store/cartSlice.js";
-import ProductCard from "../../ProductCard/ProductCard";
 
 const HomeBBQitems = () => {
   // const { user } = useContext(AuthContext);
