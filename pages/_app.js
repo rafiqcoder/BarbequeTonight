@@ -16,7 +16,7 @@ function MyApp({ Component,pageProps }) {
 
       {/* <Context> */}
         <Toaster position="top-center" />
-        <Component {...pageProps}/>
+        <Component {...pageProps} />
       {/* </Context> */}
     </Provider>
 

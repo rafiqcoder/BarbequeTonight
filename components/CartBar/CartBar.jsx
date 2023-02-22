@@ -3,9 +3,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch,useSelector } from 'react-redux';
 const toExclude = [
- '/checkout','/dashboard'
+  "/checkout",
+  "/dashboard",
+  "/dashboard/addBundle",
+  "/dashboard/addBBQProduct",
 ];
-const basePaths = ["/home","/",'/dashboard'];
+const basePaths = ["/home","/","/dashboard"];
 
 const CartBar = () => {
     const { grandTotal, cart } = useSelector((state) => state.cart);
