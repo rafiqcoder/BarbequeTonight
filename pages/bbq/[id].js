@@ -3,6 +3,7 @@ import Layout from "@/Layout/Layout";
 import hero_bg from "@/public/assets/hero_bg.jpg";
 import { bbqAddToCart } from "@/src/store/cartSlice";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch,useSelector } from "react-redux";
@@ -11,11 +12,18 @@ const singleBbq = ({ product }) => {
     const [quantity,setQauntity] = useState(5);
     const { cart } = useSelector(state => state.cart);
     const { activeUser } = useSelector((state) => state.userAuth);
-    console.log(activeUser);
+    const router = useRouter();
+
+    const { id } = router.query;
+    console.log(id);
+
     const dispatch = useDispatch();
-
-
+    console.log('working');
     const addedProduct = cart.find(pd => pd._id === product._id);
+
+
+
+
 
     const increaseCartItemNumber = (i) => {
         i = i + 1;
@@ -139,39 +147,45 @@ const singleBbq = ({ product }) => {
 export default singleBbq;
 
 
-export const getStaticPaths = async () => {
-    const res = await fetch(`http://localhost:5000/AllBBQProducts`)
-    const data = await res.json();
-    const paths = data.map(product => {
-        return {
-            params: { id: product._id.toString() }
-        }
-    })
-    return {
-        paths,
-        fallback: false
-    }
-}
-
-
-export const getStaticProps = async (context) => {
-    const id = context.params.id;
-    const res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`)
-    const data = await res.json();
-    return {
-        props: {
-            product: data,
-        },
-    };
-}
-
-// export async function getServerSideProps() {
-//     const res = await fetch(`http://localhost:5000/AllBBQProducts`);
+// export const getStaticPaths = async () => {
+//     const res = await fetch(`http://localhost:5000/AllBBQProducts`)
 //     const data = await res.json();
+//     const paths = data.map(product => {
 
+//         return {
+//             params: { id: product._id.toString() }
+//         }
+//     })
+//     return {
+//         paths,
+//         fallback: false
+//     }
+// }
+
+
+// export const getStaticProps = async (context) => {
+//     const id = context.params.id;
+//     const res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`)
+//     const data = await res.json();
 //     return {
 //         props: {
-//             products: data,
+//             product: data,
 //         },
 //     };
 // }
+
+export async function getServerSideProps({ params }) {
+    const id = params.id;
+    let res;
+    if (typeof id === 'string') {
+        
+     res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`);
+    }
+    const product = await res.json();
+
+    return {
+        props: {
+            product,
+        },
+    };
+}

@@ -4,19 +4,14 @@ const Footer = () => {
     <footer className=" p-10 bg-base-200 ">
       <div className="footer p-0 m-0 sm:w-[100%] mx-auto text-base-content flex flex-wrap sm:flex-justify justify-between sm:p-20">
         <div>
-          <span className="footer-title">Services</span>
+          <span className="footer-title">Chef's Specials</span>
           <a href="/" className="link link-hover">
-            Cycle Repair
+            BBQ Items
           </a>
           <a href="/" className="link link-hover">
-            Cycle Maintanence
+            Special Menus
           </a>
-          <a href="/" className="link link-hover">
-            Cycle Repair
-          </a>
-          <a href="/" className="link link-hover">
-            Cycle Uninstallation
-          </a>
+          
         </div>
         <div>
           <span className="footer-title">Company</span>
@@ -29,9 +24,7 @@ const Footer = () => {
           <a href="/" className="link link-hover">
             Jobs
           </a>
-          <a href="/" className="link link-hover">
-            Press kit
-          </a>
+          
         </div>
         <div>
           <span className="footer-title">Legal</span>
