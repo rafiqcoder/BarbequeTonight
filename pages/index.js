@@ -3,13 +3,7 @@ import HomeMain from '../components/HomeMain/HomeMain';
 import Layout from '../Layout/Layout';
 
 export default function Main() {
-  // const { bbqProducts,setBbqProducts } = useContext(DataContext);
-  // const { user,isLoading } = useContext(AuthContext);
-  // if (isLoading) {
-  //   return <div>loading...</div>
-  // }
 
-  // setBbqProducts(products);
   return (
 
     <Layout>

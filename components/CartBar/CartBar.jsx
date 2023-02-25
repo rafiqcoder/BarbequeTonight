@@ -57,7 +57,7 @@ const CartBar = () => {
                   >
                     <img
                       className="w-[100px] p-1 mr-2"
-                      src={item.thumb ? item.thumb : item.menu[0]?.image}
+                      src={item.thumb ? item.thumb : item.menu[0]?.thumb}
                       alt="/"
                     />
                     <div className="flex flex-col">

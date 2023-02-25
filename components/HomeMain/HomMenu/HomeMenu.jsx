@@ -1,3 +1,4 @@
+import { useGetMenusQuery } from "@/src/store/api/productsApi";
 import { addToCart } from "@/src/store/cartSlice";
 import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
@@ -6,32 +7,46 @@ import { useDispatch,useSelector } from "react-redux";
 
 const HomeMenu = () => {
   const { activeUser } = useSelector(state => state.userAuth);
+  const { data, error, isLoading, isSuccess, isFetching } = useGetMenusQuery();
   const [bundleProducts,setBundleProducts] = useState([]);
   const [activeMenu,setActiveMenu] = useState([]);
   const dispatch = useDispatch();
   const [menuItems,setMenuItems] = useState([]);
   const [total,setTotal] = useState(0);
-  const {asPath,pathname} = useRouter();
+  const { asPath,pathname } = useRouter();
+
   useEffect(() => {
-    fetch("bundledb.json")
-      .then((response) => response.json())
-      .then((data) => setBundleProducts(data));
-  },[])
+    if (data !== null || data !== undefined || data !== "") {
+      
+      setBundleProducts(data);
+    }
+    console.log(data);
+  },[data])
   useEffect(() => {
-    let menu = bundleProducts.filter((e) => e._id === 1);
-    setMenuItems(menu[0]?.menu);
-    setActiveMenu(menu[0]);
+    // console.log('bundleProducts',bundleProducts);
+    // console.log('menu',menu);
+    if (bundleProducts !== undefined || bundleProducts !== null || bundleProducts !== "") {
+      console.log('bundleProducts',bundleProducts);
+      if (bundleProducts) {
+        let menu = bundleProducts;
+        console.log("menu",menu);
+        setMenuItems(bundleProducts[0]?.menu);
+        setActiveMenu(bundleProducts[0]);
+      }
+       
+    }
     // console.log(menu[0]?.menu);
   }, [bundleProducts]);
 
   const setMenu = (id) => {
-    let menu = bundleProducts.filter((e) => e._id === id);
+    let menu = bundleProducts?.filter((e) => e._id === id);
     // console.log(menu2);
     // let [menu] = activeMenu[0];
     setActiveMenu(menu[0]);
     // console.log(menu);
     setMenuItems(menu[0]?.menu);
   }
+  console.log(data);
 
   const addBundleToCart = () => {
     const updatedProduct = {
@@ -71,7 +86,7 @@ const HomeMenu = () => {
               className="bg-white shadow-md rounded-2xl grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 overflow-hidden cursor-pointer"
               id="btnContainer"
             >
-              {bundleProducts.map((e, i) => (
+              {bundleProducts?.map((e, i) => (
                 <li key={i._id}
                   className={`flex flex-col items-center justify-center py-6 px-12 ${
                     activeMenu?._id === e._id ? "bg-[#eb0029]  text-white" : ""
@@ -129,7 +144,7 @@ const HomeMenu = () => {
                   <div className="border-[#bdbdbd] border-solid border-x-[1px] border-y-[1px] rounded-xl bg-[#faf7f2] flex flex-row justify-items-stretch items-center overflow-hidden gap-6 group">
                     <div className="bg-[rgba(255,157,45,0.2)] group-hover:bg-[#ff9d2d] transition ease-in-out flex flex-col justify-center align-center px-6 self-stretch rounded-xl">
                       <img
-                        src={e.image}
+                        src={e.thumb}
                         alt="Product Image"
                         className="group-hover:scale-125 transition ease-in-out duration-500 w-[120px] h-[120px] object-cover rounded-xl"
                       />
