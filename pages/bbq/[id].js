@@ -2,6 +2,7 @@ import SingleBanner from "@/components/SingleBanner/SingleBanner";
 import Layout from "@/Layout/Layout";
 import hero_bg from "@/public/assets/hero_bg.jpg";
 import { bbqAddToCart } from "@/src/store/cartSlice";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -150,8 +151,8 @@ export default singleBbq;
 
 
 export const getStaticPaths = async () => {
-    const res = await fetch(`http://localhost:5000/AllBBQProducts`)
-    const data = await res.json();
+    const { data } = await axios.get(`http://localhost:5000/AllBBQProducts`)
+
     const paths = data.map(product => ({
             params: { id: product._id.toString() }
     }))
@@ -164,16 +165,15 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id;
-    let res;
+  
     
-    if (id !== '[object Object]' && id !== '[object%20object]') {
+   
         
-     res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`);
-    }
-    const product = await res?.json();
+      const {data} = await axios.get(`http://localhost:5000/AllBBQProducts/${id}`)
+    
     return {
         props: {
-            product,
+            product:data,
         },
         revalidate: 1,
     };
