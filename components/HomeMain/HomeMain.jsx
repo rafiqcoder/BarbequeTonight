@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Banner from "../Banner/Banner";
 import HomeBBQitems from "./HomeBBQitems/HomeBBQitems";
@@ -18,7 +18,7 @@ const HomeMain = () => {
   },[]);
 
   const sendData = () => {
-    fetch("http://localhost:5000/customUser", {
+    fetch("https://server-9cmeqz35g-rafiqcoder.vercel.app/customUser", {
       method: "POST",
       body: JSON.stringify(data),
     })

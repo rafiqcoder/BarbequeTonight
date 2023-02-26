@@ -87,7 +87,7 @@ const HomeMenu = () => {
               id="btnContainer"
             >
               {bundleProducts?.map((e, i) => (
-                <li key={i._id}
+                <li key={e._id}
                   className={`flex flex-col items-center justify-center py-6 px-12 ${
                     activeMenu?._id === e._id ? "bg-[#eb0029]  text-white" : ""
                   }`}
@@ -141,7 +141,7 @@ const HomeMenu = () => {
             <div className="max-w-[1178px] mx-auto">
               <div className="w-100 grid grid-cols-1 px-4 lg:px-0 lg:grid-cols-2 gap-7 mt-6">
                 {menuItems?.map((e, i) => (
-                  <div className="border-[#bdbdbd] border-solid border-x-[1px] border-y-[1px] rounded-xl bg-[#faf7f2] flex flex-row justify-items-stretch items-center overflow-hidden gap-6 group">
+                  <div className="border-[#bdbdbd] border-solid border-x-[1px] border-y-[1px] rounded-xl bg-[#faf7f2] flex flex-row justify-items-stretch items-center overflow-hidden gap-6 group" key={e.id}>
                     <div className="bg-[rgba(255,157,45,0.2)] group-hover:bg-[#ff9d2d] transition ease-in-out flex flex-col justify-center align-center px-6 self-stretch rounded-xl">
                       <img
                         src={e.thumb}

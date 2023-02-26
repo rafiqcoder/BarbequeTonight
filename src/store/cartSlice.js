@@ -18,7 +18,7 @@ const cartSlice = createSlice({
       // const oldCartData = JSON.parse(localStorage.getItem("cart") || "[]")
       // if (state.userEmail !== undefined) {
       //   console.log(state.userEmail);
-      //   fetch(`http://localhost:5000/addToCartDb?email=${state.userEmail}`)
+      //   fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${state.userEmail}`)
       //     .then((res) => res.json())
       //     .then((data) => {
       //       if (data.acknowledged) {
@@ -64,7 +64,7 @@ const cartSlice = createSlice({
       const email = action.payload.userEmail;
 
       if (email) {
-        fetch(`http://localhost:5000/addToCartDb?email=${email}`,{
+        fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(Cartdata),
@@ -86,22 +86,22 @@ const cartSlice = createSlice({
     },
     bbqAddToCart: (state,action) => {
       const email = action.payload.userEmail;
-      const quantity=action.payload.quantity;
+      const quantity = action.payload.quantity;
       console.log(action.payload.product);
-        state.cart.push({
-          ...action.payload.product,
-          quantity: quantity,
-          totalPrice: action.payload.product.price * quantity,
-        });
-        state.grandTotal = state.cart.reduce(
-          (total,product) => total + product.totalPrice,
-          0
-        );
-      
+      state.cart.push({
+        ...action.payload.product,
+        quantity: quantity,
+        totalPrice: action.payload.product.price * quantity,
+      });
+      state.grandTotal = state.cart.reduce(
+        (total,product) => total + product.totalPrice,
+        0
+      );
+
       const Cartdata = state.cart;
 
       if (email) {
-        fetch(`http://localhost:5000/addToCartDb?email=${email}`,{
+        fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(Cartdata),
@@ -144,7 +144,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
 
-      fetch(`http://localhost:5000/addToCartDb?email=${email}`,{
+      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata)
@@ -165,8 +165,8 @@ const cartSlice = createSlice({
       );
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
-        console.log(email);
-      fetch(`http://localhost:5000/addToCartDb?email=${email}`,{
+      console.log(email);
+      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata)

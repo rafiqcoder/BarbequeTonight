@@ -50,9 +50,9 @@ const CartBar = () => {
           {cart?.length > 0 ? (
             <div>
               {cart.map((item) => (
-                <>
+                
                   <div
-                    key={item.id}
+                    key={item._id}
                     className="flex items-center justify-between p-1 border m-1"
                   >
                     <img
@@ -92,7 +92,7 @@ const CartBar = () => {
                       </button>
                     </div>
                   </div>
-                </>
+                
               ))}
 
               <h2 className="text-white text-xl ml-3 mt-6 font-bold">

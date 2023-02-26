@@ -12,7 +12,7 @@ import { useDispatch,useSelector } from "react-redux";
 
 
 export const getStaticPaths = async () => {
-    const { data } = await axios.get(`http://localhost:5000/AllBBQProducts`)
+    const { data } = await axios.get(`https://server-9cmeqz35g-rafiqcoder.vercel.app/AllBBQProducts`)
 
     const paths = data.map(product => ({
         params: { id: product._id.toString() }
@@ -26,7 +26,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id;
-    const { data } = await axios.get(`http://localhost:5000/AllBBQProducts/${id}`)
+    const { data } = await axios.get(`https://server-9cmeqz35g-rafiqcoder.vercel.app/AllBBQProducts/${id}`)
 
     return {
         props: {
@@ -186,7 +186,7 @@ export default singleBbq;
 //     let res;
 //     if (typeof id === 'string') {
         
-//      res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`);
+//      res = await fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/AllBBQProducts/${id}`);
 //     }
 //     const product = await res.json();
 

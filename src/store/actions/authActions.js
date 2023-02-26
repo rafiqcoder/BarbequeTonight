@@ -46,7 +46,7 @@ export const updateNameAndPhoto = (name,photo) => {
 
 
 //         const user = { name,email,img };
-//         fetch(`http://localhost:5000/users`,{
+//         fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/users`,{
 //             method: "POST",
 //             headers: {
 //                 "Content-Type": "application/json",

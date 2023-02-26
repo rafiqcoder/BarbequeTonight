@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { fetchCartDbThunk } from "./actions/getData";
 
 // const data = async () => {
-//  const value = await fetch("http://localhost:5000/addToCartDb")
+//  const value = await fetch("https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb")
 //   const res = await value.json()
 //
 //   return res.cartData;
@@ -21,7 +21,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
+    addToCart: (state,action) => {
       const product = state.cart.find(
         (p) => p._id === action.payload.product._id
       );
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
         console.log(product.totalPrice);
 
         state.grandTotal = state.cart.reduce(
-          (total, product) => total + product.totalPrice,
+          (total,product) => total + product.totalPrice,
           0
         );
       } else {
@@ -41,13 +41,13 @@ const cartSlice = createSlice({
           totalPrice: action.payload.product.price * 5,
         });
         state.grandTotal = state.cart.reduce(
-          (total, product) => total + product.totalPrice,
+          (total,product) => total + product.totalPrice,
           0
         );
       }
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
-      fetch(`http://localhost:5000/addToCartDb?email=${email}`, {
+      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata),
@@ -61,7 +61,7 @@ const cartSlice = createSlice({
         .catch((error) => console.log(error));
     },
 
-    reduceQuantity: (state, action) => {
+    reduceQuantity: (state,action) => {
       const product = state.cart.find(
         (p) => p._id === action.payload.product._id
       );
@@ -70,20 +70,20 @@ const cartSlice = createSlice({
         product.quantity--;
         product.totalPrice = product.quantity * product.price;
         state.grandTotal = state.cart.reduce(
-          (total, product) => total + product.totalPrice,
+          (total,product) => total + product.totalPrice,
           0
         );
       } else {
         state.cart = state.cart.filter((p) => p._id !== action.payload._id);
         state.grandTotal = state.cart.reduce(
-          (total, product) => total + product.totalPrice,
+          (total,product) => total + product.totalPrice,
           0
         );
       }
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
 
-      fetch(`http://localhost:5000/addToCartDb?email=${email}`, {
+      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata),
@@ -98,14 +98,14 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCartDbThunk.fulfilled, (state, action) => {
+    builder.addCase(fetchCartDbThunk.fulfilled,(state,action) => {
       state.cart = action.payload;
       state.grandTotal = state.cart.reduce(
-        (total, product) => total + product.totalPrice,
+        (total,product) => total + product.totalPrice,
         0
       );
     });
   },
 });
-export const { addToCart, reduceQuantity, setCartData } = cartSlice.actions;
+export const { addToCart,reduceQuantity,setCartData } = cartSlice.actions;
 export default cartSlice.reducer;

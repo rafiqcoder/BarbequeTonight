@@ -57,7 +57,7 @@ const Register = () => {
         });
         const email = data.email;
         //getting jwt token from backend and setting it in localstorage
-        // fetch("http://localhost:5000/jwt", {
+        // fetch("https://server-9cmeqz35g-rafiqcoder.vercel.app/jwt", {
         //   method: "POST",
         //   headers: {
         //     "Content-Type": "application/json",

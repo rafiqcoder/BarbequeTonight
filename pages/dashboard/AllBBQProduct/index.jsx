@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
 
 const fetcher = async () => {
-  const res = await fetch('http://localhost:5000/AllBBQProducts');
+  const res = await fetch('https://server-9cmeqz35g-rafiqcoder.vercel.app/AllBBQProducts');
   const data = await res.json();
   
   return data;

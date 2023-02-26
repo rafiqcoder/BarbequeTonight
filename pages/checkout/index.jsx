@@ -1,5 +1,5 @@
 
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import Layout from "../../Layout/Layout";
@@ -32,7 +32,7 @@ const {
         cartData,
         ...data,
       };
-    fetch(`http://localhost:5000/orderBbq`, {
+    fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/orderBbq`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

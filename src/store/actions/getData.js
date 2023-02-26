@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchCartDbThunk = createAsyncThunk('cartDb/fetch',(email) => {
-  // fetch(`http://localhost:5000/addToCartDb`)
+  // fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //         return(data.cartData);
   //     })
   const data = async () => {
-    const value = await fetch(`http://localhost:5000/addToCartDb?email=${email}`)
+    const value = await fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`)
     const res = await value.json()
 
     return res;

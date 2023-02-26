@@ -38,7 +38,7 @@ const HomeBBQitems = () => {
         <div className="w-100 grid gird-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 py-16">
           {bbqProducts &&
             bbqProducts.map((product) => (
-              <ProductCard product={product} key={product.id}>
+              <ProductCard product={product} key={product._id}>
                 <label
                   htmlFor="my-modal"
                   className="text-[14px] font-roboto font-normal py-2 px-6 bg-[#010f1c] hover:bg-[#eb0029] transition ease-in-out rounded-lg shadow-md text-white mt-4"

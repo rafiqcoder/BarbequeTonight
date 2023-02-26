@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
@@ -62,7 +62,7 @@ const AddProducts = () => {
     // const formData = new FormData();
     // formData.append("file", file);
     // formData.append("picName", file.name);
-    // fetch(`http://localhost:5000/upload`, {
+    // fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/upload`, {
     //   method: "POST",
     //   body: formData,
     // })
@@ -75,7 +75,7 @@ const AddProducts = () => {
     //     console.log(err);
     //   });
 
-    // fetch(`http://localhost:5000/addBBQ`, {
+    // fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addBBQ`, {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application/json",
