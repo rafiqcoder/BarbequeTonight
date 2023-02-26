@@ -15,7 +15,7 @@ const singleBbq = ({ product }) => {
     const router = useRouter();
 
     const { id } = router.query;
-    console.log(id);
+    console.log(product);
 
     const dispatch = useDispatch();
     console.log('working');
@@ -147,45 +147,50 @@ const singleBbq = ({ product }) => {
 export default singleBbq;
 
 
-// export const getStaticPaths = async () => {
-//     const res = await fetch(`http://localhost:5000/AllBBQProducts`)
-//     const data = await res.json();
-//     const paths = data.map(product => {
+export const getStaticPaths = async () => {
+    const res = await fetch(`http://localhost:5000/AllBBQProducts`)
+    const data = await res.json();
+    const paths = data.map(product => {
 
-//         return {
-//             params: { id: product._id.toString() }
-//         }
-//     })
-//     return {
-//         paths,
-//         fallback: false
-//     }
-// }
+        return {
+            params: { id: product._id.toString() }
+        }
+    })
+    return {
+        paths,
+        fallback: false
+    }
+}
 
 
-// export const getStaticProps = async (context) => {
-//     const id = context.params.id;
-//     const res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`)
-//     const data = await res.json();
-//     return {
-//         props: {
-//             product: data,
-//         },
-//     };
-// }
-
-export async function getServerSideProps({ params }) {
-    const id = params.id;
+export const getStaticProps = async (context) => {
+    const id = context.params.id;
     let res;
-    if (typeof id === 'string') {
+    
+    if (id !== '[object Object]' && id !== '[object%20object]') {
         
      res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`);
     }
-    const product = await res.json();
-
+    const product = await res?.json();
     return {
         props: {
             product,
         },
     };
 }
+
+// export async function getServerSideProps({ params }) {
+//     const id = params.id;
+//     let res;
+//     if (typeof id === 'string') {
+        
+//      res = await fetch(`http://localhost:5000/AllBBQProducts/${id}`);
+//     }
+//     const product = await res.json();
+
+//     return {
+//         props: {
+//             product,
+//         },
+//     };
+// }

@@ -13,12 +13,13 @@ const ProductCard = (props) => {
         <img src={thumb} alt="" />
       </Link>
       <p className="text-[16px] font-roboto font-normal text-[#4d5765]">BBQ</p>
-      <Link
+      {_id !== '[object Object]' && _id !== '[object%20object]' ?<Link
         href={`/bbq/${_id}`}
         className="text-[24px] font-rubik font-semibold text-[#010f1c]"
       >
         {name}
-      </Link>
+      </Link>:''}
+      
       <p className="text-[#eb0029] font-medium font-rubik text-[16px]">
         {price}৳
       </p>
