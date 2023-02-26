@@ -52,7 +52,9 @@ const singleBbq = ({ product }) => {
             dispatch(bbqAddToCart(updatedProduct))
         }
     }
-
+    if (router.isFallback) {
+        return <div>Loading...</div>
+    }
     return (
         <Layout>
             <section>
@@ -150,15 +152,12 @@ export default singleBbq;
 export const getStaticPaths = async () => {
     const res = await fetch(`http://localhost:5000/AllBBQProducts`)
     const data = await res.json();
-    const paths = data.map(product => {
-
-        return {
+    const paths = data.map(product => ({
             params: { id: product._id.toString() }
-        }
-    })
+    }))
     return {
         paths,
-        fallback: false
+        fallback: true
     }
 }
 
@@ -176,6 +175,7 @@ export const getStaticProps = async (context) => {
         props: {
             product,
         },
+        revalidate: 1,
     };
 }
 
