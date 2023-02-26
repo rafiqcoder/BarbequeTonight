@@ -9,6 +9,35 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch,useSelector } from "react-redux";
 
+
+
+export const getStaticPaths = async () => {
+    const { data } = await axios.get(`http://localhost:5000/AllBBQProducts`)
+
+    const paths = data.map(product => ({
+        params: { id: product._id.toString() }
+    }))
+    return {
+        paths,
+        fallback: true
+    }
+}
+
+
+export const getStaticProps = async (context) => {
+    const id = context.params.id;
+    const { data } = await axios.get(`http://localhost:5000/AllBBQProducts/${id}`)
+
+    return {
+        props: {
+            product: data,
+        },
+        revalidate: 1,
+    };
+}
+
+
+
 const singleBbq = ({ product }) => {
     const [quantity,setQauntity] = useState(5);
     const { cart } = useSelector(state => state.cart);
@@ -150,34 +179,7 @@ const singleBbq = ({ product }) => {
 export default singleBbq;
 
 
-export const getStaticPaths = async () => {
-    const { data } = await axios.get(`http://localhost:5000/AllBBQProducts`)
 
-    const paths = data.map(product => ({
-            params: { id: product._id.toString() }
-    }))
-    return {
-        paths,
-        fallback: true
-    }
-}
-
-
-export const getStaticProps = async (context) => {
-    const id = context.params.id;
-  
-    
-   
-        
-      const {data} = await axios.get(`http://localhost:5000/AllBBQProducts/${id}`)
-    
-    return {
-        props: {
-            product:data,
-        },
-        revalidate: 1,
-    };
-}
 
 // export async function getServerSideProps({ params }) {
 //     const id = params.id;
