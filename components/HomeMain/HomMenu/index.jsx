@@ -48,7 +48,6 @@ const index = ({children}) => {
     // console.log(menu);
     setMenuItems(menu[0]?.menu);
   }
-  console.log(data);
 
   const addBundleToCart = () => {
     const updatedProduct = {
@@ -59,7 +58,7 @@ const index = ({children}) => {
   }
   // console.log(menuItems);
 
-
+console.log('activeMenu',activeMenu?._id);
 
     return (
       <section className="bg-[#faf7f2] bg-[url('/product_bg_1.png')] py-32">
@@ -70,6 +69,7 @@ const index = ({children}) => {
             setMenu={setMenu}
           />
           <MenuBody
+            activeMenu={activeMenu}
             menuItems={menuItems}
             total={total}
             addBundleToCart={addBundleToCart}

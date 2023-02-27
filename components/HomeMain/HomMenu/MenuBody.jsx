@@ -1,6 +1,20 @@
-import React from 'react';
+import Link from 'node_modules/next/link';
+import React, { useEffect } from 'react';
 
-const MenuBody = ({ menuItems, total, addBundleToCart,children }) => {
+const MenuBody = ({
+  menuItems,
+  total,
+  addBundleToCart,
+  children,
+  activeMenu,
+}) => {
+  const [id,setId] = React.useState('');
+  useEffect(() => {
+    setId(activeMenu?._id);
+  }, [activeMenu]);
+  // const {_id} = activeMenu;
+  // console.log(id);
+    // console.log("activeMenu", activeMenu._id);
   return (
     <div className="w-100">
       <div className="max-w-[1178px] mx-auto">
@@ -50,11 +64,14 @@ const MenuBody = ({ menuItems, total, addBundleToCart,children }) => {
                 Add to Cart
               </button>
             </div>
-            <div>
-              <button className="font-rubik font-semibold text-[#ffffff] bg-[#010f1c] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2">
+            
+              <Link
+                href={`/menu${id ? `/${id}` : ''}`}
+                className="font-rubik font-semibold text-[#ffffff] bg-[#010f1c] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2"
+              >
                 View Details
-              </button>
-            </div>
+              </Link>
+            
           </div>
           {children ? children[1] : null}
         </div>
