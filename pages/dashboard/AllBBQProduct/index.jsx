@@ -1,4 +1,5 @@
 
+import { Base_url } from '@/src/store/utils';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,7 +7,7 @@ import useSWR from 'swr';
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
 
 const fetcher = async () => {
-  const res = await fetch('https://server-9cmeqz35g-rafiqcoder.vercel.app/AllBBQProducts');
+  const res = await fetch(`${Base_url}/AllBBQProducts`);
   const data = await res.json();
   
   return data;

@@ -30,7 +30,7 @@ exports.modules = {
 
 
             /***/
-}),
+        }),
 
 /***/ 1583:
 /***/ ((__unused_webpack_module,__webpack_exports__,__webpack_require__) => {
@@ -39,8 +39,8 @@ exports.modules = {
 /* harmony export */   "K4": () => (/* binding */ setLoading),
 /* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "av": () => (/* binding */ setUser)
-                /* harmony export */
-});
+            /* harmony export */
+        });
 /* unused harmony export setError */
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5184);
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
@@ -70,7 +70,7 @@ exports.modules = {
 
 
             /***/
-}),
+        }),
 
 /***/ 6088:
 /***/ ((module,__webpack_exports__,__webpack_require__) => {
@@ -84,7 +84,7 @@ exports.modules = {
 /* harmony export */   "h2": () => (/* binding */ removeFromCart),
 /* harmony export */   "nl": () => (/* binding */ setActiveUser)
                     /* harmony export */
-});
+                });
 /* unused harmony export bbqAddToCart */
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5184);
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
@@ -144,7 +144,7 @@ exports.modules = {
                                 const Cartdata = state.cart;
                                 const email = action.payload.userEmail;
                                 if (email) {
-                                    fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
+                                    fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.ap/addToCartDb?email=${email}`,{
                                         method: "POST",
                                         headers: {
                                             "Content-Type": "application/json"
@@ -257,7 +257,7 @@ exports.modules = {
             });
 
             /***/
-})
+        })
 
 };
 ;

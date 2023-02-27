@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import { fetchCartDbThunk } from "./actions/getData";
+import { Base_url } from "./utils";
 
 // const data = async () => {
-//  const value = await fetch("https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb")
+//  const value = await fetch("${Base_url}/addToCartDb")
 //   const res = await value.json()
 //
 //   return res.cartData;
@@ -47,7 +48,7 @@ const cartSlice = createSlice({
       }
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
-      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
+      fetch(`${Base_url}/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata),
@@ -83,7 +84,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
 
-      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
+      fetch(`${Base_url}/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata),

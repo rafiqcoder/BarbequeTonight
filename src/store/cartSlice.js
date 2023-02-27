@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import { fetchCartDbThunk } from "./actions/getData";
+import { Base_url } from "./utils";
 
 const initialState = {
   cart: [],
@@ -18,7 +19,7 @@ const cartSlice = createSlice({
       // const oldCartData = JSON.parse(localStorage.getItem("cart") || "[]")
       // if (state.userEmail !== undefined) {
       //   console.log(state.userEmail);
-      //   fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${state.userEmail}`)
+      //   fetch(`${Base_url}/addToCartDb?email=${state.userEmail}`)
       //     .then((res) => res.json())
       //     .then((data) => {
       //       if (data.acknowledged) {
@@ -64,7 +65,7 @@ const cartSlice = createSlice({
       const email = action.payload.userEmail;
 
       if (email) {
-        fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
+        fetch(`${Base_url}/addToCartDb?email=${email}`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(Cartdata),
@@ -101,7 +102,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
 
       if (email) {
-        fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
+        fetch(`${Base_url}/addToCartDb?email=${email}`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(Cartdata),
@@ -144,7 +145,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
 
-      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
+      fetch(`${Base_url}/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata)
@@ -166,7 +167,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
       console.log(email);
-      fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/addToCartDb?email=${email}`,{
+      fetch(`${Base_url}/addToCartDb?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata)

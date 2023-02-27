@@ -10,3 +10,6 @@ export function generateString(length) {
 
     return result;
 }
+
+
+export const Base_url = "http://localhost:5000"

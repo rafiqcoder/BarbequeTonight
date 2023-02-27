@@ -1,4 +1,5 @@
 
+import { Base_url } from "@/src/store/utils";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
@@ -32,7 +33,7 @@ const {
         cartData,
         ...data,
       };
-    fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/orderBbq`, {
+    fetch(`${Base_url}/orderBbq`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

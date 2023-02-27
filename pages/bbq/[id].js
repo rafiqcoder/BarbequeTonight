@@ -2,6 +2,7 @@ import SingleBanner from "@/components/SingleBanner/SingleBanner";
 import Layout from "@/Layout/Layout";
 import hero_bg from "@/public/assets/hero_bg.jpg";
 import { bbqAddToCart } from "@/src/store/cartSlice";
+import { Base_url } from "@/src/store/utils";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,7 +13,7 @@ import { useDispatch,useSelector } from "react-redux";
 
 
 export const getStaticPaths = async () => {
-    const { data } = await axios.get(`https://server-9cmeqz35g-rafiqcoder.vercel.app/AllBBQProducts`)
+    const { data } = await axios.get(`${Base_url}/AllBBQProducts`)
 
     const paths = data.map(product => ({
         params: { id: product._id.toString() }
@@ -26,7 +27,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id;
-    const { data } = await axios.get(`https://server-9cmeqz35g-rafiqcoder.vercel.app/AllBBQProducts/${id}`)
+    const { data } = await axios.get(`${Base_url}/AllBBQProducts/${id}`)
 
     return {
         props: {

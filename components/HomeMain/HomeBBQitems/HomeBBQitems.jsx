@@ -50,9 +50,12 @@ const HomeBBQitems = () => {
             ))}
         </div>
         <div className="w-100 flex flex-col justify-center items-center mt-0">
-          <button className="font-rubik font-medium text-[14px] text-[#ffffff] bg-[#eb0029] transition ease-in-out duration-500 hover:bg-[#010f1c] py-4 px-12 rounded-full">
-            <Link href="/bbq">VIEW ALL MENUS</Link>
-          </button>
+          <Link
+            href="/bbq"
+            className="font-rubik font-medium text-[14px] text-[#ffffff] bg-[#eb0029] transition ease-in-out duration-500 hover:bg-[#010f1c] py-4 px-12 rounded-full"
+          >
+            VIEW ALL MENUS
+          </Link>
         </div>
       </div>
     </section>

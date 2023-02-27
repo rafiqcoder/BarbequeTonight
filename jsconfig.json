@@ -2,13 +2,14 @@
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": ".",
-    // "include": ["src"],
+    "target": "es6",
     "paths": {
       "@/components/*": ["components/*"],
       "@/Layout/*": ["Layout/*"],
       "@/src/*": ["src/*"],
       "@/styles/*": ["styles/*"],
-      "@/public/*": ["public/*"]
+      "@/public/*": ["public/*"],
+      "@/assets/*": ["public/assets/*"]
     }
   }
 }
