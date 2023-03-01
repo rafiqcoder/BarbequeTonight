@@ -43,7 +43,7 @@ const CartBar = ({setShowCart,showCart}) => {
   return (
     <div className=" cart-container  rounded-lg sm:h-screen  pb-5     p-3 shadow-md">
       <p
-        className="text-black text-sm text-bold border max-w-fit border-red-500 px-[10px] py-1 rounded-full"
+        className="text-black text-sm text-bold border max-w-fit border-red-500 px-[10px] py-1 rounded-full cursor-pointer"
         onClick={() => setShowCart(!showCart)}
       >
         X
