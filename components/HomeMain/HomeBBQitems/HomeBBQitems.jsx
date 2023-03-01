@@ -3,6 +3,7 @@ import { useGetBBQProductsQuery } from "@/src/store/api/productsApi";
 import { addToCart } from "@/src/store/cartSlice";
 import Link from "next/link";
 import { useDispatch,useSelector } from "react-redux";
+import Head from "../Head/Head";
 
 const HomeBBQitems = () => {
   // const { user } = useContext(AuthContext);
@@ -30,12 +31,14 @@ const HomeBBQitems = () => {
   console.log(bbqProducts);
   
   return (
-    <section className="bg-white my-20">
+    <section className=" mt-0">
       <div className="container px-6 py-10 mx-auto">
-        <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
-          BBQ Items
-        </h1>
-        <div className="w-100 grid gird-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 py-16">
+        <Head
+          title="BBQ"
+          desc="Objectively pontificate quality models before intuitive information. Dramatically recaptiualize multifunctional materials."
+          badge="" badge2='Items'
+        ></Head>
+        <div className="w-100 grid gird-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 pt-16">
           {bbqProducts &&
             bbqProducts.map((product) => (
               <ProductCard product={product} key={product._id}>
@@ -48,14 +51,6 @@ const HomeBBQitems = () => {
                 </label>
               </ProductCard>
             ))}
-        </div>
-        <div className="w-100 flex flex-col justify-center items-center mt-0">
-          <Link
-            href="/bbq"
-            className="font-rubik font-medium text-[14px] text-[#ffffff] bg-[#eb0029] transition ease-in-out duration-500 hover:bg-[#010f1c] py-4 px-12 rounded-full"
-          >
-            VIEW ALL MENUS
-          </Link>
         </div>
       </div>
     </section>

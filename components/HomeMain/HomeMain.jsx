@@ -1,4 +1,5 @@
 import MenuFooter from "@/components/HomeMain/HomMenu/MenuFooter";
+import Link from "node_modules/next/link";
 import { Children } from "react";
 import { useSelector } from "react-redux";
 import Banner from "../Banner/Banner";
@@ -13,13 +14,15 @@ const HomeMain = () => {
 
   return (
     <>
-      <Banner></Banner>
+      <section className="bg-[#faf7f2] bg-[url('/product_bg_1.png')] py-1">
+        <Banner></Banner>
 
-      <HomeBBQitems></HomeBBQitems>
-      <HomeMenu children={Children}>
-        
-        <MenuFooter />
-      </HomeMenu>
+        <HomeBBQitems></HomeBBQitems>
+        <MenuFooter children="view all bbq" />
+        <HomeMenu children={Children}>
+          <MenuFooter children="view all menu" />
+        </HomeMenu>
+      </section>
     </>
   );
 };

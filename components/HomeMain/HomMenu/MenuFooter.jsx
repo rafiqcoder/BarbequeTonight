@@ -1,14 +1,14 @@
-import React from 'react';
+import Link from 'node_modules/next/link';
 
-const MenuFooter = () => {
+const MenuFooter = ({children}) => {
     return (
-      <div className='mt-5 flex justify-center'>
-        <a
+      <div className="w-100 flex flex-col justify-center items-center mt-10 mb-0">
+        <Link
           href="/menu"
-          className="as-btn w-[200px] mx-auto text-lg font-semibold"
+          className="font-rubik font-medium text-[14px] text-[#ffffff] bg-[#eb0029] transition ease-in-out duration-500 hover:bg-[#010f1c] py-4 px-12 rounded-full uppercase"
         >
-          View All Menus --&gt;
-        </a>
+          {children}
+        </Link>
       </div>
     );
 };

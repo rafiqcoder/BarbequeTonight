@@ -13,8 +13,8 @@ const DashSidebar = () => {
     
   
     return (
-      <div className="flex flex-col sm:w-64 flex-1  sm:flex-none sm:h-screen py-8 bg-blue-200 border-r dark:bg-gray-900 dark:border-gray-700">
-        <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-white">
+      <div className="flex flex-col sm:w-64 flex-1  sm:flex-none sm:h-screen py-8 bg-blue-900 border-r  text-white">
+        <h2 className="text-3xl font-semibold text-center text-white ">
           Wellcome
         </h2>
 
@@ -24,10 +24,10 @@ const DashSidebar = () => {
             src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
             alt="avatar"
           />
-          <h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">
+          <h4 className="mx-2 mt-2 font-medium text-white hover:underline">
             {activeUser?.displayName}
           </h4>
-          <p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:underline">
+          <p className="mx-2 mt-1 text-sm font-medium text-white hover:underline">
            {activeUser?.email}
           </p>
         </div>
@@ -36,7 +36,7 @@ const DashSidebar = () => {
           <nav>
             <Link
               href="/dashboard/dashboard"
-              className="flex items-center px-4 py-2 text-gray-700 bg-gray-100 dark:bg-gray-800 dark:text-gray-200 "
+              className="flex items-center px-4 py-2 text-gray-700 bg-gray-100"
             >
               <svg
                 className="w-5 h-5"
@@ -58,7 +58,7 @@ const DashSidebar = () => {
 
             <Link
               href="/dashboard/my-orders"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 className="w-5 h-5"
@@ -80,7 +80,7 @@ const DashSidebar = () => {
 
             <Link
               href="/dashboard/AllBBQProduct"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 className="w-5 h-5"
@@ -101,7 +101,7 @@ const DashSidebar = () => {
             </Link>
             <Link
               href="/dashboard/AllBBQProduct"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 className="w-5 h-5"
@@ -122,7 +122,7 @@ const DashSidebar = () => {
             </Link>
             <Link
               href="/dashboard/addBBQProduct"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 className="w-5 h-5"
@@ -143,7 +143,7 @@ const DashSidebar = () => {
             </Link>
             <Link
               href="/dashboard/addBundle"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 className="w-5 h-5"
@@ -165,7 +165,7 @@ const DashSidebar = () => {
 
             <Link
               href="/dashboard/add-categories"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 className="w-5 h-5"
@@ -186,7 +186,7 @@ const DashSidebar = () => {
             </Link>
             <Link
               href="/dashboard/reports"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@ const DashSidebar = () => {
             </Link>
             <Link
               href="/dashboard/reports"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -226,7 +226,7 @@ const DashSidebar = () => {
             </Link>
             <Link
               href="/dashboard/reports"
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+              className="flex items-center px-4 py-2 mt-5 text-whitetransition-colors duration-300 transform  hover:bg-gray-200 hover:text-gray-700"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

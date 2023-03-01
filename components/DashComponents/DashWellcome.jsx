@@ -2,16 +2,16 @@
 
 const DashWellcome = () => {
     return (
-      <div className=" dark:bg-gray-900">
+      <div className="">
         <div className="container px-6 py-16 mx-auto">
           <div className="items-center lg:flex justify-center">
             <div className="w-full lg:w-1/2">
               <div className="lg:max-w-lg">
-                <h1 className="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl">
+                <h1 className="text-2xl font-semibold text-gray-800  lg:text-3xl">
                   Wellcome To The <span className="text-blue-500">Dashboard</span>
                 </h1>
 
-                <p className="mt-4 text-gray-600 dark:text-gray-400">
+                <p className="mt-4 text-gray-600 ">
                   be the first to knows when our{" "}
                   <span className="font-medium text-blue-500">Brand</span> is live
                 </p>
@@ -20,7 +20,7 @@ const DashWellcome = () => {
                   <input
                     id="email"
                     type="text"
-                    className="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+                    className="px-4 py-2 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
                     placeholder="Email Address"
                   />
 

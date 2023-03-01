@@ -107,41 +107,40 @@ const Header = () => {
             >
               All Menus
             </Link>
-            <Link
-              href="/dashboard"
-              className={` hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
-                pathname === "/dashboard"
-                  ? "border-b-2 border-red-500"
-                  : "border-b-2 border-transparent"
-              }`}
-            >
-              Dashboard
-            </Link>
+            {activeUser && activeUser.uid && (
+              <Link
+                href="/dashboard"
+                className={` hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                  pathname === "/dashboard"
+                    ? "border-b-2 border-red-500"
+                    : "border-b-2 border-transparent"
+                }`}
+              >
+                Dashboard
+              </Link>
+            )}
+
             {activeUser && activeUser.uid ? (
-              
-                <Link
-                  href="/login"
-                  className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
-                pathname === "/logout"
-                  ? "border-b-2 border-red-500"
-                  : "border-b-2 border-transparent"
-              }`}
-                  onClick={() => {
-                    logOut(router.push("/login"));
-                  }}
-                >
-                  Logout
-                </Link>
-              
+              <Link
+                href="/login"
+                className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                  pathname === "/logout"
+                    ? "border-b-2 border-red-500"
+                    : "border-b-2 border-transparent"
+                }`}
+                onClick={() => {
+                  logOut(router.push("/login"));
+                }}
+              >
+                Logout
+              </Link>
             ) : (
-              
-                <Link
-                  href="/login"
-                  className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
-                >
-                  Login
-                </Link>
-              
+              <Link
+                href="/login"
+                className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
+              >
+                Login
+              </Link>
             )}
           </div>
           <div className="flex-none relative">
@@ -177,8 +176,7 @@ const Header = () => {
                 className="btn btn-ghost btn-circle avatar ml-3 mr-5"
               >
                 <div className="w-10 rounded-full">
-                  <Image src={user} alt='userImage'
-                  />
+                  <Image src={user} alt="userImage" />
                 </div>
               </label>
               <ul

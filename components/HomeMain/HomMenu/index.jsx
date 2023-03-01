@@ -48,7 +48,7 @@ const index = ({children}) => {
     // console.log(menu);
     setMenuItems(menu[0]?.menu);
   }
-
+  console.log('activeMenu',activeMenu);
   const addBundleToCart = () => {
     const updatedProduct = {
       product:activeMenu,
