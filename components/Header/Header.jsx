@@ -177,7 +177,8 @@ const Header = () => {
                 className="btn btn-ghost btn-circle avatar ml-3 mr-5"
               >
                 <div className="w-10 rounded-full">
-                  <Image src={user} />
+                  <Image src={user} alt='userImage'
+                  />
                 </div>
               </label>
               <ul
