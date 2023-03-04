@@ -48,11 +48,19 @@ const singleBbq = ({ product }) => {
     const { id } = router.query;
     console.log(product);
 
+    // default use state image here
+    const [defaultThumb, setDefaultThumb] = useState(product.thumb);
+
     const dispatch = useDispatch();
     console.log('working');
     const addedProduct = cart.find(pd => pd._id === product._id);
 
 
+    // click on mini thumb action function
+    const clickOnMiniThumbAction = (newImgLocation) => {
+        console.log(newImgLocation);
+        setDefaultThumb(newImgLocation);
+    }
 
 
 
@@ -94,16 +102,42 @@ const singleBbq = ({ product }) => {
                 </SingleBanner>
                 <div className='flex flex-row justify-between items-center container mx-auto py-10'>
                     <div className='grid grid-cols-5 gap-10 w-[60%]'>
-                        <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom grid grid-cols-1 gap-10'>
+
+                        <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom grid grid-cols-1 gap-10 scrollbar-hide'>
+
+                                
+                                {
+                                    defaultThumb !== product.thumb ? <>
+                                        <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
+                                            <span onClick={() => clickOnMiniThumbAction(product.thumb)}><img className='pt-[10%]' src={product.thumb} alt="" /></span>
+                                        </span>
+                                    </> : <>
+                                        <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
+                                            <span onClick={() => clickOnMiniThumbAction(product.thumb)}><img className='pt-[10%]' src={product.thumb} alt="" /></span>
+                                        </span>
+                                    </>
+                                }
+
                             {product.img.map((img,index) => (
-                                <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
-                                    <Link href={`/bbq/${product._id}`}><img className='pt-[10%]' src={img.img} alt="" /></Link>
-                                </span>
+                                <>
+                                    {
+                                        defaultThumb !== img.img ? <>
+                                            <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
+                                                <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
+                                            </span>
+                                        </> : <>
+                                            <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
+                                                <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
+                                            </span>
+                                        </>
+                                    }
+                                </>
                             ))}
                         </div>
+                        
                         <div className='bg-[#FAF7F2] max-h-[500px] col-span-4 text-center rounded-lg'>
 
-                            <img className='h-[100%] pt-[5%] inline-block' src={product.thumb} alt="" />
+                            <img className='h-[100%] pt-[5%] inline-block' src={defaultThumb} alt="" />
 
                         </div>
                     </div>
@@ -132,10 +166,10 @@ const singleBbq = ({ product }) => {
                                 </span>
                                 {
                                     activeUser && activeUser?.uid ? <div>
-                                        <button className='text-[14px] font-bold bg-[#eb0029] text-white py-[6px] px-[20px] rounded-lg' onClick={() => handleAddToCart(product)}>ADD TO CART</button>
+                                        <button className='text-[14px] font-bold bg-[#eb0029] text-white py-[6px] px-[20px] rounded-lg mr-2' onClick={() => handleAddToCart(product)}>ADD TO CART</button>
                                         <button className="bg-[#010F1C] text-[14px] font-bold text-white py-[6px] px-[15px] rounded-lg"><i className="fa-regular fa-heart"></i> Buy Now</button>
                                     </div> : <Link href='/'>
-                                        <button className='text-[14px] font-bold bg-[#eb0029] text-white py-[6px] px-[20px] rounded-lg' onClick={() => handleAddToCart(product)}>ADD TO CART</button>
+                                        <button className='text-[14px] font-bold bg-[#eb0029] text-white py-[6px] px-[20px] rounded-lg mr-2' onClick={() => handleAddToCart(product)}>ADD TO CART</button>
                                         <button className="bg-[#010F1C] text-[14px] font-bold text-white py-[6px] px-[15px] rounded-lg"><i className="fa-regular fa-heart"></i> Buy Now</button>
                                     </Link>
                                 }
