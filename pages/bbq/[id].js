@@ -46,7 +46,7 @@ const singleBbq = ({ product }) => {
     const router = useRouter();
 
     const { id } = router.query;
-    console.log(product);
+    // console.log(product);
 
     // default use state image here
     const [defaultThumb, setDefaultThumb] = useState(product.thumb);
@@ -58,7 +58,6 @@ const singleBbq = ({ product }) => {
 
     // click on mini thumb action function
     const clickOnMiniThumbAction = (newImgLocation) => {
-        console.log(newImgLocation);
         setDefaultThumb(newImgLocation);
     }
 
@@ -97,9 +96,13 @@ const singleBbq = ({ product }) => {
     return (
         <Layout>
             <section>
+
+
                 <SingleBanner title={product.name} hero_bg={hero_bg}>
 
                 </SingleBanner>
+
+
                 <div className='flex flex-row justify-between items-center container mx-auto py-10'>
                     <div className='grid grid-cols-5 gap-10 w-[60%]'>
 
@@ -122,11 +125,11 @@ const singleBbq = ({ product }) => {
                                 <>
                                     {
                                         defaultThumb !== img.img ? <>
-                                            <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
+                                            <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
                                                 <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
                                             </span>
                                         </> : <>
-                                            <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
+                                            <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
                                                 <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
                                             </span>
                                         </>
@@ -205,6 +208,18 @@ const singleBbq = ({ product }) => {
 
                     </div>
                 </div>
+
+                
+                <div className="container mx-auto py-10">
+                    <div className="w-100 flex flex-row justify-center items-center gap-3 mb-8">
+                        <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]">PRODUCT DESCRIPTION</button>
+                        <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]">CUSTOMER REVIEW</button>
+                    </div>
+
+                    <hr/>
+                </div>
+
+
             </section>
         </Layout>
     );
