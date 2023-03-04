@@ -7,12 +7,15 @@ import { useDispatch } from 'react-redux';
 import Layout from '../../Layout/Layout';
 import { loginWithEmail,signInWithGoogle } from '../../src/store/actions/authActions';
 // import UseToken from '../../hooks/UseToken';
+import { useSaveUserMutation } from '@/src/store/api/userApi';
 import { toast } from 'react-hot-toast';
 
 const Login = () => {
   const [loadLoging,setLoadLoging] = useState(false);
   // const { loginWithGoogle, loginWithEmail } = useContext(AuthContext);
   const { register,formState: { errors },handleSubmit } = useForm();
+  //userMutation
+  const [saveUser,{isLoading} ] = useSaveUserMutation();
   const { error,setError } = useState('');
 // const user = useSelector(state => state.userAuth.user)
 //  const [showPasswordReset, setShowPasswordReset] = useState(false);
@@ -22,7 +25,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  if (loadLoging) {
+  if (loadLoging || isLoading) {
     return (
       <div className="radial-progress text-danger" style={{ "--value": 70 }}>
         70%
@@ -54,13 +57,20 @@ const Login = () => {
       // const userType = "buyer";
     signInWithGoogle()
       .then((result) => {
+        
+        // console.log(result.user);
         toast.success('Login Successfully');
+        const updatedUser = {
+          name: result.user.displayName,
+          email:result.user.email,
+        };
+        console.log("updatedUser",updatedUser);
+        dispatch(saveUser(updatedUser));
         
         setLoadLoging(false);
-        // console.log(result.user);
+        router.back();
         // dispatch(setUser(result.user.email))
-         router.back();
-        // saveUserToDb(result.user.displayName,result.user.email,result.user.photoURL,userType);
+        // saveUserToDb(result.user);
       })
 
       .catch((error) => {

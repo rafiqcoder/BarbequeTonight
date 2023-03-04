@@ -106,12 +106,19 @@ const CartBar = ({setShowCart,showCart}) => {
         <h2 className="text-black text-xl ml-3">cart is empty</h2>
       )}
       <div className="w-full flex justify-center">
-        <Link
-          href="/checkout"
-          className="font-rubik font-semibold text-[#ffffff] bg-[red] py-2 px-4 rounded-full hover:bg-[#eb0029] transition ease-in-out duration-500 mt-10"
-        >
-          Checkout
-        </Link>
+        {activeUser?.email ? 
+            <Link
+              href="/checkout"
+              className="font-rubik font-semibold text-[#ffffff] bg-[red] py-2 px-4 rounded-full hover:bg-[#eb0029] transition ease-in-out duration-500 mt-10"
+            >
+              Checkout
+            </Link>: <Link
+            href="/login"
+            className="font-rubik font-semibold text-[#ffffff] bg-[red] py-2 px-4 rounded-full hover:bg-[#eb0029] transition ease-in-out duration-500 mt-10"
+                    >
+            Checkout
+                    </Link>
+        }
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ const {
         cartData,
         ...data,
       };
-    fetch(`${Base_url}/orderBbq`, {
+    fetch(`/={Base_url}/orderBbq`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -79,7 +79,7 @@ const {
               <ul className=" w-full flex justify-between text-center items-center 2xl:container lg:py-3 px-5 ml-4">
                 {array.map((item, i) => (
                   <li
-                    className={`${
+                    className={`/={
                       i === 0
                         ? "w-[100px]"
                         : item === "Quantity"
@@ -106,7 +106,7 @@ const {
                   <h2 className="text-black text-lg">{item.name}</h2>
 
                   <p className="text-xl text-black">
-                    {item.price ? item.price : item.menu[0].price}$
+                    {item.price ? item.price : item.menu[0].price}/=
                   </p>
 
                   <div className="flex">
@@ -128,7 +128,7 @@ const {
                   </div>
 
                   <p className="text-xl text-black">
-                    {item.quantity * item.price}$
+                    {item.quantity * item.price}/=
                   </p>
                   <div className="flex">
                     <button
@@ -147,11 +147,9 @@ const {
                 <input type="text" className="border w-full" />
               </div>
 
-              
-
               <div className="w-full flex justify-between">
                 <p>Subtotal</p>
-                <p>{grandTotal}$</p>
+                <p>{grandTotal}/=</p>
               </div>
             </div>
           </div>
@@ -265,19 +263,19 @@ const {
                     {cart.length}
                   </p>
                 </div>
-                
+
                 <div className="flex justify-between w-full items-center">
                   <p className="text-lg leading-4 text-gray-600">
                     Shipping charges
                   </p>
                   <p className="text-lg font-semibold leading-4 text-gray-600">
-                    $90
+                    90 /=
                   </p>
                 </div>
                 <div className="flex justify-between w-full items-center">
                   <p className="text-lg leading-4 text-gray-600">Sub total </p>
                   <p className="text-lg font-semibold leading-4 text-gray-600">
-                    {grandTotal}
+                    {grandTotal} /=
                   </p>
                 </div>
               </div>
@@ -286,7 +284,7 @@ const {
                   Estimated Total{" "}
                 </p>
                 <p className="text-lg font-semibold leading-4 text-gray-800">
-                  {grandTotal + 90} $
+                  {grandTotal + 90} /=
                 </p>
               </div>
             </div>

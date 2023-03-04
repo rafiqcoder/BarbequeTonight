@@ -22,7 +22,7 @@ const Header = () => {
        setScroll(window.scrollY > 50);
      });
    },[]);
-  console.log(scroll);
+  console.log("activeUser", activeUser);
     return (
       <>
         <div className="navbar bg-base-100 shadow-sm">
@@ -176,7 +176,7 @@ const Header = () => {
                 className="btn btn-ghost btn-circle avatar ml-3 mr-5"
               >
                 <div className="w-10 rounded-full">
-                  <Image src={user} alt="userImage" />
+                  <img src={activeUser?.photoURL?activeUser?.photoURL:user} alt="userImage" />
                 </div>
               </label>
               <ul
@@ -193,7 +193,28 @@ const Header = () => {
                   <Link href="/">Settings</Link>
                 </li>
                 <li>
-                  <Link href="/">Logout</Link>
+                  {activeUser && activeUser.uid ? (
+                    <Link
+                      href="/login"
+                      className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                        pathname === "/logout"
+                          ? "border-b-2 border-red-500"
+                          : "border-b-2 border-transparent"
+                      }`}
+                      onClick={() => {
+                        logOut(router.push("/login"));
+                      }}
+                    >
+                      Logout
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/login"
+                      className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
+                    >
+                      Login
+                    </Link>
+                  )}
                 </li>
               </ul>
             </div>

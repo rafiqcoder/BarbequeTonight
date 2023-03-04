@@ -41,30 +41,7 @@ export const updateNameAndPhoto = (name,photo) => {
 //         photoURL,
 //     };
 //     setLoading(true);
-//     const saveUserToDb = (name,email,img) => {
-
-
-
-//         const user = { name,email,img };
-//         fetch(`https://server-9cmeqz35g-rafiqcoder.vercel.app/users`,{
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify(user),
-//         })
-//             .then((res) => res.json())
-//             .then((data) => {
-//                 if (data.insertedId) {
-//                     setUserEmail(user?.email);
-//                     toast.success("You are registered successfully");
-//                 }
-//             })
-//             .catch((err) => {
-//                 console.log(err);
-//                 setLoading(false);
-//             });
-//     };
+   
 
 
 // };

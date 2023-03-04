@@ -1,5 +1,6 @@
 import Link from 'node_modules/next/link';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const MenuBody = ({
   menuItems,
@@ -8,6 +9,7 @@ const MenuBody = ({
   children,
   activeMenu,
 }) => {
+  const {activeUser} = useSelector((state) => state.userAuth);
   const [id,setId] = React.useState('');
   useEffect(() => {
     setId(activeMenu?._id);
@@ -57,21 +59,31 @@ const MenuBody = ({
           </span>
           <div className="flex justify-center items-center gap-3">
             <div>
-              <button
-                className="font-rubik font-semibold text-[#ffffff] bg-[red] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2"
-                onClick={addBundleToCart}
-              >
-                Add to Cart
-              </button>
+              {activeUser && activeUser?.uid ? (
+                <button
+                  className="font-rubik font-semibold text-[#ffffff] bg-[red] py-2 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2"
+                  onClick={addBundleToCart}
+                >
+                  Add to Cart
+                </button>
+              ) : (
+               
+                  <Link
+                    href="/login"
+                    className="font-rubik font-semibold text-[#ffffff] bg-[red] py-2 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-3"
+                  >
+                    Add to Cart
+                  </Link>
+                
+              )}
             </div>
-            
-              <Link
-                href={`/menu${id ? `/${id}` : ''}`}
-                className="font-rubik font-semibold text-[#ffffff] bg-[#010f1c] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2"
-              >
-                View Details
-              </Link>
-            
+
+            <Link
+              href={`/menu${id ? `/${id}` : ""}`}
+              className="font-rubik font-semibold text-[#ffffff] bg-[#010f1c] py-2 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2"
+            >
+              View Details
+            </Link>
           </div>
           {children ? children[1] : null}
         </div>

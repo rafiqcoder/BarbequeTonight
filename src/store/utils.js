@@ -12,4 +12,4 @@ export function generateString(length) {
 }
 
 
-export const Base_url = "https://server-rafiqcoder.vercel.app"
+export const Base_url = "http://localhost:5000"
