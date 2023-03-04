@@ -51,6 +51,9 @@ const singleBbq = ({ product }) => {
     // default use state image here
     const [defaultThumb, setDefaultThumb] = useState(product.thumb);
 
+    // default tab button here
+    const [defaultTabButton, setDefaultTabButton] = useState('review');
+
     const dispatch = useDispatch();
     console.log('working');
     const addedProduct = cart.find(pd => pd._id === product._id);
@@ -61,6 +64,10 @@ const singleBbq = ({ product }) => {
         setDefaultThumb(newImgLocation);
     }
 
+    // click on tab button action function
+    const clickOnTabButton = (btnState) => {
+        setDefaultTabButton(btnState);
+    }
 
 
     const increaseCartItemNumber = (i) => {
@@ -212,11 +219,38 @@ const singleBbq = ({ product }) => {
                 
                 <div className="container mx-auto py-10">
                     <div className="w-100 flex flex-row justify-center items-center gap-3 mb-8">
-                        <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]">PRODUCT DESCRIPTION</button>
-                        <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]">CUSTOMER REVIEW</button>
+                        {
+                            defaultTabButton === 'description' ? <>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('description')}>PRODUCT DESCRIPTION</button>
+                            </> : <>
+                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('description')}>PRODUCT DESCRIPTION</button>
+                            </>
+                        }
+
+                        {
+                            defaultTabButton === 'review' ? <>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEW</button>
+                            </> : <>
+                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEW</button>
+                            </>
+                        }
+                        
+                        
                     </div>
 
                     <hr/>
+
+                    {
+                        defaultTabButton === 'description' ? <>
+                        
+                        <div className="w-100 mt-8">
+                            <p className="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. At voluptates quae reiciendis iure tenetur non quam, odit vitae ipsum, nostrum facilis fugit omnis, dicta distinctio quisquam sapiente exercitationem odio. Earum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempore id nobis in aut omnis. Nisi, doloribus. Minima cupiditate porro officia deserunt laboriosam incidunt eveniet vel hic! Dolorum, magnam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti delectus perspiciatis dignissimos vitae, voluptatem nulla exercitationem, nostrum iste impedit quas minima tempore laudantium laboriosam itaque temporibus assumenda placeat fuga? Aliquam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. At voluptates quae reiciendis iure tenetur non quam, odit vitae ipsum, nostrum facilis fugit omnis, dicta distinctio quisquam sapiente exercitationem odio. Earum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempore id nobis in aut omnis. Nisi, doloribus. Minima cupiditate porro officia deserunt laboriosam incidunt eveniet vel hic! Dolorum, magnam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti delectus perspiciatis dignissimos vitae, voluptatem nulla exercitationem, nostrum iste impedit quas minima tempore laudantium laboriosam itaque temporibus assumenda placeat fuga? Aliquam.</p>
+                        </div>
+
+                        </> : <>
+                        
+                        </>
+                    }
                 </div>
 
 
