@@ -40,10 +40,10 @@ const index = () => {
       product:menu[0],
       userEmail: activeUser?.email,
     };
-    console.log("updatedProduct",updatedProduct);
+    // console.log("updatedProduct",updatedProduct);
     dispatch(addToCart(updatedProduct))
   }
-  console.log("menuItems",menuItems);
+  // console.log("menuItems",menuItems);
   return (
     <Layout>
       <Banner></Banner>

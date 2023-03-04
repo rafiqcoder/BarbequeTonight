@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import Layout from '../../Layout/Layout';
@@ -14,16 +14,26 @@ const Login = () => {
   const [loadLoging,setLoadLoging] = useState(false);
   // const { loginWithGoogle, loginWithEmail } = useContext(AuthContext);
   const { register,formState: { errors },handleSubmit } = useForm();
+
+  // pathname from state for redirecting
+
   //userMutation
   const [saveUser,{isLoading} ] = useSaveUserMutation();
   const { error,setError } = useState('');
 // const user = useSelector(state => state.userAuth.user)
 //  const [showPasswordReset, setShowPasswordReset] = useState(false);
   
-  const [userEmail,setUserEmail] = useState('')
+  const [userEmail,setUserEmail] = useState(null)
   // const [token]=UseToken(userEmail)
   const dispatch = useDispatch();
   const router = useRouter();
+  const { query } = useRouter();
+  console.log("query",query);
+  useEffect(() => {
+    if (userEmail !== null) {
+     router.push(query?query.redirect:'/');
+    }
+  },[userEmail])
 
   if (loadLoging || isLoading) {
     return (
@@ -64,11 +74,16 @@ const Login = () => {
           name: result.user.displayName,
           email:result.user.email,
         };
+       setUserEmail(result.user.email)
         console.log("updatedUser",updatedUser);
         dispatch(saveUser(updatedUser));
+        // router.replace(query.returnUrl || "/");
+        // router.push('/');
+        // router.pathname.push('/')
         
         setLoadLoging(false);
-        router.back();
+        //callback url from router
+
         // dispatch(setUser(result.user.email))
         // saveUserToDb(result.user);
       })

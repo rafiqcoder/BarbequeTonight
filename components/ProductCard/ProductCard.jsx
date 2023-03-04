@@ -6,7 +6,7 @@ const ProductCard = (props) => {
   const { activeUser } = useSelector((state) => state.userAuth);
   const { product, children } = props;
   const { _id,name,desc,thumb,img,price } = product;
-  console.log(_id);
+  // console.log(_id);
   return (
     <div className="rounded-2xl bg-white custom_box_shadow_1 flex flex-col items-center py-4 border-b-4 border-[#ffffff] hover:border-[#eb0029] transition ease-in-out duration-500">
       <Link href={`/bbq/${_id}`}>

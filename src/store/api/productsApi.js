@@ -25,7 +25,6 @@ export const productsApi = createApi({
         method: "POST",
         body: product,
       }),
-
       invalidatesTags: ["Menu"],
     }),
     getMenus: builder.query({

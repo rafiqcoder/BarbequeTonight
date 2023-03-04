@@ -1,5 +1,7 @@
 import Link from 'node_modules/next/link';
-import React, { useEffect } from 'react';
+import { useRouter } from 'node_modules/next/router';
+
+import React,{ useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const MenuBody = ({
@@ -13,7 +15,9 @@ const MenuBody = ({
   const [id,setId] = React.useState('');
   useEffect(() => {
     setId(activeMenu?._id);
-  }, [activeMenu]);
+  },[activeMenu]);
+  const router = useRouter();
+  const {pathname} = router;
   // const {_id} = activeMenu;
   // console.log(id);
     // console.log("activeMenu", activeMenu._id);
@@ -67,14 +71,12 @@ const MenuBody = ({
                   Add to Cart
                 </button>
               ) : (
-               
-                  <Link
-                    href="/login"
-                    className="font-rubik font-semibold text-[#ffffff] bg-[red] py-2 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-3"
-                  >
-                    Add to Cart
-                  </Link>
-                
+                <Link
+                  href={`/login?redirect=${pathname}`}
+                  className="font-rubik font-semibold text-[#ffffff] bg-[red] py-2 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-3"
+                >
+                  Add to Cart
+                </Link>
               )}
             </div>
 

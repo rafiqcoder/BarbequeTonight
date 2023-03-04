@@ -16,7 +16,7 @@ const authSlice = createSlice({
     reducers: {
         setUser: (state,action) => {
             state.activeUser = action.payload;
-            console.log('userFromStore',state.activeUser);
+            // console.log('userFromStore',state.activeUser);
         },
         setError: (state,action) => {
             state.error = action.payload;

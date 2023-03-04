@@ -28,7 +28,7 @@ const HomeBBQitems = () => {
     dispatch(addToCart(updatedProduct));
   };
   // console.log(user.email);
-  console.log(bbqProducts);
+  // console.log(bbqProducts);
   
   return (
     <section className=" mt-0">

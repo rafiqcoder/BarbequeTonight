@@ -1,7 +1,6 @@
 import user from '@/public/assets/user.png';
 import { logOut } from '@/src/store/actions/authActions';
 import Link from 'next/link';
-import Image from 'node_modules/next/image';
 import { useRouter } from 'node_modules/next/router';
 import { useEffect,useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -16,13 +15,13 @@ const Header = () => {
   const router = useRouter();
   //current route 
   const { pathname } = router;
-  console.log( pathname );
+  // console.log( pathname );
    useEffect(() => {
      window.addEventListener("scroll", () => {
        setScroll(window.scrollY > 50);
      });
    },[]);
-  console.log("activeUser", activeUser);
+  // console.log("activeUser", activeUser);
     return (
       <>
         <div className="navbar bg-base-100 shadow-sm">
@@ -122,21 +121,21 @@ const Header = () => {
 
             {activeUser && activeUser.uid ? (
               <Link
-                href="/login"
+                href={`/login?redirect=${pathname}`}
                 className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
                   pathname === "/logout"
                     ? "border-b-2 border-red-500"
                     : "border-b-2 border-transparent"
                 }`}
                 onClick={() => {
-                  logOut(router.push("/login"));
+                  logOut();
                 }}
               >
                 Logout
               </Link>
             ) : (
               <Link
-                href="/login"
+                href={`/login?redirect=${pathname}`}
                 className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
               >
                 Login
@@ -176,7 +175,10 @@ const Header = () => {
                 className="btn btn-ghost btn-circle avatar ml-3 mr-5"
               >
                 <div className="w-10 rounded-full">
-                  <img src={activeUser?.photoURL?activeUser?.photoURL:user} alt="userImage" />
+                  <img
+                    src={activeUser?.photoURL ? activeUser?.photoURL : user}
+                    alt="userImage"
+                  />
                 </div>
               </label>
               <ul

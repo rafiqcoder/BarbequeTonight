@@ -27,10 +27,10 @@ const index = ({children}) => {
     // console.log('bundleProducts',bundleProducts);
     // console.log('menu',menu);
     if (bundleProducts !== undefined || bundleProducts !== null || bundleProducts !== "") {
-      console.log('bundleProducts',bundleProducts);
+      // console.log('bundleProducts',bundleProducts);
       if (bundleProducts) {
         let menu = bundleProducts;
-        console.log("menu",menu);
+        // console.log("menu",menu);
         setTotal (menu[0]?.price);
         setMenuItems(bundleProducts[0]?.menu);
         setActiveMenu(bundleProducts[0]);
@@ -48,7 +48,7 @@ const index = ({children}) => {
     // console.log(menu);
     setMenuItems(menu[0]?.menu);
   }
-  console.log('activeMenu',activeMenu);
+  // console.log('activeMenu',activeMenu);
   const addBundleToCart = () => {
     const updatedProduct = {
       product:activeMenu,
@@ -58,7 +58,7 @@ const index = ({children}) => {
   }
   // console.log(menuItems);
 
-console.log('activeMenu',activeMenu?._id);
+// console.log('activeMenu',activeMenu?._id);
 
     return (
       <section className="bg-[#faf7f2] bg-[url('/product_bg_1.png')] py-32">
