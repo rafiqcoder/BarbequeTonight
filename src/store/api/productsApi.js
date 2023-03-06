@@ -7,12 +7,12 @@ export const productsApi = createApi({
   tagTypes: ["BBQProduct","Menu"],
   endpoints: (builder) => ({
     getBBQProducts: builder.query({
-      query: () => "/AllBBQProducts",
+      query: () => "/bbq",
       providesTags: ["BBQProduct"],
     }),
     addProduct: builder.mutation({
       query: (product) => ({
-        url: "/addBBQ",
+        url: "/bbq",
         method: "POST",
         body: product,
       }),
@@ -21,14 +21,14 @@ export const productsApi = createApi({
     }),
     addMenu: builder.mutation({
       query: (product) => ({
-        url: "/addMenu",
+        url: "/menu",
         method: "POST",
         body: product,
       }),
       invalidatesTags: ["Menu"],
     }),
     getMenus: builder.query({
-      query: () => "/allMenus",
+      query: () => "/menu",
       providesTags: ["Menu"],
     }),
   }),

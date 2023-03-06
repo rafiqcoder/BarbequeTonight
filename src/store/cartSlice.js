@@ -19,7 +19,7 @@ const cartSlice = createSlice({
       // const oldCartData = JSON.parse(localStorage.getItem("cart") || "[]")
       // if (state.userEmail !== undefined) {
       //   console.log(state.userEmail);
-      //   fetch(`${Base_url}/addToCartDb?email=${state.userEmail}`)
+      //   fetch(`${Base_url}/cart?email=${state.userEmail}`)
       //     .then((res) => res.json())
       //     .then((data) => {
       //       if (data.acknowledged) {
@@ -65,7 +65,7 @@ const cartSlice = createSlice({
       const email = action.payload.userEmail;
 
       if (email) {
-        fetch(`${Base_url}/addToCartDb?email=${email}`,{
+        fetch(`${Base_url}/cart?email=${email}`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(Cartdata),
@@ -102,7 +102,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
 
       if (email) {
-        fetch(`${Base_url}/addToCartDb?email=${email}`,{
+        fetch(`${Base_url}/cart?email=${email}`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(Cartdata),
@@ -145,7 +145,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
 
-      fetch(`${Base_url}/addToCartDb?email=${email}`,{
+      fetch(`${Base_url}/cart?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata)
@@ -167,7 +167,7 @@ const cartSlice = createSlice({
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
       console.log(email);
-      fetch(`${Base_url}/addToCartDb?email=${email}`,{
+      fetch(`${Base_url}/cart?email=${email}`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Cartdata)

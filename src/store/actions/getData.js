@@ -8,7 +8,7 @@ export const fetchCartDbThunk = createAsyncThunk('cartDb/fetch',(email) => {
   //         return(data.cartData);
   //     })
   const data = async () => {
-    const value = await fetch(`${Base_url}/addToCartDb?email=${email}`)
+    const value = await fetch(`${Base_url}/cart?email=${email}`)
     const res = await value.json()
 
     return res;

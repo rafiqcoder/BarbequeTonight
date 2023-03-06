@@ -16,7 +16,7 @@ const AllMenuBody = ({
   
   // const { context } = query; 
   // const { asPath } = context;
-
+console.log('menutem',menuItems);
  
 
   
@@ -84,7 +84,7 @@ const AllMenuBody = ({
               </div>
 
               <Link
-                href={`/menu/${id ? `/${id}` : ""}`}
+                href={`/menu${id ? `/${id}` : ""}`}
                 className="font-rubik font-semibold text-[#ffffff] bg-[#010f1c] py-1 px-4 rounded-md hover:bg-[#eb0029] transition ease-in-out duration-500 mt-2"
               >
                 View Details

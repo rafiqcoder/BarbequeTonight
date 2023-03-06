@@ -11,7 +11,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch,useSelector } from "react-redux";
 
 export const getStaticPaths = async () => {
-  const { data } = await axios.get(`${Base_url}/allMenus`);
+  const { data } = await axios.get(`${Base_url}/menu`);
 
   const paths = data.map((product) => ({
     params: { id: product._id.toString() },
@@ -86,7 +86,7 @@ const singleMenu = ({ product }) => {
             <div className="bg-[#FAF7F2] max-h-[500px] col-span-4 text-center rounded-lg">
               <img
                 className="h-[100%] w-[100%] pt-[5%] inline-block object-cover"
-                src={product.menu[0].thumb}
+                src={product?.menu[0]?.thumb}
                 alt=""
               />
             </div>

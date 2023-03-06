@@ -13,7 +13,7 @@ import { useDispatch,useSelector } from "react-redux";
 
 
 export const getStaticPaths = async () => {
-    const { data } = await axios.get(`${Base_url}/AllBBQProducts`)
+    const { data } = await axios.get(`${Base_url}/bbq`)
 
     const paths = data.map(product => ({
         params: { id: product._id.toString() }
@@ -27,7 +27,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id;
-    const { data } = await axios.get(`${Base_url}/AllBBQProducts/${id}`)
+    const { data } = await axios.get(`${Base_url}/bbq/${id}`)
 
     return {
         props: {
