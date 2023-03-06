@@ -46,10 +46,13 @@ const singleBbq = ({ product }) => {
     const router = useRouter();
 
     const { id } = router.query;
-    console.log(product);
+    // console.log(product);
 
     // default use state image here
-    const [defaultThumb, setDefaultThumb] = useState(product.thumb);
+    const [defaultThumb, setDefaultThumb] = useState(product?.thumb);
+
+    // default tab button here
+    const [defaultTabButton, setDefaultTabButton] = useState('review');
 
     const dispatch = useDispatch();
     console.log('working');
@@ -58,10 +61,13 @@ const singleBbq = ({ product }) => {
 
     // click on mini thumb action function
     const clickOnMiniThumbAction = (newImgLocation) => {
-        console.log(newImgLocation);
         setDefaultThumb(newImgLocation);
     }
 
+    // click on tab button action function
+    const clickOnTabButton = (btnState) => {
+        setDefaultTabButton(btnState);
+    }
 
 
     const increaseCartItemNumber = (i) => {
@@ -97,9 +103,13 @@ const singleBbq = ({ product }) => {
     return (
         <Layout>
             <section>
-                <SingleBanner title={product.name} hero_bg={hero_bg}>
+
+
+                <SingleBanner title={product.name} hero_bg={`https://angfuzsoft.com/html/pizzer/demo/assets/img/breadcumb/breadcumb-bg.jpg`}>
 
                 </SingleBanner>
+
+
                 <div className='flex flex-row justify-between items-center container mx-auto py-10'>
                     <div className='grid grid-cols-5 gap-10 w-[60%]'>
 
@@ -122,11 +132,11 @@ const singleBbq = ({ product }) => {
                                 <>
                                     {
                                         defaultThumb !== img.img ? <>
-                                            <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
+                                            <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
                                                 <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
                                             </span>
                                         </> : <>
-                                            <span key={index} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
+                                            <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
                                                 <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
                                             </span>
                                         </>
@@ -205,6 +215,138 @@ const singleBbq = ({ product }) => {
 
                     </div>
                 </div>
+
+                
+                <div className="container mx-auto py-10">
+                    <div className="w-100 flex flex-row justify-center items-center gap-3 mb-8">
+                        {
+                            defaultTabButton === 'description' ? <>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('description')}>PRODUCT DESCRIPTION</button>
+                            </> : <>
+                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('description')}>PRODUCT DESCRIPTION</button>
+                            </>
+                        }
+
+                        {
+                            defaultTabButton === 'review' ? <>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
+                            </> : <>
+                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
+                            </>
+                        }
+                        
+                        
+                    </div>
+
+                    <hr/>
+
+                    {
+                        defaultTabButton === 'description' ? <>
+                        
+                        <div className="w-100 mt-8">
+                            <p className="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. At voluptates quae reiciendis iure tenetur non quam, odit vitae ipsum, nostrum facilis fugit omnis, dicta distinctio quisquam sapiente exercitationem odio. Earum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempore id nobis in aut omnis. Nisi, doloribus. Minima cupiditate porro officia deserunt laboriosam incidunt eveniet vel hic! Dolorum, magnam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti delectus perspiciatis dignissimos vitae, voluptatem nulla exercitationem, nostrum iste impedit quas minima tempore laudantium laboriosam itaque temporibus assumenda placeat fuga? Aliquam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. At voluptates quae reiciendis iure tenetur non quam, odit vitae ipsum, nostrum facilis fugit omnis, dicta distinctio quisquam sapiente exercitationem odio. Earum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempore id nobis in aut omnis. Nisi, doloribus. Minima cupiditate porro officia deserunt laboriosam incidunt eveniet vel hic! Dolorum, magnam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti delectus perspiciatis dignissimos vitae, voluptatem nulla exercitationem, nostrum iste impedit quas minima tempore laudantium laboriosam itaque temporibus assumenda placeat fuga? Aliquam.</p>
+                        </div>
+
+                        </> : <>
+                            <div className="grid grid-cols-2 gap-6 p-4">
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    }
+                </div>
+
+
             </section>
         </Layout>
     );
