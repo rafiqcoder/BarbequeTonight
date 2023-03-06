@@ -49,7 +49,7 @@ const singleBbq = ({ product }) => {
     // console.log(product);
 
     // default use state image here
-    const [defaultThumb, setDefaultThumb] = useState(product.thumb);
+    const [defaultThumb, setDefaultThumb] = useState(product?.thumb);
 
     // default tab button here
     const [defaultTabButton, setDefaultTabButton] = useState('review');
@@ -105,7 +105,7 @@ const singleBbq = ({ product }) => {
             <section>
 
 
-                <SingleBanner title={product.name} hero_bg={hero_bg}>
+                <SingleBanner title={product.name} hero_bg={`https://angfuzsoft.com/html/pizzer/demo/assets/img/breadcumb/breadcumb-bg.jpg`}>
 
                 </SingleBanner>
 
@@ -229,9 +229,9 @@ const singleBbq = ({ product }) => {
 
                         {
                             defaultTabButton === 'review' ? <>
-                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEW</button>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
                             </> : <>
-                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEW</button>
+                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
                             </>
                         }
                         
@@ -248,7 +248,100 @@ const singleBbq = ({ product }) => {
                         </div>
 
                         </> : <>
-                        
+                            <div className="grid grid-cols-2 gap-6 p-4">
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                    <div className="w-[100px]">
+                                        <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
+                                    </div>
+                                    <div className="w-[calc(100%-100px)]">
+                                        <div className="flex flex-row justify-between items-center">
+                                            <h1 className="text-[#010f1c] font-rubik text-[20px] font-bold">Mark Jack</h1> 
+                                            <span className="text-[#ff9d2d] text-[13px]">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <p className="text-[#4d5765] text-[14px] font-normal font-roboto"><i class="fa-solid fa-calendar-days"></i> 22 April, 2022</p>
+                                        </div>
+                                        <p className="text-[#4d5765] text-[16px] font-normal font-roboto mt-4">
+                                            Completely build enabled web-readiness and distributed customer service. Proactively customize.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </>
                     }
                 </div>
