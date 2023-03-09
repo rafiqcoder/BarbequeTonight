@@ -12,4 +12,4 @@ export function generateString(length) {
 }
 
 
-export const Base_url = "http://localhost:5000/api/v1"
+export const Base_url = "https://bbq-server.vercel.app/api/v1"
