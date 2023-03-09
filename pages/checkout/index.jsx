@@ -33,7 +33,8 @@ const {
         cartData,
         ...data,
       };
-    fetch(`/={Base_url}/orderBbq`, {
+    console.log("orderData", orderData);
+    fetch(`${Base_url}/order`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -215,28 +216,36 @@ const {
                   </p>
                 )}
                 <input
-                  {...register("Address", {
+                  {...register("address", {
                     required: "Address is required",
                   })}
                   className="px-2 focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                   placeholder="Address"
                 />
-                {errors.Address && (
+                {errors.address && (
                   <p
                     role="alert"
                     className="text-red-500 text-xs font-medium mt-2"
                   >
-                    {errors.Address?.message}
+                    {errors.address?.message}
                   </p>
                 )}
 
                 <input
-                  {...register("phoneNumber", {
+                  {...register("phone", {
                     required: "Address is required",
                   })}
                   className="focus:outline-none focus:ring-2 focus:ring-gray-500 px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4   w-full"
                   placeholder="Phone Number"
                 />
+                {errors.phone && (
+                  <p
+                    role="alert"
+                    className="text-red-500 text-xs font-medium mt-2"
+                  >
+                    {errors.phone?.message}
+                  </p>
+                )}
                 <button
                   type="submit"
                   className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-black py-4 w-full md:w-4/12 lg:w-full text-white bg-red-700"

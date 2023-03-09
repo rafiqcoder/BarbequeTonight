@@ -3,10 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch,useSelector } from 'react-redux';
 const toExclude = [
-  "/checkout",
-  "/dashboard",
-  "/dashboard/addBundle",
-  "/dashboard/addBBQProduct",
+  "checkout",
+  "dashboard"
 ];
 const basePaths = ["/home","/","/dashboard"];
 
@@ -14,8 +12,9 @@ const CartBar = ({setShowCart,showCart}) => {
   const { grandTotal, cart } = useSelector((state) => state.cart);
   const { activeUser } = useSelector((state) => state.userAuth);
   const router = useRouter();
-
+  console.log(activeUser);
   const { pathname } = router;
+  console.log(pathname.split("/")[1]);
   const dispatch = useDispatch();
   const handleAddTocart = (product) => {
     const updatedProduct = {
@@ -39,7 +38,7 @@ const CartBar = ({setShowCart,showCart}) => {
     dispatch(removeFromCart(updatedProduct));
   };
   // bg-gradient-to-br from-green-400 to-blue-500
-  if (toExclude.includes(pathname)) return <></>;
+  if (toExclude.includes(pathname.split("/")[1])) return <></>;
   return (
     <div className=" cart-container  rounded-lg sm:h-screen  pb-5     p-3 shadow-md">
       <p

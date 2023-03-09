@@ -2,18 +2,21 @@
 // import { AuthContext } from '@/src/Context/Context';
 import Header from '@/components/Header/Header';
 import { app } from '@/src/firbase/firebase.config';
+import isAdmin from '@/src/hooks/isAdmin';
 import { fetchCartDbThunk } from '@/src/store/actions/getData';
-import { setLoading, setUser } from '@/src/store/authSlice';
+import { setLoading,setUser } from '@/src/store/authSlice';
 import { setActiveUser } from '@/src/store/cartSlice';
 import { getAuth } from 'firebase/auth';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import Footer from '../components/Footer/Footer';
 
 
 const Layout = ({ children }) => {
   // const {user} =useContext(AuthContext);
-  const { activeUser, loading } = useSelector((state) => state.userAuth);
+  const { activeUser,loading } = useSelector((state) => state.userAuth);
+
+
 
   const dispatch = useDispatch();
   const cartDispatch = useDispatch();
@@ -40,7 +43,9 @@ const Layout = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  },[]);
+    const [admin] = isAdmin(activeUser?.email);
+    console.log("admina", admin);
   if (loading) {
     return (
       <div className="radial-progress text-[red] loader" style={{ "--value": 70 }}>

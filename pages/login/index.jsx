@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import Layout from '../../Layout/Layout';
 import { loginWithEmail,signInWithGoogle } from '../../src/store/actions/authActions';
 // import UseToken from '../../hooks/UseToken';
+import useToken from '@/src/hooks/useToken';
 import { useSaveUserMutation } from '@/src/store/api/userApi';
 import { toast } from 'react-hot-toast';
 
@@ -20,20 +21,26 @@ const Login = () => {
   //userMutation
   const [saveUser,{isLoading} ] = useSaveUserMutation();
   const { error,setError } = useState('');
+  const [accessToken,setAccessToken] = useState(null)
 // const user = useSelector(state => state.userAuth.user)
 //  const [showPasswordReset, setShowPasswordReset] = useState(false);
   
   const [userEmail,setUserEmail] = useState(null)
+  
+  
   // const [token]=UseToken(userEmail)
   const dispatch = useDispatch();
   const router = useRouter();
   const { query } = useRouter();
-  console.log("query",query);
+  const [token, setToken] = useToken(userEmail);
+  // console.log("query",query);
+
   useEffect(() => {
-    if (userEmail !== null) {
-     router.push(query?query.redirect:'/');
+    if (userEmail !== null && token !== null) {
+      router.push(query?query.redirect:'/');
     }
-  },[userEmail])
+  },[userEmail,token])
+  // console.log("token",token);
 
   if (loadLoging || isLoading) {
     return (
@@ -49,8 +56,15 @@ const Login = () => {
         loginWithEmail(email, password)
         .then((result) => {
          
-          toast.success('Login Successfully');
-         router.back();
+          toast.success("Login Successfully");
+          const updatedUser = {
+            name: result.user.displayName,
+            email: result.user.email,
+          };
+          setUserEmail(result.user.email);
+          // console.log("updatedUser", updatedUser);
+          dispatch(saveUser(updatedUser));
+          setLoadLoging(false);
           
           // console.log(result.user.email, result.user.name);
          
@@ -58,6 +72,7 @@ const Login = () => {
         })
           .catch((error) => {
             console.log(error.message);
+            setLoadLoging(false);
           });
     };
   // }

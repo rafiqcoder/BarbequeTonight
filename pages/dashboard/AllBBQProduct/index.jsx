@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import DashBoardLayout from "../../../Layout/DashBoardLayout";
 
 const fetcher = async () => {
-  const res = await fetch(`${Base_url}/AllBBQProducts`);
+  const res = await fetch(`${Base_url}/bbq`);
   const data = await res.json();
   
   return data;
@@ -19,7 +19,7 @@ const MyProducts = () => {
   const [loading,setLoading] = useState(false);
   const [refresh,setRefresh] = useState(false);
 
-  const { data,error,isLoading } = useSWR('AllBBQProducts',fetcher);
+  const { data,error,isLoading } = useSWR('bbq',fetcher);
     
       if (error) {
         return <div>Error ...</div>;
