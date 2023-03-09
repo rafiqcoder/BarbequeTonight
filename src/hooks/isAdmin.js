@@ -6,7 +6,7 @@ const isAdmin = (email) => {
 
 
     useEffect(() => {
-        if (email && admin === false) {
+        if (email !== null && email !== '' && email !== undefined && admin === false) {
             fetch(`${Base_url}/admin?email=${email}`,{
                 method: 'POST',
                 headers: {
@@ -20,6 +20,9 @@ const isAdmin = (email) => {
 
                         setAdmin(true);
                     }
+                })
+                .catch((err) => {
+                    console.log(err);
                 })
         } else {
 

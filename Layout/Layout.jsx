@@ -15,7 +15,8 @@ import Footer from '../components/Footer/Footer';
 const Layout = ({ children }) => {
   // const {user} =useContext(AuthContext);
   const { activeUser,loading } = useSelector((state) => state.userAuth);
-
+    const [admin] = isAdmin(activeUser?.email?activeUser?.email:null);
+    console.log("admina", admin);
 
 
   const dispatch = useDispatch();
@@ -44,8 +45,7 @@ const Layout = ({ children }) => {
       unsubscribe();
     };
   },[]);
-    const [admin] = isAdmin(activeUser?.email);
-    console.log("admina", admin);
+
   if (loading) {
     return (
       <div className="radial-progress text-[red] loader" style={{ "--value": 70 }}>

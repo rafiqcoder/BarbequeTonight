@@ -32,7 +32,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { query } = useRouter();
-  const [token, setToken] = useToken(userEmail);
+  const [token, setToken] = useToken(userEmail?userEmail:null);
   // console.log("query",query);
 
   useEffect(() => {
