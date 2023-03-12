@@ -8,7 +8,7 @@ const isAdmin = (email) => {
     const checkAdmin = async (email) => {
         try {
             if (email !== undefined) {
-                if (email !== null && email !== '' && email !== undefined && admin === false) {
+                if (email !== null && email !== '' && email !== undefined) {
                     const res = await fetch(`${Base_url}/admin?email=${email}`,{
                         method: 'POST',
                         headers: {
