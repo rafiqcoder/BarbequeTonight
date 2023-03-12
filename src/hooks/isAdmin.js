@@ -15,7 +15,8 @@ const isAdmin = (email) => {
                         headers: {
                             'Content-Type': 'application/json',
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                        }
+                        },
+                        credentials: 'include'
                     })
                     const data = await res.json();
                     console.log('data',data);
