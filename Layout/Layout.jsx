@@ -15,7 +15,7 @@ import Footer from '../components/Footer/Footer';
 const Layout = ({ children }) => {
   // const {user} =useContext(AuthContext);
   const { activeUser,loading } = useSelector((state) => state.userAuth);
-    const [admin] = isAdmin(activeUser?.email?activeUser?.email:null);
+    const [setEmail, admin] = isAdmin();
     console.log("admina", admin);
 
 
@@ -25,6 +25,7 @@ const Layout = ({ children }) => {
     dispatch(fetchCartDbThunk(activeUser?.email));
 
     cartDispatch(setActiveUser(activeUser?.email));
+    setEmail(activeUser?.email);
   }, [activeUser?.email]);
   const userDispatch = useDispatch();
   const auth = getAuth(app);

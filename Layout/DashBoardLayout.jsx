@@ -15,13 +15,14 @@ import Footer from '../components/Footer/Footer';
 const dashboardLayout = ({ children }) => {
   const auth = getAuth(app);
     const { activeUser, loading } = useSelector((state) => state.userAuth);
-  const [admin] = isAdmin(activeUser?.email?activeUser?.email:null);
+  const [setEmail,admin] = isAdmin();
   // console.log("admina", admin);
   const dispatch = useDispatch();
   const cartDispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCartDbThunk(activeUser?.email));
     cartDispatch(setActiveUser(activeUser?.email));
+    setEmail(activeUser?.email);
   },[activeUser?.email]);
   
   const userDispatch = useDispatch();

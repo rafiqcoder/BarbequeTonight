@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Base_url } from '../store/utils';
 
-const isAdmin = (email) => {
+const isAdmin = () => {
     const [admin,setAdmin] = useState(false);
+    const [email,setEmail] = useState(null);
 
     console.log('email',email);
     const checkAdmin = async (email) => {
@@ -50,7 +51,7 @@ const isAdmin = (email) => {
     checkAdmin(email);
 
 
-    return [admin]
+    return [setEmail,admin]
 
 }
 
