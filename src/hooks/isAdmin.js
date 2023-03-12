@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { logOut } from '../store/actions/authActions';
 import { Base_url } from '../store/utils';
 
 const isAdmin = (email) => {
@@ -21,20 +20,20 @@ const isAdmin = (email) => {
                     const data = await res.json();
                     console.log('data',data);
                     if (data) {
-                        console.log('data',data);
-                        if (data.logout) {
-                            localStorage.removeItem('accessToken');
+                        // console.log('data',data);
+                        // if (data.logout) {
+                        //     localStorage.removeItem('accessToken');
 
 
-                            logOut()
+                        //     logOut()
 
-                            return;
-                        }
+                        //     return;
+                        // }
 
-                        if (data.accessToken) {
-                            console.log("accessToken",data.accessToken)
-                            localStorage.setItem('accessToken',data.accessToken);
-                        }
+                        // if (data.accessToken) {
+                        //     console.log("accessToken",data.accessToken)
+                        //     localStorage.setItem('accessToken',data.accessToken);
+                        // }
                         if (data.admin) {
 
                             setAdmin(true);
