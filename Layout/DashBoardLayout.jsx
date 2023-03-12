@@ -21,8 +21,8 @@ const dashboardLayout = ({ children }) => {
   useEffect(() => {
     dispatch(fetchCartDbThunk(activeUser?.email));
     cartDispatch(setActiveUser(activeUser?.email));
-    setAdmin(activeUser?.email?activeUser?.email:null);
-  },[activeUser?.email]);
+    setAdmin(activeUser?.email ? activeUser?.email : null);
+  }, [activeUser?.email, setAdmin]);
   
   const userDispatch = useDispatch();
   const auth = getAuth(app);
