@@ -14,14 +14,14 @@ import Footer from '../components/Footer/Footer';
 
 const dashboardLayout = ({ children }) => {
     const { activeUser, loading } = useSelector((state) => state.userAuth);
-  // const [admin,setAdmin] = isAdmin(activeUser?.email?activeUser?.email:null);
+  const [admin,setAdmin] = isAdmin(activeUser?.email?activeUser?.email:null);
   // console.log("admina", admin);
   const dispatch = useDispatch();
   const cartDispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCartDbThunk(activeUser?.email));
     cartDispatch(setActiveUser(activeUser?.email));
-    isAdmin(activeUser?.email?activeUser?.email:null);
+    setAdmin(activeUser?.email?activeUser?.email:null);
   },[activeUser?.email]);
   
   const userDispatch = useDispatch();
