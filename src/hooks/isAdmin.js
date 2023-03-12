@@ -16,7 +16,7 @@ const isAdmin = () => {
                             'Content-Type': 'application/json',
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                         },
-                        credentials: 'include'
+                        withCredentials: true
                     })
                     const data = await res.json();
                     console.log('data',data);

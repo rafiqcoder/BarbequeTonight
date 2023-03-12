@@ -34,6 +34,30 @@ const Register = () => {
   // setting title
 
   // showing loader  when user click on register button
+ const [token,setToken] = useState(null);
+ const saveToken =  (email) => {
+    fetch(`${Base_url}/jwt?email=${email}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("accessToken", data.token);
+          console.log("token", data.token);
+          setToken(data.token);
+
+          setLoadLoging(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoadLoging(false);
+      });
+  };
   if (loading) {
     return (
       <div className="loader">Loading...</div>
@@ -54,6 +78,12 @@ const Register = () => {
         updateNameAndPhoto(data.name, data.img).then((result) => {
           // saveUserToDb(data.name, data.email, data.img);
           setLoading(false);
+
+saveToken(result.user.email)
+         const updatedUser = {
+           name: result.user.displayName,
+           email: result.user.email,
+         };
         });
         const email = data.email;
         //getting jwt token from backend and setting it in localstorage
