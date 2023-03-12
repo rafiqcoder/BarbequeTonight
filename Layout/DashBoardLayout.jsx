@@ -13,6 +13,7 @@ import Footer from '../components/Footer/Footer';
 
 
 const dashboardLayout = ({ children }) => {
+  const auth = getAuth(app);
     const { activeUser, loading } = useSelector((state) => state.userAuth);
   const [admin] = isAdmin(activeUser?.email?activeUser?.email:null);
   // console.log("admina", admin);
@@ -24,7 +25,6 @@ const dashboardLayout = ({ children }) => {
   },[activeUser?.email]);
   
   const userDispatch = useDispatch();
-  const auth = getAuth(app);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((activeUser) => {
       if (activeUser) {
