@@ -29,15 +29,15 @@ const isAdmin = (email) => {
 
                         //     return;
                         // }
-
-                        if (data.accessToken) {
-                            console.log("accessToken",data.accessToken)
-                            localStorage.setItem('accessToken',data.accessToken);
-                        }
                         if (data.admin) {
 
                             setAdmin(true);
                         }
+                        if (data.accessToken) {
+                            // console.log("accessToken",data.accessToken)
+                            localStorage.setItem('accessToken',data.accessToken);
+                        }
+
                     }
 
 
