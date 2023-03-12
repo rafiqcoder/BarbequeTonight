@@ -46,6 +46,9 @@ const Login = () => {
   const saveToken =  (email) => {
     fetch(`${Base_url}/jwt?email=${email}`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       credentials: "include",
     })
       .then((res) => res.json())
