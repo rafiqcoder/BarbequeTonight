@@ -1,11 +1,9 @@
-import isAdmin from '@/src/hooks/isAdmin';
 import Head from 'next/head';
-import { useSelector } from 'react-redux';
 import HomeMain from '../components/HomeMain/HomeMain';
 import Layout from '../Layout/Layout';
 
 export default function Main() {
-  
+
   return (
 
     <Layout>

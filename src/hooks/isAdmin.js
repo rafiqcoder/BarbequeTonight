@@ -1,35 +1,55 @@
 import { useEffect,useState } from 'react';
+import { logOut } from '../store/actions/authActions';
 import { Base_url } from '../store/utils';
 
 const isAdmin = (email) => {
     const [admin,setAdmin] = useState(false);
 
+    console.log('email',email);
+    const checkAdmin = async (email) => {
+       try {
+           if (email !== undefined) {
+               if (email !== null && email !== '' && email !== undefined && admin === false) {
+                   const res = await fetch(`${Base_url}/admin?email=${email}`,{
+                       method: 'POST',
+                       headers: {
+                           'Content-Type': 'application/json',
+                           'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                       },
+                       credentials: 'include'
+                   })
+                   const data = await res.json();
+                   console.log('data',data);
+                   if (data) {
+                       console.log('data',data);
+                       if (data.logout) {
+                           localStorage.removeItem('accessToken');
 
-    useEffect(() => {
-        if (email !== null && email !== '' && email !== undefined && admin === false) {
-            fetch(`${Base_url}/admin?email=${email}`,{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.admin) {
 
-                        setAdmin(true);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        } else {
+                           logOut()
 
-            return;
-        }
+                           return;
+                       }
 
-    },[email]);
+                       if (data.accessToken) {
+                           console.log("accessToken",data.accessToken)
+                           localStorage.setItem('accessToken',data.accessToken);
+                       }
+                       if (data.admin) {
+
+                           setAdmin(true);
+                       }
+                   }
+
+
+               }
+           }
+       } catch (error) {
+        console.log(error);
+       }
+    }
+    checkAdmin(email);
+   
 
     return [admin]
 

@@ -14,7 +14,7 @@ import Footer from '../components/Footer/Footer';
 
 const dashboardLayout = ({ children }) => {
     const { activeUser, loading } = useSelector((state) => state.userAuth);
-  const [admin] = isAdmin(activeUser?.email);
+  const [admin] = isAdmin(activeUser?.email?activeUser?.email:null);
   // console.log("admina", admin);
   const dispatch = useDispatch();
   const cartDispatch = useDispatch();

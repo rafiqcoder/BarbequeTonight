@@ -7,8 +7,8 @@ import { useDispatch } from 'react-redux';
 import Layout from '../../Layout/Layout';
 import { loginWithEmail,signInWithGoogle } from '../../src/store/actions/authActions';
 // import UseToken from '../../hooks/UseToken';
-import useToken from '@/src/hooks/useToken';
 import { useSaveUserMutation } from '@/src/store/api/userApi';
+import { Base_url } from '@/src/store/utils';
 import { toast } from 'react-hot-toast';
 
 const Login = () => {
@@ -22,6 +22,7 @@ const Login = () => {
   const [saveUser,{isLoading} ] = useSaveUserMutation();
   const { error,setError } = useState('');
   const [accessToken,setAccessToken] = useState(null)
+  const [token,setToken] = useState(null);
 // const user = useSelector(state => state.userAuth.user)
 //  const [showPasswordReset, setShowPasswordReset] = useState(false);
   
@@ -32,7 +33,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { query } = useRouter();
-  const [token, setToken] = useToken(userEmail?userEmail:null);
+  // const [token, setToken] = useToken(null);
+
   // console.log("query",query);
 
   useEffect(() => {
@@ -41,7 +43,26 @@ const Login = () => {
     }
   },[userEmail,token])
   // console.log("token",token);
+  const saveToken =  (email) => {
+    fetch(`${Base_url}/jwt?email=${email}`, {
+      method: "POST",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("accessToken", data.token);
+          console.log("token", data.token);
+          setToken(data.token);
 
+          setLoadLoging(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoadLoging(false);
+      });
+  }
   if (loadLoging || isLoading) {
     return (
       <div className="radial-progress text-danger" style={{ "--value": 70 }}>
@@ -64,7 +85,10 @@ const Login = () => {
           setUserEmail(result.user.email);
           // console.log("updatedUser", updatedUser);
           dispatch(saveUser(updatedUser));
-          setLoadLoging(false);
+       
+
+           
+           
           
           // console.log(result.user.email, result.user.name);
          
@@ -85,18 +109,21 @@ const Login = () => {
         
         // console.log(result.user);
         toast.success('Login Successfully');
-        const updatedUser = {
-          name: result.user.displayName,
-          email:result.user.email,
-        };
+       
        setUserEmail(result.user.email)
-        console.log("updatedUser",updatedUser);
-        dispatch(saveUser(updatedUser));
+        
+        
         // router.replace(query.returnUrl || "/");
         // router.push('/');
         // router.pathname.push('/')
-        
-        setLoadLoging(false);
+         
+        saveToken(result.user.email)
+         const updatedUser = {
+           name: result.user.displayName,
+           email: result.user.email,
+         };
+         dispatch(saveUser(updatedUser));
+       
         //callback url from router
 
         // dispatch(setUser(result.user.email))

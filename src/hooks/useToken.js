@@ -8,11 +8,14 @@ const useToken = (email) => {
     useEffect(() => {
         if (email !== null && email !== '' && email !== undefined && token === null) {
             try {
-                fetch(`${Base_url}/jwt?email=${email}`)
+                fetch(`${Base_url}/jwt?email=${email}`,{
+                        method: 'POST',
+                })
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.token) {
                             localStorage.setItem('accessToken',data.token);
+
                             setToken(data.token);
                         }
                     })
