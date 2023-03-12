@@ -33,10 +33,10 @@ const isAdmin = (email) => {
 
                             setAdmin(true);
                         }
-                        if (data.accessToken) {
-                            // console.log("accessToken",data.accessToken)
-                            localStorage.setItem('accessToken',data.accessToken);
-                        }
+                        // if (data.accessToken) {
+                        //     // console.log("accessToken",data.accessToken)
+                        //     localStorage.setItem('accessToken',data.accessToken);
+                        // }
 
                     }
 
