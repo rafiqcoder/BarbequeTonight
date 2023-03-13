@@ -7,46 +7,46 @@ const isAdmin = () => {
 
     console.log('email',email);
     const checkAdmin = async (email) => {
-        // try {
-        //     if (email !== undefined) {
-        //         if (email !== null && email !== '' && email !== undefined) {
-        //             const res = await fetch(`${Base_url}/admin?email=${email}`,{
-        //                 method: 'POST',
-        //                 headers: {
-        //                     'Content-Type': 'application/json',
-        //                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        //                 },
-        //                 credentials: 'include',
-        //             })
-        //             const data = await res.json();
-        //             console.log('data',data);
-        //             if (data) {
-        //                 // console.log('data',data);
-        //                 // if (data.logout) {
-        //                 //     localStorage.removeItem('accessToken');
+        try {
+            if (email !== undefined) {
+                if (email !== null && email !== '' && email !== undefined) {
+                    const res = await fetch(`${Base_url}/admin?email=${email}`,{
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        credentials: 'include',
+                    })
+                    const data = await res.json();
+                    console.log('data',data);
+                    if (data) {
+                        // console.log('data',data);
+                        // if (data.logout) {
+                        //     localStorage.removeItem('accessToken');
 
 
-        //                 //     logOut()
+                        //     logOut()
 
-        //                 //     return;
-        //                 // }
-        //                 if (data.admin) {
+                        //     return;
+                        // }
+                        if (data.admin) {
 
-        //                     setAdmin(true);
-        //                 }
-        //                 // if (data.accessToken) {
-        //                 //     // console.log("accessToken",data.accessToken)
-        //                 //     localStorage.setItem('accessToken',data.accessToken);
-        //                 // }
+                            setAdmin(true);
+                        }
+                        // if (data.accessToken) {
+                        //     // console.log("accessToken",data.accessToken)
+                        //     localStorage.setItem('accessToken',data.accessToken);
+                        // }
 
-        //             }
+                    }
 
 
-        //         }
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        // }
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
     checkAdmin(email);
 
