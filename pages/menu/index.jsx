@@ -1,4 +1,5 @@
 
+import heroImg from "@/assets/menuBg.jpg";
 import Banner from "@/components/Banner/Banner";
 import Head from "@/components/HomeMain/Head/Head";
 import AllMenuBody from "@/components/HomeMain/HomMenu/AllMenuBody";
@@ -46,11 +47,13 @@ const index = () => {
   // console.log("menuItems",menuItems);
   return (
     <Layout>
-      <Banner></Banner>
+      <Banner heroImg={heroImg}></Banner>
       <section className="bg-[#faf7f2] bg-[url('/product_bg_1.png')] py-1">
         <Head
           title="Our Popular Delicious"
-          desc="Objectively pontificate quality models before intuitive information. Dramatically recaptiualize multifunctional materials." badge='Menus' badge2='Menus'
+          desc="Objectively pontificate quality models before intuitive information. Dramatically recaptiualize multifunctional materials."
+          badge="Menus"
+          badge2="Menus"
         ></Head>
         {bundleProducts?.map((e) => (
           <AllMenuBody

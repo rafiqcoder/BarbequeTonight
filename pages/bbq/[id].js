@@ -12,6 +12,7 @@ import { useDispatch,useSelector } from "react-redux";
 
 
 
+
 export const getStaticPaths = async () => {
     const { data } = await axios.get(`${Base_url}/bbq`)
 

@@ -34,7 +34,7 @@ const {
         ...data,
       };
     console.log("orderData", orderData);
-    fetch(`${Base_url}/order`, {
+    fetch(`${Base_url}/payment`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,6 +45,9 @@ const {
       .then((data) => {
         console.log(data);
         window.location.href = data.url;
+        //redirect to payment gateway
+        
+
       })
       .catch((err) => {
         console.log(err);

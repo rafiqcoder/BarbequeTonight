@@ -1,8 +1,8 @@
-
+import styles from "./Footer.module.css";
 const Footer = () => {
   return (
-    <footer className=" p-10 bg-base-200 ">
-      <div className="footer p-0 m-0 sm:w-[100%] mx-auto text-base-content flex flex-wrap sm:flex-justify justify-between sm:p-20">
+    <footer className={` p-10 bg-base-200 ${styles.fBg} text-white min-h-[400px]`} >
+      <div className="footer p-0 m-0 sm:w-[100%] mx-auto  flex flex-wrap sm:flex-justify justify-between sm:p-20">
         <div>
           <span className="footer-title">Chef's Specials</span>
           <a href="/" className="link link-hover">
