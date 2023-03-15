@@ -48,8 +48,10 @@ const Login = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
       },
-      credentials: 'include',
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
