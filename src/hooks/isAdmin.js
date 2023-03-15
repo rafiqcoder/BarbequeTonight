@@ -12,11 +12,11 @@ const isAdmin = () => {
                 if (email !== null && email !== '' && email !== undefined) {
                     const res = await fetch(`${Base_url}/admin?email=${email}`,{
                         method: 'POST',
+                        mode: 'no-cors',
                         headers: {
                             'Content-Type': 'application/json',
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                             //no cors true
-                            'no-cors': true
                         },
                         credentials: 'include',
                     })
