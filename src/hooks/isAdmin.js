@@ -14,9 +14,9 @@ const isAdmin = () => {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                            'Access-Control-Allow-Origin': 'no-cors'
-                        }
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        credentials: 'include',
                     })
                     const data = await res.json();
                     console.log('data',data);
