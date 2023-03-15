@@ -48,6 +48,8 @@ const Login = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        //nocors
+        
       },
       credentials: "include",
     })

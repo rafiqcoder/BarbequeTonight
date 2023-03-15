@@ -14,7 +14,9 @@ const isAdmin = () => {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                            //no cors true
+                            'no-cors': true
                         },
                         credentials: 'include',
                     })
