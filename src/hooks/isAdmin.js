@@ -12,11 +12,12 @@ const isAdmin = () => {
                 if (email !== null && email !== '' && email !== undefined) {
                     const res = await fetch(`${Base_url}/admin?email=${email}`,{
                         method: 'POST',
-                        mode: 'no-cors',
+                        mode: 'cors',
                         headers: {
                             'Content-Type': 'application/json',
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                             //no cors true
+                            'access-control-allow-origin': 'https://bbq.netlify.app',
                         },
                         credentials: 'include',
                     })
