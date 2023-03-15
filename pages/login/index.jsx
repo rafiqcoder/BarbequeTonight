@@ -221,7 +221,7 @@ const Login = () => {
                   )}
                 </div>
 
-                <button className="focus:ring-2 my-8 focus:ring-offset-2 focus:ring-indigo-700 text-lg font-semibold leading-none text-white focus:outline-none bg-accent border hover:bg-indigo-600 py-4 w-full rounded-lg">
+                <button className="focus:ring-2 my-8 focus:ring-offset-2 focus:ring-indigo-700 text-lg font-semibold leading-none text-white focus:outline-none bg-red-500 border hover:bg-indigo-600 py-4 w-full rounded-lg">
                   Login
                 </button>
                 <Link href="/">Forget password?</Link>

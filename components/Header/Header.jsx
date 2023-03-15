@@ -50,7 +50,7 @@ const Header = () => {
                 >
                   <Link
                     href="/"
-                    className={`font-semibold  transition-colors duration-300 transform   text-gray-800   mx-1.5 sm:mx-6  ${
+                    className={`font-semibold  transition-colors duration-300 transform   text-gray-800 uppercase  mx-1.5 sm:mx-6  ${
                       pathname === "/"
                         ? "border-b-2 border-red-500"
                         : "border-b-2 border-transparent"
@@ -60,28 +60,28 @@ const Header = () => {
                   </Link>
                   <Link
                     href="/bbq"
-                    className={` hover:  transition-colors duration-300 transform  hover: text-gray-800 font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                    className={` hover:  transition-colors duration-300 transform  hover: text-gray-800 font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 uppercase ${
                       pathname === "/bbq"
                         ? "border-b-2 border-red-500"
                         : "border-b-2 border-transparent"
                     }`}
                   >
-                    Barbeque
+                    BBQ
                   </Link>
                   <Link
                     href="/menu"
-                    className={`  hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                    className={`  hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 uppercase ${
                       pathname === "/menu"
                         ? "border-b-2 border-red-500"
                         : "border-b-2 border-transparent"
                     }`}
                   >
-                    All Menus
+                    Menus
                   </Link>
                   {activeUser && activeUser.uid && (
                     <Link
                       href="/dashboard"
-                      className={` hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                      className={` hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 uppercase ${
                         pathname === "/dashboard"
                           ? "border-b-2 border-red-500"
                           : "border-b-2 border-transparent"
@@ -94,7 +94,7 @@ const Header = () => {
                   {activeUser && activeUser.uid ? (
                     <Link
                       href={`/login?redirect=${pathname}`}
-                      className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                      className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 uppercase mx-1.5 sm:mx-6 ${
                         pathname === "/logout"
                           ? "border-b-2 border-red-500"
                           : "border-b-2 border-transparent"
@@ -108,7 +108,7 @@ const Header = () => {
                   ) : (
                     <Link
                       href={`/login?redirect=${pathname}`}
-                      className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
+                      className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 uppercase"
                     >
                       Login
                     </Link>
@@ -123,38 +123,38 @@ const Header = () => {
           <div className="container md:flex items-center justify-center p-6 mx-auto font-semibold  capitalize  text-gray-300 hidden ">
             <Link
               href="/"
-              className={`font-semibold  transition-colors duration-300 transform   text-gray-800   mx-1.5 sm:mx-6  ${
+              className={`font-semibold  transition-colors duration-300 transform   text-gray-800   mx-1.5 sm:mx-6 uppercase  ${
                 pathname === "/"
                   ? "border-b-2 border-red-500"
                   : "border-b-2 border-transparent"
               }`}
             >
-              home
+              Home
             </Link>
             <Link
               href="/bbq"
-              className={` hover:  transition-colors duration-300 transform  hover: text-gray-800 font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+              className={` hover:  transition-colors duration-300 transform  hover: text-gray-800 font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 uppercase ${
                 pathname === "/bbq"
                   ? "border-b-2 border-red-500"
                   : "border-b-2 border-transparent"
               }`}
             >
-              Barbeque
+              BBQ
             </Link>
             <Link
               href="/menu"
-              className={`  hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
+              className={`  hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 uppercase sm:mx-6 ${
                 pathname === "/menu"
                   ? "border-b-2 border-red-500"
                   : "border-b-2 border-transparent"
               }`}
             >
-              All Menus
+              Menus
             </Link>
             {activeUser && activeUser.uid && (
               <Link
                 href="/dashboard"
-                className={` hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                className={` hover: text-gray-800 font-semibold  transition-colors duration-300 transform uppercase hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
                   pathname === "/dashboard"
                     ? "border-b-2 border-red-500"
                     : "border-b-2 border-transparent"
@@ -167,7 +167,7 @@ const Header = () => {
             {activeUser && activeUser.uid ? (
               <Link
                 href={`/login?redirect=${pathname}`}
-                className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold uppercase  hover:border-red-500 mx-1.5 sm:mx-6 ${
                   pathname === "/logout"
                     ? "border-b-2 border-red-500"
                     : "border-b-2 border-transparent"
@@ -181,7 +181,7 @@ const Header = () => {
             ) : (
               <Link
                 href={`/login?redirect=${pathname}`}
-                className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
+                className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 uppercase transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
               >
                 Login
               </Link>
@@ -243,7 +243,7 @@ const Header = () => {
                   {activeUser && activeUser.uid ? (
                     <Link
                       href="/login"
-                      className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                      className={`hover: text-gray-800 uppercase  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
                         pathname === "/logout"
                           ? "border-b-2 border-red-500"
                           : "border-b-2 border-transparent"
@@ -257,7 +257,7 @@ const Header = () => {
                   ) : (
                     <Link
                       href="/login"
-                      className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
+                      className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold uppercase hover:border-red-500 mx-1.5 sm:mx-6"
                     >
                       Login
                     </Link>
