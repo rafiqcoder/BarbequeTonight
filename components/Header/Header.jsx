@@ -14,8 +14,9 @@ const Header = () => {
   const [showCart,setShowCart] = useState(true);
   const router = useRouter();
   //current route 
-  const { pathname } = router;
-  // console.log( pathname );
+  const { pathname,params,asPath } = router;
+  console.log(pathname,params);
+  console.log(router);
    useEffect(() => {
      window.addEventListener("scroll", () => {
        setScroll(window.scrollY > 50);
@@ -93,7 +94,7 @@ const Header = () => {
 
                   {activeUser && activeUser.uid ? (
                     <Link
-                      href={`/login?redirect=${pathname}`}
+                      href={`/login?redirect=${asPath}`}
                       className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 uppercase mx-1.5 sm:mx-6 ${
                         pathname === "/logout"
                           ? "border-b-2 border-red-500"
@@ -107,7 +108,7 @@ const Header = () => {
                     </Link>
                   ) : (
                     <Link
-                      href={`/login?redirect=${pathname}`}
+                      href={`/login?redirect=${asPath}`}
                       className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 uppercase"
                     >
                       Login
@@ -166,7 +167,7 @@ const Header = () => {
 
             {activeUser && activeUser.uid ? (
               <Link
-                href={`/login?redirect=${pathname}`}
+                href={`/login?redirect=${asPath}`}
                 className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold uppercase  hover:border-red-500 mx-1.5 sm:mx-6 ${
                   pathname === "/logout"
                     ? "border-b-2 border-red-500"
@@ -180,7 +181,7 @@ const Header = () => {
               </Link>
             ) : (
               <Link
-                href={`/login?redirect=${pathname}`}
+                href={`/login?redirect=${asPath}`}
                 className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 uppercase transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
               >
                 Login
@@ -242,7 +243,7 @@ const Header = () => {
                 <li>
                   {activeUser && activeUser.uid ? (
                     <Link
-                      href="/login"
+                      href={`/login?redirect=${asPath}`}
                       className={`hover: text-gray-800 uppercase  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
                         pathname === "/logout"
                           ? "border-b-2 border-red-500"
@@ -256,7 +257,7 @@ const Header = () => {
                     </Link>
                   ) : (
                     <Link
-                      href="/login"
+                      href={`/login?redirect=${asPath}`}
                       className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold uppercase hover:border-red-500 mx-1.5 sm:mx-6"
                     >
                       Login
