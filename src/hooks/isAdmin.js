@@ -17,7 +17,7 @@ const isAdmin = () => {
                             'Content-Type': 'application/json',
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                             //no cors true
-                            'access-control-allow-origin': 'https://bbq.netlify.app',
+                            'access-control-allow-origin': 'http://localhost:3000',
                         },
                         credentials: 'include',
                     })
@@ -38,7 +38,7 @@ const isAdmin = () => {
                             setAdmin(true);
                         }
                         if (data.accessToken) {
-                            // console.log("accessToken",data.accessToken)
+                            console.log("accessToken",data.accessToken)
                             localStorage.setItem('accessToken',data.accessToken);
                         }
 
