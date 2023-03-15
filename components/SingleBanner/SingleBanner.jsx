@@ -17,7 +17,11 @@ const SingleBanner = ({title,hero_bg}) => {
                 src={hero_bg}
                 className="lg:hidden md:block hidden w-full object-cover"
               />
-              <img alt="" src={hero_bg} className="lg:hidden md:hidden block" />
+              <img alt=""
+                src={hero_bg}
+                className="lg:hidden md:hidden block h-[150px] object-cover"
+              />
+
               <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
                 <h2 className="text-xl font-semibold md:text-4xl text-white xl:text-6xl uppercase">
                   {title}

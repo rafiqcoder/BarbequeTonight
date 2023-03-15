@@ -16,7 +16,7 @@ const dashboardLayout = ({ children }) => {
   const auth = getAuth(app);
     const { activeUser, loading } = useSelector((state) => state.userAuth);
   const [setEmail,admin] = isAdmin();
-  // console.log("admina", admin);
+  console.log("admina", admin);
   const dispatch = useDispatch();
   const cartDispatch = useDispatch();
   useEffect(() => {

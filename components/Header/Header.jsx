@@ -48,25 +48,70 @@ const Header = () => {
                   tabIndex={0}
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                 >
-                  <li>
-                    <Link href="/" className="text-red-500">
-                      Home
+                  <Link
+                    href="/"
+                    className={`font-semibold  transition-colors duration-300 transform   text-gray-800   mx-1.5 sm:mx-6  ${
+                      pathname === "/"
+                        ? "border-b-2 border-red-500"
+                        : "border-b-2 border-transparent"
+                    }`}
+                  >
+                    home
+                  </Link>
+                  <Link
+                    href="/bbq"
+                    className={` hover:  transition-colors duration-300 transform  hover: text-gray-800 font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                      pathname === "/bbq"
+                        ? "border-b-2 border-red-500"
+                        : "border-b-2 border-transparent"
+                    }`}
+                  >
+                    Barbeque
+                  </Link>
+                  <Link
+                    href="/menu"
+                    className={`  hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                      pathname === "/menu"
+                        ? "border-b-2 border-red-500"
+                        : "border-b-2 border-transparent"
+                    }`}
+                  >
+                    All Menus
+                  </Link>
+                  {activeUser && activeUser.uid && (
+                    <Link
+                      href="/dashboard"
+                      className={` hover: text-gray-800 font-semibold  transition-colors duration-300 transform  hover:  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                        pathname === "/dashboard"
+                          ? "border-b-2 border-red-500"
+                          : "border-b-2 border-transparent"
+                      }`}
+                    >
+                      Dashboard
                     </Link>
-                  </li>
-                  <li>
-                    <Link href="/">Portfolio</Link>
-                  </li>
-                  <li>
-                    <Link href="/">About</Link>
-                  </li>
+                  )}
+
                   {activeUser && activeUser.uid ? (
-                    <li>
-                      <Link href="/">Logout</Link>
-                    </li>
+                    <Link
+                      href={`/login?redirect=${pathname}`}
+                      className={`hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6 ${
+                        pathname === "/logout"
+                          ? "border-b-2 border-red-500"
+                          : "border-b-2 border-transparent"
+                      }`}
+                      onClick={() => {
+                        logOut();
+                      }}
+                    >
+                      Logout
+                    </Link>
                   ) : (
-                    <li>
-                      <Link href="/">Login</Link>
-                    </li>
+                    <Link
+                      href={`/login?redirect=${pathname}`}
+                      className="border-b-2 border-transparent hover: text-gray-800  transition-colors duration-300 transform  hover: font-semibold  hover:border-red-500 mx-1.5 sm:mx-6"
+                    >
+                      Login
+                    </Link>
                   )}
                 </ul>
               </div>

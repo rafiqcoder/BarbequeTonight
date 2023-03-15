@@ -111,10 +111,10 @@ const singleBbq = ({ product }) => {
                 </SingleBanner>
 
 
-                <div className='flex flex-row justify-between items-center container mx-auto py-10'>
-                    <div className='grid grid-cols-5 gap-10 w-[60%]'>
+                <div className='md:flex md:flex-row justify-between items-center container mx-auto py-10 mb-28'>
+                    <div className='  md:w-[60%] mb-32'>
 
-                        <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom grid grid-cols-1 gap-10 scrollbar-hide'>
+                        {/* <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom  grid-cols-1 gap-10 scrollbar-hide hidden'>
 
                                 
                                 {
@@ -144,15 +144,45 @@ const singleBbq = ({ product }) => {
                                     }
                                 </>
                             ))}
-                        </div>
+                        </div> */}
                         
-                        <div className='bg-[#FAF7F2] max-h-[500px] col-span-4 text-center rounded-lg'>
+                        <div className=' h-[500px] bg-[#FAF7F2]   text-center rounded-lg'>
 
-                            <img className='h-[100%] pt-[5%] inline-block' src={defaultThumb} alt="" />
+                            <img className='h-full p-5 object-cover  m-auto' src={defaultThumb} alt="" />
+                            <div className=' max-w-[400px]  md:gap-10 gap-5  mt-5 flex overflow-x-scroll '>
 
+
+                                {
+                                    defaultThumb !== product.thumb ? <>
+                                        <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8] w-full'>
+                                            <span onClick={() => clickOnMiniThumbAction(product.thumb)}><img className='pt-[10%]' src={product.thumb} alt="" /></span>
+                                        </span>
+                                    </> : <>
+                                        <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029] w-full'>
+                                            <span onClick={() => clickOnMiniThumbAction(product.thumb)}><img className='pt-[10%] w-full' src={product.thumb} alt="" /></span>
+                                        </span>
+                                    </>
+                                }
+
+                                {product.img.map((img,index) => (
+                                    <>
+                                        {
+                                            defaultThumb !== img.img ? <>
+                                                <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
+                                                    <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
+                                                </span>
+                                            </> : <>
+                                                <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
+                                                    <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
+                                                </span>
+                                            </>
+                                        }
+                                    </>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                    <div className='w-[40%]'>
+                    <div className='md:w-[40%]'>
                         <div className='pl-10'>
                             <div className="flex flex-row justify-start items-center">
                                 <span className="text-[#FFB539] text-[14px]">
@@ -218,7 +248,7 @@ const singleBbq = ({ product }) => {
                 </div>
 
                 
-                <div className="container mx-auto py-10">
+                <div className="container mx-auto py-5">
                     <div className="w-100 flex flex-row justify-center items-center gap-3 mb-8">
                         {
                             defaultTabButton === 'description' ? <>
@@ -249,7 +279,7 @@ const singleBbq = ({ product }) => {
                         </div>
 
                         </> : <>
-                            <div className="grid grid-cols-2 gap-6 p-4">
+                            <div className="grid md:grid-cols-2 grid-cols-1 gap-6 p-4">
                                 <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
                                     <div className="w-[100px]">
                                         <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
@@ -273,7 +303,7 @@ const singleBbq = ({ product }) => {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex flex-row justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
+                                <div className="flex flex-row  justify-between items-center w-100 border border-[#e0e0e0] rounded-md py-6 px-4">
                                     <div className="w-[100px]">
                                         <img className="rounded-full overflow-hidden h-[80px] w-[80px]" src="https://i.ibb.co/xXqJJTg/cus1.png" alt="cus1" />
                                     </div>

@@ -2,7 +2,6 @@
 // import { AuthContext } from '@/src/Context/Context';
 import Header from '@/components/Header/Header';
 import { app } from '@/src/firbase/firebase.config';
-import isAdmin from '@/src/hooks/isAdmin';
 import { fetchCartDbThunk } from '@/src/store/actions/getData';
 import { setLoading,setUser } from '@/src/store/authSlice';
 import { setActiveUser } from '@/src/store/cartSlice';
@@ -15,17 +14,16 @@ import Footer from '../components/Footer/Footer';
 const Layout = ({ children }) => {
   // const {user} =useContext(AuthContext);
   const { activeUser,loading } = useSelector((state) => state.userAuth);
-    const [setEmail, admin] = isAdmin();
-    console.log("admina", admin);
-
-
+    // const [setEmail, admin] = isAdmin();
+    // console.log("admina", admin);
+  
   const dispatch = useDispatch();
   const cartDispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCartDbThunk(activeUser?.email));
 
     cartDispatch(setActiveUser(activeUser?.email));
-    setEmail(activeUser?.email);
+    // setEmail(activeUser?.email);
   }, [activeUser?.email]);
   const userDispatch = useDispatch();
   const auth = getAuth(app);
