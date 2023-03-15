@@ -14,7 +14,9 @@ const isAdmin = () => {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                            'Access-Control-Allow-Origin': 'https://bbq.netlify.app',
+                            'Access-Control-Allow-Credentials': true
                         },
                         credentials: 'include',
                     })
