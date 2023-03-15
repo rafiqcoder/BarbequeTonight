@@ -46,10 +46,11 @@ const Login = () => {
   const saveToken =  (email) => {
     fetch(`${Base_url}/jwt?email=${email}`, {
       method: "POST",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json",
         //nocors
-        
+        "access-control-allow-origin": "https://bbq.netlify.app",
       },
       credentials: "include",
     })
