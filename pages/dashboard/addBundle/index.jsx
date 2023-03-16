@@ -26,6 +26,7 @@ const AddBundle = () => {
     name: "",
     price: "",
     menu: [],
+    category: "menu",
   });
   const [files, setFiles] = useState(null);
 

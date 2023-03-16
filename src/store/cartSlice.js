@@ -51,10 +51,11 @@ const cartSlice = createSlice({
           0
         );
       } else {
+        const quantity = action.payload.quantity ? action.payload.quantity : 5;
         state.cart.push({
           ...action.payload.product,
-          quantity: 5,
-          totalPrice: action.payload.product.price * 5,
+          quantity: quantity,
+          totalPrice: action.payload.product.price * quantity,
         });
         state.grandTotal = state.cart.reduce(
           (total,product) => total + product.totalPrice,
@@ -127,21 +128,44 @@ const cartSlice = createSlice({
       const product = state.cart.find(
         (p) => p._id === action.payload.product._id
       );
-      if (product.quantity > 5) {
-        console.log(product.quantity);
-        product.quantity--;
-        product.totalPrice = product.quantity * product.price;
-        state.grandTotal = state.cart.reduce(
-          (total,product) => total + product.totalPrice,
-          0
-        );
-      } else {
-        state.cart = state.cart.filter((p) => p._id !== action.payload._id);
-        state.grandTotal = state.cart.reduce(
-          (total,product) => total + product.totalPrice,
-          0
-        );
+      if (product.category === "bbq") {
+        if (product.quantity > 5) {
+          console.log(product.quantity);
+          product.quantity--;
+          product.totalPrice = product.quantity * product.price;
+          state.grandTotal = state.cart.reduce(
+            (total,product) => total + product.totalPrice,
+            0
+          );
+        } else {
+          state.cart = state.cart.filter((p) => p._id !== action.payload._id);
+          state.grandTotal = state.cart.reduce(
+            (total,product) => total + product.totalPrice,
+            0
+          );
+        }
       }
+      if (product.category === "menu") {
+        if (product.quantity > 15) {
+          console.log(product.quantity);
+          product.quantity--;
+          product.totalPrice = product.quantity * product.price;
+          state.grandTotal = state.cart.reduce(
+            (total,product) => total + product.totalPrice,
+            0
+          );
+        } else {
+          state.cart = state.cart.filter((p) => p._id !== action.payload._id);
+          state.grandTotal = state.cart.reduce(
+            (total,product) => total + product.totalPrice,
+            0
+          );
+        }
+      }
+    
+        
+    
+  
       const Cartdata = state.cart;
       const email = action.payload.userEmail;
 

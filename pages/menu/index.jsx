@@ -38,7 +38,8 @@ const index = () => {
      // let [menu] = activeMenu[0];
      setActiveMenu(menu[0]);
     const updatedProduct = {
-      product:menu[0],
+      product: menu[0],
+      quantity:15,
       userEmail: activeUser?.email,
     };
     // console.log("updatedProduct",updatedProduct);

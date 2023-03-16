@@ -51,7 +51,8 @@ const index = ({children}) => {
   // console.log('activeMenu',activeMenu);
   const addBundleToCart = () => {
     const updatedProduct = {
-      product:activeMenu,
+      product: activeMenu,
+      quantity:15,
       userEmail: activeUser?.email,
     };
     dispatch(addToCart(updatedProduct))

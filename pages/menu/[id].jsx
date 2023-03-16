@@ -35,7 +35,7 @@ export const getStaticProps = async (context) => {
 };
 
 const singleMenu = ({ product }) => {
-  const [quantity, setQauntity] = useState(5);
+  const [quantity, setQauntity] = useState(15);
   const { cart } = useSelector((state) => state.cart);
   const { activeUser } = useSelector((state) => state.userAuth);
   const router = useRouter();
@@ -69,11 +69,11 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
 
 
   const decreaseCartItemNumber = (i) => {
-    if (i > 5) {
+    if (i > 15) {
       i = i - 1;
       setQauntity(i);
     } else {
-      setQauntity(5);
+      setQauntity(15);
     }
   };
 
@@ -101,37 +101,7 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
         ></SingleBanner>
         <div className="md:flex md:flex-row justify-between items-center container mx-auto py-10 mb-28">
           <div className="  md:w-[60%] mb-32">
-            {/* <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom  grid-cols-1 gap-10 scrollbar-hide hidden'>
-
-                                
-                                {
-                                    defaultThumb !== product.thumb ? <>
-                                        <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
-                                            <span onClick={() => clickOnMiniThumbAction(product.thumb)}><img className='pt-[10%]' src={product.thumb} alt="" /></span>
-                                        </span>
-                                    </> : <>
-                                        <span className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
-                                            <span onClick={() => clickOnMiniThumbAction(product.thumb)}><img className='pt-[10%]' src={product.thumb} alt="" /></span>
-                                        </span>
-                                    </>
-                                }
-
-                            {product.img.map((img,index) => (
-                                <>
-                                    {
-                                        defaultThumb !== img.img ? <>
-                                            <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8]'>
-                                                <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
-                                            </span>
-                                        </> : <>
-                                            <span key={img.img} className='bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029]'>
-                                                <span onClick={() => clickOnMiniThumbAction(img.img)}><img className='pt-[10%]' src={img.img} alt="" /></span>
-                                            </span>
-                                        </>
-                                    }
-                                </>
-                            ))}
-                        </div> */}
+            
 
             <div className=" h-[500px] bg-[#FAF7F2]   text-center rounded-lg">
               <img
@@ -140,39 +110,7 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
                 alt=""
               />
               <div className=" max-w-[600px]  md:gap-10 gap-5  mt-5 flex overflow-x-scroll ">
-                {/* {defaultThumb !== product.menu[0].thumb ? (
-                  <>
-                    <span className="bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#fdd0d8] w-full">
-                      <span
-                        onClick={() =>
-                          clickOnMiniThumbAction(product.menu[0].thumb)
-                        }
-                      >
-                        <img
-                          className="pt-[10%]"
-                          src={product.menu[0].thumb}
-                          alt=""
-                        />
-                      </span>
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="bg-[#FAF7F2] rounded-lg flex flex-col justify-center items-center border-2 border-[#eb0029] w-full">
-                      <span
-                        onClick={() =>
-                          clickOnMiniThumbAction(product.menu[0].thumb)
-                        }
-                      >
-                        <img
-                          className="pt-[10%] w-full"
-                          src={product.menu[0].thumb}
-                          alt=""
-                        />
-                      </span>
-                    </span>
-                  </>
-                )} */}
+                
 
                 {newImgArray.map((img, index) => (
                   <>
@@ -344,24 +282,39 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
             </div>
           </div>
         </div>
-        <div className="container mx-auto py-5">
-          <div className="w-100 flex flex-row justify-center items-center gap-3 mb-8">
+        <div className="container mx-auto p-5">
+          <div className="w-[90%] flex flex-row justify-center items-center gap-3 mb-8 mx-auto">
             {defaultTabButton === "description" ? (
               <>
                 <button
-                  className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]"
+                  className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] md:px-6 px-3 hover:border-[#eb0029] hidden md:inline-block"
                   onClick={() => clickOnTabButton("description")}
                 >
                   PRODUCT DESCRIPTION
+                </button>
+                <button
+                  className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] md:px-6 px-3 hover:border-[#eb0029] md:hidden"
+                  onClick={() => clickOnTabButton("description")}
+                >
+                  {" "}
+                  DESCRIPTION
                 </button>
               </>
             ) : (
               <>
                 <button
-                  className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]"
+                  className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-3 md:px-6 hover:border-[#eb0029] hidden md:inline-block"
                   onClick={() => clickOnTabButton("description")}
                 >
+                  {" "}
                   PRODUCT DESCRIPTION
+                </button>
+                <button
+                  className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-3 md:px-6 hover:border-[#eb0029] md:hidden"
+                  onClick={() => clickOnTabButton("description")}
+                >
+                  {" "}
+                  DESCRIPTION
                 </button>
               </>
             )}
@@ -369,19 +322,33 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
             {defaultTabButton === "review" ? (
               <>
                 <button
-                  className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]"
+                  className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] hidden md:inline-block"
                   onClick={() => clickOnTabButton("review")}
                 >
                   CUSTOMER REVIEWS
+                </button>
+                <button
+                  className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] md:hidden"
+                  onClick={() => clickOnTabButton("review")}
+                >
+                  {" "}
+                  REVIEWS
                 </button>
               </>
             ) : (
               <>
                 <button
-                  className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]"
+                  className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] hidden md:inline-block"
                   onClick={() => clickOnTabButton("review")}
                 >
                   CUSTOMER REVIEWS
+                </button>
+                <button
+                  className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] md:hidden"
+                  onClick={() => clickOnTabButton("review")}
+                >
+                  {" "}
+                  REVIEWS
                 </button>
               </>
             )}
