@@ -111,7 +111,7 @@ const singleBbq = ({ product }) => {
                 </SingleBanner>
 
 
-                <div className='md:flex md:flex-row justify-between items-center container mx-auto py-10 mb-28'>
+                <div className='md:flex md:flex-row justify-between items-center container mx-auto py-10 md:mb-28'>
                     <div className='  md:w-[60%] mb-32'>
 
                         {/* <div className='col-span-1 max-h-[500px] overflow-hidden overflow-y-scroll scroll_hide_custom  grid-cols-1 gap-10 scrollbar-hide hidden'>
@@ -183,7 +183,7 @@ const singleBbq = ({ product }) => {
                         </div>
                     </div>
                     <div className='md:w-[40%]'>
-                        <div className='pl-10'>
+                        <div className='md:pl-10 pl-5'>
                             <div className="flex flex-row justify-start items-center">
                                 <span className="text-[#FFB539] text-[14px]">
                                     <i className="fa-solid fa-star"></i>
@@ -198,7 +198,7 @@ const singleBbq = ({ product }) => {
                             <p className='text-[20px] font-rubik font-medium mt-2'><span className="text-[#eb0029]">{product.price}৳</span> / <span>Head</span></p>
                             <p className='font-roboto font-regular text-[#979797] text-[14px] mt-4'>{product.desc}</p>
                             <p className='text-[20px] font-rubik font-medium mt-2'>Total:<span className="text-[#eb0029]"> {product.price * quantity}৳</span></p>
-                            <div className='flex flex-row justify-start gap-6 my-6'>
+                            <div className='flex flex-row justify-start md:gap-6 my-6'>
 
                                 <span className="flex flex-row justify-start">
                                     <button className='text-[20px] font-rubik font-medium px-[10px] py-[5px] border border-[#d5d5d5] rounded-l-lg' onClick={() => decreaseCartItemNumber(quantity)}>-</button>
@@ -206,7 +206,7 @@ const singleBbq = ({ product }) => {
                                     <button className='text-[20px] font-rubik font-medium px-[10px] py-[5px] border border-[#d5d5d5] rounded-r-lg' onClick={() => increaseCartItemNumber(quantity)}>+</button>
                                 </span>
                                 {
-                                    activeUser && activeUser?.uid ? <div>
+                                    activeUser && activeUser?.uid ? <div className="flex">
                                         <button className='text-[14px] font-bold bg-[#eb0029] text-white py-[6px] px-[20px] rounded-lg mr-2' onClick={() => handleAddToCart(product)}>ADD TO CART</button>
                                         <button className="bg-[#010F1C] text-[14px] font-bold text-white py-[6px] px-[15px] rounded-lg"><i className="fa-regular fa-heart"></i> Buy Now</button>
                                     </div> : <Link href='/'>
@@ -248,21 +248,25 @@ const singleBbq = ({ product }) => {
                 </div>
 
                 
-                <div className="container mx-auto py-5">
-                    <div className="w-100 flex flex-row justify-center items-center gap-3 mb-8">
+                <div className="container mx-auto p-5">
+                    <div className="w-[90%] flex flex-row justify-center items-center gap-3 mb-8 mx-auto">
                         {
                             defaultTabButton === 'description' ? <>
-                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('description')}>PRODUCT DESCRIPTION</button>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] md:px-6 px-3 hover:border-[#eb0029] hidden md:inline-block" onClick={() => clickOnTabButton('description')}>PRODUCT DESCRIPTION</button>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] md:px-6 px-3 hover:border-[#eb0029] md:hidden" onClick={() => clickOnTabButton('description')}> DESCRIPTION</button>
                             </> : <>
-                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('description')}>PRODUCT DESCRIPTION</button>
+                                    <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-3 md:px-6 hover:border-[#eb0029] hidden md:inline-block" onClick={() => clickOnTabButton('description')}> PRODUCT DESCRIPTION</button>
+                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-3 md:px-6 hover:border-[#eb0029] md:hidden" onClick={() => clickOnTabButton('description')}> DESCRIPTION</button>
                             </>
                         }
 
                         {
                             defaultTabButton === 'review' ? <>
-                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] hidden md:inline-block" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
+                                <button className="btn bg-[#eb0029] text-[#ffffff] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] md:hidden" onClick={() => clickOnTabButton('review')}> REVIEWS</button>
                             </> : <>
-                                <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff] px-6 hover:border-[#eb0029]" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
+                                    <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] hidden md:inline-block" onClick={() => clickOnTabButton('review')}>CUSTOMER REVIEWS</button>
+                                    <button className="btn bg-[#ffffff] text-[#eb0029] border border-[#eb0029] rounded-full font-rubik text-[14px] font-medium hover:bg-[#eb0029] hover:text-[#ffffff]  px-3 md:px-6 hover:border-[#eb0029] md:hidden" onClick={() => clickOnTabButton('review')}> REVIEWS</button>
                             </>
                         }
                         
