@@ -1,5 +1,6 @@
 
 import { Base_url } from "@/src/store/utils";
+import axios from "node_modules/axios/index";
 import React,{ useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
@@ -24,34 +25,51 @@ const {
   };
 
 
-  console.log('cart',cart);
+  // console.log('cart',cart);
   
 
-  const handleCheckout = (data) => {
-    const cartData = [...cart, grandTotal],
-      orderData = {
-        cartData,
-        ...data,
-      };
-    console.log("orderData", orderData);
-    fetch(`${Base_url}/payment`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(orderData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        window.location.href = data.url;
-        //redirect to payment gateway
+  // const handleCheckout = (data) => {
+  //   const cartData = [...cart, grandTotal],
+  //     orderData = {
+  //       cartData,
+  //       ...data,
+  //     };
+  //   // console.log("orderData", orderData);
+  //   fetch(`${Base_url}/payment`, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(orderData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("checkoutData",data);
+  //       window.location.href = data.url;
+  //       //redirect to payment gateway
         
 
-      })
-      .catch((err) => {
-        console.log(err);
+  //     })
+  //     .catch((err) => {
+  //       console.log("checkoutError",err);
+  //     });
+    
+  // };
+  const payNow = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${Base_url}/payment`, {
+        nameOnCard: "John Doe",
+        cardNumber: "1234567890123456",
+        expDate: "12/23",
+        cvv: "123",
+        billingAddress: "123 Main St.",
+        amount: "10.00",
       });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const array = [
     "image",
@@ -171,7 +189,7 @@ const {
               </div>
               <form
                 className="mt-8 flex flex-col justify-start items-start w-full space-y-8 "
-                onSubmit={handleSubmit(handleCheckout)}
+                onSubmit={(e)=>payNow(e)}
               >
                 <input
                   {...register("firstName", {

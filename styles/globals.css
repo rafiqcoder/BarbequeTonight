@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.rdp-day_selected,
+.rdp-day_selected:focus-visible,
+.rdp-day_selected:hover {
+  color: white;
+  opacity: 1;
+  /* background-color: var(--rdp-accent-color) !important; */
+  background: red;
+  /* padding: 0px 8px; */
+  border-radius: 30px;
+}
+button.rdp-button_reset.rdp-button.rdp-day {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  margin: 1px;
+  font-weight: 700;
+}
+div#react-day-picker-1 {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
 :root {
   --theme-color: #eb0029;
   --theme-color2: #ff9d2d;
@@ -50,12 +72,13 @@
   transition: 0.3s all ease-in-out;
 }
 
-.active_tab>span {
+.active_tab > span {
   color: #ffffff;
 }
 
-.active_tab>img {
-  filter: invert(100%) sepia(100%) saturate(20%) hue-rotate(5deg) brightness(150%) contrast(100%);
+.active_tab > img {
+  filter: invert(100%) sepia(100%) saturate(20%) hue-rotate(5deg)
+    brightness(150%) contrast(100%);
 }
 
 /* custom box shadow */
@@ -74,7 +97,6 @@
   color: red;
   transform: translate(-50%, -50%);
 }
-
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {

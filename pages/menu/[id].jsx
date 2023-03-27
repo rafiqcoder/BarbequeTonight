@@ -1,9 +1,10 @@
+import PickDate from "@/components/PickDate/PickDate";
 import SingleBanner from "@/components/SingleBanner/SingleBanner";
 import Layout from "@/Layout/Layout";
-import hero_bg from "@/public/assets/hero_bg.jpg";
 import { bbqAddToCart } from "@/src/store/cartSlice";
 import { Base_url } from "@/src/store/utils";
 import axios from "axios";
+import { format } from "date-fns";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -39,7 +40,12 @@ const singleMenu = ({ product }) => {
   const { cart } = useSelector((state) => state.cart);
   const { activeUser } = useSelector((state) => state.userAuth);
   const router = useRouter();
-const [defaultTabButton, setDefaultTabButton] = useState('review');
+  const [defaultTabButton,setDefaultTabButton] = useState('review');
+  const [treatment, setTreatment] = useState('treatment');
+  // treatment = { treatment };
+  // const [selected, setSelected] = useState('14-05-2023');
+  // selected = { selected };
+   const [selectedDate, setSelectedDate] = useState(null);
   const clickOnTabButton = (btnState) => {
         setDefaultTabButton(btnState);
     }
@@ -78,10 +84,13 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
   };
 
   const handleAddToCart = (product) => {
-    if (addedProduct) {
+    if (selectedDate===null) {
+      toast.error("please select date");
+    } else if (addedProduct) {
       toast.error("This product is already added to cart");
     } else {
       const updatedProduct = {
+        deliveryDate: selectedDate,
         product,
         quantity: quantity,
         userEmail: activeUser?.email,
@@ -89,9 +98,18 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
       dispatch(bbqAddToCart(updatedProduct));
     }
   };
+
+  const handleModal = () => {
+
+  };
+
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+ if (selectedDate) {
+       const date = format(selectedDate, "dd-MM-yyyy");
+      //  console.log("selectedDate", typeof date);
+ }
   return (
     <Layout>
       <section>
@@ -101,8 +119,6 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
         ></SingleBanner>
         <div className="md:flex md:flex-row justify-between items-center container mx-auto py-10 mb-28">
           <div className="  md:w-[60%] mb-32">
-            
-
             <div className=" h-[500px] bg-[#FAF7F2]   text-center rounded-lg">
               <img
                 className="h-full p-5 object-cover  m-auto"
@@ -110,8 +126,6 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
                 alt=""
               />
               <div className=" max-w-[600px]  md:gap-10 gap-5  mt-5 flex overflow-x-scroll ">
-                
-
                 {newImgArray.map((img, index) => (
                   <>
                     {defaultThumb !== img ? (
@@ -177,6 +191,10 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
                   {product.price * quantity}৳
                 </span>
               </p>
+              <PickDate
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+              ></PickDate>
               <div className="flex flex-row justify-start gap-6 my-6">
                 <span className="flex flex-row justify-start">
                   <button
@@ -195,6 +213,7 @@ const [defaultTabButton, setDefaultTabButton] = useState('review');
                     +
                   </button>
                 </span>
+
                 {activeUser && activeUser?.uid ? (
                   <div>
                     <button
