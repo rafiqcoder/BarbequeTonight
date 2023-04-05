@@ -8,12 +8,12 @@ const Banner = ({heroImg}) => {
         <div className="relative">
           <Image
             src={heroImg}
-            alt="A work table with house plants"
+            alt="A work table with house plants" width={1400} height={800}
             className="w-full max-h-[550px] object-cover hidden lg:block"
           ></Image>
           <Image
             src={heroImg}
-            alt="A work table with house plants"
+            alt="A work table with house plants" width={1400} height={800}
             className="hidden sm:block lg:hidden w-full h-full"
           ></Image>
           <Image

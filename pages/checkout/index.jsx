@@ -1,7 +1,6 @@
 
 import { Base_url } from "@/src/store/utils";
-import axios from "node_modules/axios/index";
-import React,{ useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import Layout from "../../Layout/Layout";
@@ -23,54 +22,62 @@ const {
     setChangeText1(e);
     setDropdown1(false);
   };
-
+  const [shipping,setShipping] = useState(90);
 
   // console.log('cart',cart);
   
 
-  // const handleCheckout = (data) => {
-  //   const cartData = [...cart, grandTotal],
-  //     orderData = {
-  //       cartData,
-  //       ...data,
-  //     };
-  //   // console.log("orderData", orderData);
-  //   fetch(`${Base_url}/payment`, {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(orderData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("checkoutData",data);
-  //       window.location.href = data.url;
-  //       //redirect to payment gateway
-        
-
-  //     })
-  //     .catch((err) => {
-  //       console.log("checkoutError",err);
-  //     });
-    
-  // };
-  const payNow = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(`${Base_url}/payment`, {
-        nameOnCard: "John Doe",
-        cardNumber: "1234567890123456",
-        expDate: "12/23",
-        cvv: "123",
-        billingAddress: "123 Main St.",
-        amount: "10.00",
+  const handleCheckout = (data) => {
+    // const cartData = [...cart, ],
+     const orderData = {
+        products: cart,
+        grandTotal: grandTotal,
+        userData:data,
+      };
+    // console.log("orderData", orderData);
+    fetch(`${Base_url}/order`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("checkoutData", data);
+        if (data) {
+          
+          window.location.href = data.url;
+          
+        }
+        //redirect to payment gateway
+      })
+      .catch((err) => {
+        console.log("checkoutError", err);
       });
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    
   };
+
+  // const payNow = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const finalTotal=grandTotal+shipping
+  //     const response = await axios.post(`${Base_url}/order`, {
+  //       nameOnCard: "John Doe",
+  //       cardNumber: "1234567890123456",
+  //       expDate: "12/23",
+  //       cvv: "123",
+  //       billingAddress: "123 Main St.",
+  //       amount: "10.00",
+  //       cart: [...cart],
+  //       grandTotal: finalTotal,
+  //     });
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const array = [
     "image",
     "Name",
@@ -189,7 +196,7 @@ const {
               </div>
               <form
                 className="mt-8 flex flex-col justify-start items-start w-full space-y-8 "
-                onSubmit={(e)=>payNow(e)}
+                onSubmit={handleSubmit(handleCheckout)}
               >
                 <input
                   {...register("firstName", {
@@ -226,8 +233,9 @@ const {
                   {...register("email", {
                     required: "email is required",
                   })}
-                  className="px-2 focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
+                  className="px-2 focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full text-gray-400"
                   placeholder="email"
+                  value={activeUser?.email}
                 />
                 {errors.email && (
                   <p
@@ -315,7 +323,7 @@ const {
                   Estimated Total{" "}
                 </p>
                 <p className="text-lg font-semibold leading-4 text-gray-800">
-                  {grandTotal + 90} /=
+                  {grandTotal + shipping} /=
                 </p>
               </div>
             </div>
