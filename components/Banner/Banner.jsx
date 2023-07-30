@@ -1,19 +1,22 @@
 import Image from "next/image";
 
-
-const Banner = ({heroImg}) => {
+const Banner = ({ heroImg }) => {
   return (
     <div className="dark:bg-gray-900 ">
       <div className="w-full">
         <div className="relative">
           <Image
             src={heroImg}
-            alt="A work table with house plants" width={1400} height={800}
+            alt="A work table with house plants"
+            width={1400}
+            height={800}
             className="w-full max-h-[550px] object-cover hidden lg:block"
           ></Image>
           <Image
             src={heroImg}
-            alt="A work table with house plants" width={1400} height={800}
+            alt="A work table with house plants"
+            width={1400}
+            height={800}
             className="hidden sm:block lg:hidden w-full h-full"
           ></Image>
           <Image
@@ -34,7 +37,6 @@ const Banner = ({heroImg}) => {
               Explore
             </button>
           </div>
-          
         </div>
       </div>
     </div>

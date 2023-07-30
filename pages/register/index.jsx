@@ -132,33 +132,7 @@ saveToken(result.user.email)
               >
                 Create your account
               </p>
-              <div>
-                <label className="text-sm font-medium leading-none text-gray-800">
-                  Image Link
-                </label>
-                <input
-                  {...register("img", {
-                    required: "img is required",
-                  })}
-                  className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
-                />
-                {errors.img && (
-                  <p
-                    role="alert"
-                    className="text-red-500 text-xs font-medium mt-2"
-                  >
-                    {errors.img?.message}
-                  </p>
-                )}
-                {/* {errors.img && (
-                <p
-                  role="alert"
-                  className="text-red-500 text-xs font-medium mt-2"
-                >
-                  {errors.email?.message}
-                </p>
-              )} */}
-              </div>
+              
               <div>
                 <label className="text-sm font-medium leading-none text-gray-800">
                   Name

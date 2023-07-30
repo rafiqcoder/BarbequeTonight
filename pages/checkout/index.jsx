@@ -1,39 +1,40 @@
-
 import { Base_url } from "@/src/store/utils";
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../Layout/Layout";
-
+import { storeOrderData } from "../../src/store/orderSlice";
 
 export default function Checkout() {
   const { cart, grandTotal } = useSelector((state) => state.cart);
   const [dropdown1, setDropdown1] = useState(false);
   const [dropdown2, setDropdown2] = useState(false);
   const [dropdown3, setDropdown3] = useState(false);
-  const [changeText1,setChangeText1] = useState("City");
-  const {activeUser,loading} = useSelector(state => state.userAuth)
-const {
-  register,
-  formState: { errors },
-  handleSubmit,
-} = useForm();
+  const [changeText1, setChangeText1] = useState("City");
+  const { activeUser, loading } = useSelector((state) => state.userAuth);
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const HandleText1 = (e) => {
     setChangeText1(e);
     setDropdown1(false);
   };
-  const [shipping,setShipping] = useState(90);
+
+  const [shipping, setShipping] = useState(90);
 
   // console.log('cart',cart);
-  
 
+  const dispatch = useDispatch();
   const handleCheckout = (data) => {
     // const cartData = [...cart, ],
-     const orderData = {
-        products: cart,
-        grandTotal: grandTotal,
-        userData:data,
-      };
+    const orderData = {
+      products: cart,
+      grandTotal: grandTotal,
+      userData: data,
+    };
     // console.log("orderData", orderData);
     fetch(`${Base_url}/order`, {
       method: "POST",
@@ -45,18 +46,18 @@ const {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("checkoutData", data);
         if (data) {
-          
+          // console.log("checkoutData", data);
+          dispatch(storeOrderData(data.data));
+
           window.location.href = data.url;
-          
+          // console.log("data", data);
         }
         //redirect to payment gateway
       })
       .catch((err) => {
         console.log("checkoutError", err);
       });
-    
   };
 
   // const payNow = async (e) => {
@@ -78,15 +79,7 @@ const {
   //     console.log(error);
   //   }
   // };
-  const array = [
-    "image",
-    "Name",
-    "Price",
-    "Quantity",
-    "Total",
-    "Remove",
-
-  ];
+  const array = ["image", "Name", "Price", "Quantity", "Total", "Remove"];
   return (
     <Layout>
       <div className="rounded-lg  pb-5 p-3">

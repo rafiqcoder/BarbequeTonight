@@ -39,7 +39,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userEmail !== null && token !== null) {
-      router.push(query?query?.redirect:'/');
+      router.push(query?.query?.redirect:'/');
     }
   },[userEmail,token])
   // console.log("token",token);
