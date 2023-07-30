@@ -1,34 +1,43 @@
+import React, { useEffect } from "react";
 import { Base_url } from "@/src/store/utils";
 import Link from "node_modules/next/link";
 import { useRouter } from "node_modules/next/router";
-import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-
+import { emptyCart } from "@/src/store/cartSlice";
+import { useDispatch } from "react-redux";
 const success = () => {
   const { orderData } = useSelector((state) => state.activeOrder);
+    const { activeUser } = useSelector((state) => state.userAuth);
+    console.log(activeUser?.email);
   const { query } = useRouter();
   console.log("query", query.tran_id);
-  const tran_id = query?.tran_id;
-
-  //stringify
-  const id = JSON.stringify(tran_id);
-  console.log("tran_id", tran_id);
-  console.log("orderData", orderData);
+  const transId = query?.tran_id;
+  const dispatch = useDispatch();
+  
+  console.log("tran_id", transId);
+  console.log("orderData",orderData);
+  
   useEffect(() => {
-    if (tran_id !== undefined) {
-     fetch(`${Base_url}/ssl-payment-success/transId=${id}`, {
-       method: "PATCH",
-     })
-       .then((res) => res.json())
-       .then((data) => {
-         if (data) {
-           console.log("data", data);
-         }
-         // console.log(data);
-       })
-       .catch((err) => console.log(err));
+    console.log("activeUser", activeUser);
+    if (transId !== undefined) {
+      fetch(`${Base_url}/ssl-payment-success/${transId}`, {
+        method: "PATCH",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            console.log("data", data.cus_email);
+            dispatch(
+              emptyCart({
+                userEmail: data.cus_email,
+              })
+            );
+          }
+          // console.log(data);
+        })
+        .catch((err) => console.log(err));
     }
-  }, [tran_id]);
+  }, [transId]);
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="p-1 rounded shadow-lg bg-gradient-to-r from-purple-500 via-green-500 to-blue-500">
@@ -51,8 +60,7 @@ const success = () => {
             Thank You !
           </h1>
           <p>
-            Thank you for your interest! Check your email for a link to the
-            guide.
+            Your payment has been successfully completed. We will contact you
           </p>
           <div className="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded rounded-full hover:bg-indigo-700 focus:outline-none focus:ring">
             <svg

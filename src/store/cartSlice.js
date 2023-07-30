@@ -204,6 +204,24 @@ const cartSlice = createSlice({
         })
         .catch((error) => console.log(error))
     },
+    emptyCart: (state,action) => {
+      state.cart = [];
+      state.grandTotal = 0;
+      const Cartdata = state.cart;
+      const email = action.payload.userEmail;
+      fetch(`${Base_url}/emptyCart?email=${email}`,{
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Cartdata)
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("cleared cart db")
+          }
+        })
+        .catch((error) => console.log(error))
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCartDbThunk.fulfilled,(state,action) => {
@@ -222,5 +240,5 @@ const cartSlice = createSlice({
   },
 
 });
-export const { addToCart,reduceQuantity,setActiveUser,removeFromCart,bbqAddToCart } = cartSlice.actions;
+export const { addToCart,reduceQuantity,setActiveUser,removeFromCart,bbqAddToCart,emptyCart } = cartSlice.actions;
 export default cartSlice.reducer;
