@@ -35,11 +35,11 @@ const Login = () => {
   const { query } = useRouter();
   // const [token, setToken] = useToken(null);
 
-  // console.log("query",query);
+  console.log("query",query);
 
   useEffect(() => {
     if (userEmail !== null && token !== null) {
-      router.push(query?.query?.redirect:'/');
+      router.push(query?.redirect,'/');
     }
   },[userEmail,token])
   // console.log("token",token);
