@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { emptyCart } from "@/src/store/cartSlice";
 import { useDispatch } from "react-redux";
 const success = () => {
+  const [refresh, setRefresh] = React.useState(true);
   const { orderData } = useSelector((state) => state.activeOrder);
     const { activeUser } = useSelector((state) => state.userAuth);
     console.log(activeUser?.email);
@@ -18,6 +19,7 @@ const success = () => {
   console.log("orderData",orderData);
   
   useEffect(() => {
+
     console.log("activeUser", activeUser);
     if (transId !== undefined) {
       fetch(`${Base_url}/ssl-payment-success/${transId}`, {
@@ -31,13 +33,24 @@ const success = () => {
               emptyCart({
                 userEmail: data.cus_email,
               })
+              setRefresh(false);
             );
           }
           // console.log(data);
         })
-        .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err)
+      setRefresh(false);
+    });
     }
-  }, [transId]);
+  },[transId]);
+  
+  if ( refresh) {
+     <div className="radial-progress text-[red] loader" style={{ "--value": 70 }}>
+        70%
+      </div>
+  }
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="p-1 rounded shadow-lg bg-gradient-to-r from-purple-500 via-green-500 to-blue-500">
