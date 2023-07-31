@@ -1,5 +1,3 @@
-
-
 import Layout from "@/Layout/Layout";
 import heroImg from "@/assets/allBBQ.jpg";
 import Banner from "@/components/Banner/Banner";
@@ -12,7 +10,6 @@ const index = () => {
         <HomeBBQitems></HomeBBQitems>
       </section>
     </Layout>
-
   );
 };
 
