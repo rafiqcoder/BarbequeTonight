@@ -44,6 +44,7 @@ const singleBbq = ({ product }) => {
     const [quantity,setQauntity] = useState(5);
     const { cart } = useSelector(state => state.cart);
     const { activeUser } = useSelector((state) => state.userAuth);
+    console.log(activeUser?.email);
     const router = useRouter();
 
     const { id } = router.query;

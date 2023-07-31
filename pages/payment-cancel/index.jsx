@@ -5,18 +5,18 @@ import { useRouter } from "node_modules/next/router";
 import { useSelector } from "react-redux";
 import { emptyCart } from "@/src/store/cartSlice";
 import { useDispatch } from "react-redux";
-const success = () => {
+const cancel = () => {
   const { orderData } = useSelector((state) => state.activeOrder);
-    const { activeUser } = useSelector((state) => state.userAuth);
-    console.log(activeUser?.email);
+  const { activeUser } = useSelector((state) => state.userAuth);
+  console.log(activeUser?.email);
   const { query } = useRouter();
   console.log("query", query.tran_id);
   const transId = query?.tran_id;
   const dispatch = useDispatch();
-  
+
   console.log("tran_id", transId);
-  console.log("orderData",orderData);
-  
+  console.log("orderData", orderData);
+
   useEffect(() => {
     console.log("activeUser", activeUser);
     if (transId !== undefined) {
@@ -87,4 +87,4 @@ const success = () => {
   );
 };
 
-export default success;
+export default cancel;
