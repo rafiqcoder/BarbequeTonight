@@ -46,9 +46,9 @@ const success = () => {
   },[transId]);
   
   if ( refresh) {
-     <div className="radial-progress text-[red] loader" style={{ "--value": 70 }}>
+    return (<div className="radial-progress text-[red] loader" style={{ "--value": 70 }}>
         70%
-      </div>
+      </div>)
   }
 
   return (
