@@ -32,8 +32,8 @@ const success = () => {
             dispatch(
               emptyCart({
                 userEmail: data.cus_email,
-              })
-              setRefresh(false);
+              }),
+              setRefresh(false)
             );
           }
           // console.log(data);
