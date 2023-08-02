@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
-import { Base_url } from "@/src/store/utils";
 import Link from "node_modules/next/link";
-import { useRouter } from "node_modules/next/router";
-import { useSelector } from "react-redux";
-import { emptyCart } from "@/src/store/cartSlice";
-import { useDispatch } from "react-redux";
-const cancel = () => {
+import React from "react";
+const failur = () => {
   // const { orderData } = useSelector((state) => state.activeOrder);
   // const { activeUser } = useSelector((state) => state.userAuth);
   // console.log(activeUser?.email);
@@ -57,11 +52,9 @@ const cancel = () => {
             />
           </svg>
           <h1 className="text-4xl font-bold font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-           Canceled !
+            Failed !
           </h1>
-          <p>
-            Your payment has been cencel. We will contact you
-          </p>
+          <p>Your payment has been Failed completed. We will contact you</p>
           <div className="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded rounded-full hover:bg-indigo-700 focus:outline-none focus:ring">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,4 +80,4 @@ const cancel = () => {
   );
 };
 
-export default cancel;
+export default failur;

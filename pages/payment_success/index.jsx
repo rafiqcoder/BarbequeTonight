@@ -1,25 +1,23 @@
-import React, { useEffect } from "react";
+import { emptyCart } from "@/src/store/cartSlice";
 import { Base_url } from "@/src/store/utils";
 import Link from "node_modules/next/link";
 import { useRouter } from "node_modules/next/router";
-import { useSelector } from "react-redux";
-import { emptyCart } from "@/src/store/cartSlice";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const success = () => {
-  const [refresh, setRefresh] = React.useState(true);
+  const [loading, setLoading] = React.useState(true);
   const { orderData } = useSelector((state) => state.activeOrder);
-    const { activeUser } = useSelector((state) => state.userAuth);
-    console.log(activeUser?.email);
+  const { activeUser } = useSelector((state) => state.userAuth);
+  console.log(activeUser?.email);
   const { query } = useRouter();
   console.log("query", query.tran_id);
   const transId = query?.tran_id;
   const dispatch = useDispatch();
-  
-  console.log("tran_id", transId);
-  console.log("orderData",orderData);
-  
-  useEffect(() => {
 
+  console.log("tran_id", transId);
+  console.log("orderData", orderData);
+
+  useEffect(() => {
     console.log("activeUser", activeUser);
     if (transId !== undefined) {
       fetch(`${Base_url}/ssl-payment-success/${transId}`, {
@@ -33,22 +31,27 @@ const success = () => {
               emptyCart({
                 userEmail: data.cus_email,
               }),
-              setRefresh(false)
+              setLoading(false)
             );
           }
           // console.log(data);
         })
-    .catch((err) => {
-      console.log(err)
-      setRefresh(false);
-    });
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
     }
-  },[transId]);
-  
-  if ( refresh) {
-     <div className="radial-progress text-[red] loader" style={{ "--value": 70 }}>
+  }, [transId]);
+
+  if (loading) {
+    return (
+      <div
+        className="radial-progress text-[red] loader"
+        style={{ "--value": 70 }}
+      >
         70%
       </div>
+    );
   }
 
   return (
@@ -75,10 +78,12 @@ const success = () => {
           <p>
             Your payment has been successfully completed. We will contact you
           </p>
-          <Link href="/" 
+          <Link
+            href="/"
             className="inline-flex items-center px-4 py-2 text-white
             bg-indigo-600 border border-indigo-600 rounded rounded-full
-            hover:bg-indigo-700 focus:outline-none focus:ring">
+            hover:bg-indigo-700 focus:outline-none focus:ring"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-3 h-3 mr-2"
