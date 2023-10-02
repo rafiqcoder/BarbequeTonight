@@ -1,0 +1,19 @@
+.cusUl{
+list-style: disc;
+    font-size: 14px;
+}
+.cusUl li{
+    font-size: 14px;
+    color: gray;
+}
+.cusUl li:nth-child(1)::marker{
+    color: #cdd4ed;
+}
+.cusUl li:nth-child(2)::marker{
+    color: #6366F1;
+}
+    
+.cusPie .recharts-wrapper{
+     
+
+}

@@ -1,18 +1,12 @@
-import DashWellcome from "@/components/DashComponents/DashWellcome";
+import DashOverview from "@/components/DashComponents/DashOverview";
 import DashBoardLayout from "@/Layout/DashBoardLayout";
-import { useContext } from "react";
-
+import Analytics from "@/components/DashComponents/analytics/analytics";
 const Dashboard = () => {
- 
-
   return (
     <div className=" overflow-hidden">
-      <main className="flex flex-col">
+      <main className="flex flex-col ">
         <DashBoardLayout>
-      
-         
-          <DashWellcome/>
-        
+          <Analytics />
         </DashBoardLayout>
       </main>
     </div>
